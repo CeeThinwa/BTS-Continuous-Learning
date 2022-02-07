@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@550&display=swap');
+
+/* Font adjustment */
+div, h1, h2, h3, h4, h5, h6, p {font-family: "Quicksand";}
+
+/* Background colour adjustments for the page */
+body, .row, .dropdown-buttons {background-color: #fffbf2;}
+#site-navigation {background-color: #cbcce7;}
+
+/* Change navigation menu items' colour */
+#site-navigation h1.site-logo,
+#site-navigation nav ul.nav li a,
+#site-navigation div.navbar_extra_footer {
+    color: #1f274c;
+    }
+
+/* Change top bar icons' colour */
+#navbar-toggler {color: #1f274c;}
+
+.topbar .topbar-main button.topbarbtn {
+    background-color: transparent;
+    color: #1f274c;
+    }
+
+.bd-toc nav {
+    background-color: transparent;
+    }
+
+/* Making admonitions stand out */
+.admonition {background-color: #fff;}
