@@ -5,22 +5,12 @@ as I learn different technologies and share both the
 key ideas I found and the mistakes I made - so you
 don't have to.
 
+This book contains the following sections:
+
 ## 1. Jupyter Books explored
 
-When I came across Khuyen Tran's brilliant LinkedIn
-post where she shared her Jupyter Book, a light bulb
-instantly went off for me! Her post gave me just enough of a nudge
-to try it out... and here we are! This site is my first
-attempt at Jupyter Books after getting years of
-getting cosy with Jupyter Notebooks.
-
 In this section, I literally take you through how I
-learned to set it up. This will include the challenges I
-faced (especially in adjusting the front-end to match
-my brand), as well as some mistakes I made working on it in a
-Windows environment (such as my difficulty setting up
-an older Python version in my virtual environment on
-Windows).
+learned to set this Jupyter Book up.
 
 ## 2. The NLP toolbox
 
