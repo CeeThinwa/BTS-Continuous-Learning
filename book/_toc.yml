@@ -7,5 +7,6 @@ chapters:
 - file: JB_explored
   sections:
     - file: initial_setup
+    - file: customised_front_end
     - file: sample_markdown
     - file: sample_notebook
