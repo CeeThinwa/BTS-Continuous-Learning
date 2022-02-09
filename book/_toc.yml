@@ -4,7 +4,8 @@
 format: jb-book
 root: intro
 chapters:
-- file: samples
+- file: JB_explored
   sections:
+    - file: initial_setup
     - file: sample_markdown
     - file: sample_notebook
