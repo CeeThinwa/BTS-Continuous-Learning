@@ -53,7 +53,7 @@
     <link rel="shortcut icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="A Sample Markdown File" href="sample_markdown.html" />
+    <link rel="next" title="Customizing the Front End" href="customised_front_end.html" />
     <link rel="prev" title="Jupyter Books explored" href="JB_explored.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -112,6 +112,11 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Initial Setup
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="customised_front_end.html">
+     Customizing the Front End
     </a>
    </li>
    <li class="toctree-l2">
@@ -188,6 +193,24 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-and-running-jupyter-book-on-python-3-9">
+   Installing and running Jupyter Book on Python 3.9
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trying-to-install-the-latest-version-of-python-3-7">
+   Trying to install the latest version of Python 3.7
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -200,6 +223,24 @@
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-and-running-jupyter-book-on-python-3-9">
+   Installing and running Jupyter Book on Python 3.9
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trying-to-install-the-latest-version-of-python-3-7">
+   Trying to install the latest version of Python 3.7
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -208,6 +249,96 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="initial-setup">
 <h1>Initial Setup<a class="headerlink" href="#initial-setup" title="Permalink to this headline">¶</a></h1>
+<p>The tech stack that I had to create and deploy this
+book was:</p>
+<ul class="simple">
+<li><p>A Windows environment</p></li>
+<li><p>PyCharm Community Edition</p></li>
+<li><p>GitHub Desktop</p></li>
+</ul>
+<p>Some mistakes I made in setup include:</p>
+<ul class="simple">
+<li><p>Installing and running Jupyter Book on Python 3.9</p></li>
+<li><p>Trying to install a g-zipped version of Python 3.7 to install the latest version (Python 3.7.12)</p></li>
+<li><p>Navigating to the gh-pages branch</p></li>
+</ul>
+<p>Some challenges I faced in setup include:</p>
+<ul class="simple">
+<li><p>Deploying the sample book</p></li>
+<li><p>Activating a virtual environment in PyCharm after navigating between Git branches</p></li>
+</ul>
+<p>Let’s go through these mistakes in more detail:</p>
+<div class="section" id="installing-and-running-jupyter-book-on-python-3-9">
+<h2>Installing and running Jupyter Book on Python 3.9<a class="headerlink" href="#installing-and-running-jupyter-book-on-python-3-9" title="Permalink to this headline">¶</a></h2>
+<p>The latest version of Python today is Python 3.10, but
+I routinely use Python 3.9 on my local machine.</p>
+<p>I managed to install <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> and successfully
+ran the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">create</span> <span class="n">mynewbook</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>So imagine the surprise I experienced, following
+<a href='https://jupyterbook.org/start/create.html'>this
+tutorial</a> when I ran</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">build</span> <span class="n">book</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>and got <a href='https://github.com/executablebooks/jupyter-book/issues/906'>
+this problem</a>.</p>
+<p>I wish I started by reading the warning
+<a href='https://jupyterbook.org/start/your-first-book.html'>
+here</a> and then navigating to
+<a href='https://jupyterbook.org/advanced/windows.html#working-on-windows'>
+Working on Windows</a></p>
+<div class="tip admonition">
+<p class="admonition-title">Lesson 1:</p>
+<p>Learn how to set up Jupyter Book based on your OS
+environment.</p>
+</div>
+</div>
+<div class="section" id="trying-to-install-the-latest-version-of-python-3-7">
+<h2>Trying to install the latest version of Python 3.7<a class="headerlink" href="#trying-to-install-the-latest-version-of-python-3-7" title="Permalink to this headline">¶</a></h2>
+<p>When I found that Python 3.7 was required, my natural
+inclination was to go
+<a href='https://www.python.org/downloads/'>here</a>
+and zoomed in to Python 3.7.12:</p>
+<p><img alt="py1" src="_images/img1.png" /></p>
+<p>It came as a <code class="docutils literal notranslate"><span class="pre">.tgz</span></code> which I unzipped on Administrator
+Windows <code class="docutils literal notranslate"><span class="pre">cmd</span></code> with the following code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">xvzf</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">CT</span>\<span class="n">Downloads</span>\<span class="n">Python</span><span class="o">-</span><span class="mf">3.7.12</span><span class="o">.</span><span class="n">tgz</span> <span class="o">-</span><span class="n">C</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">CT</span>\<span class="n">Downloads</span>  
+</pre></div>
+</div>
+<p>When I unzipped it, I felt stuck because I couldn’t
+activate it without a crazy amount of searching.</p>
+<p>There had to be a better way.</p>
+<p>So I decided to search for versions of Python 3.7
+that had a <code class="docutils literal notranslate"><span class="pre">.exe</span></code> file for Windows
+<a href='https://www.python.org/downloads/windows/'>
+here</a>
+settling on Python 3.7.9:</p>
+<p><img alt="py2" src="_images/img2.png" /></p>
+<p>I clicked the <em>Download Windows x86-64 executable
+installer</em> because my machine is 64-bit. I installed
+it with default installation instructions, and I was
+able to create a virtual environment <code class="docutils literal notranslate"><span class="pre">venv</span></code> in my project
+that ran on Python 3.7 with the following code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># cd to \directory then run</span>
+<span class="n">virtualenv</span> <span class="o">-</span><span class="n">p</span> <span class="n">python3</span><span class="mf">.7</span> <span class="n">venv</span>
+</pre></div>
+</div>
+<p>All that’s left is activating <code class="docutils literal notranslate"><span class="pre">venv</span></code> and checking that
+the correct version of Python is running with the code
+below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">py</span> <span class="o">--</span><span class="n">version</span>
+</pre></div>
+</div>
+<p>Finally, in Github Desktop after committing the files
+created with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">create</span> <span class="n">mynewbook</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>I added all <code class="docutils literal notranslate"><span class="pre">venv</span></code> files to <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -242,10 +373,10 @@
             <p class="prev-next-title">Jupyter Books explored</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="sample_markdown.html" title="next page">
+    <a class='right-next' id="next-link" href="customised_front_end.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">A Sample Markdown File</p>
+        <p class="prev-next-title">Customizing the Front End</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
