@@ -7,9 +7,9 @@ don't have to.
 
 ## 1. Jupyter Books explored
 
-I came across a tutorial on Sphinx
-(hosted by Data Umbrella) - which is part of the
-foundation for Jupyter Books, but it honestly appeared
+I came across <a href='https://youtu.be/tXWscUSYdBs'>
+a tutorial on Sphinx (hosted by Data Umbrella)</a> -
+which is part of the foundation for Jupyter Books, but it honestly appeared
 quite intimidating to me, and I procrastinated watching
 it.
 
@@ -19,8 +19,8 @@ instantly went off for me, so much so that I was
 inspired to ask her for a connection, which she
 graciously accepted. Her post gave me just enough of a nudge
 to try it out... and here we are! This site is my first
-attempt at Jupyter Books after getting cosy with
-Jupyter Notebooks.
+attempt at Jupyter Books after getting years of
+getting cosy with Jupyter Notebooks.
 
 In this section, I literally take you through how I
 learned to set it up. This will include the challenges I
