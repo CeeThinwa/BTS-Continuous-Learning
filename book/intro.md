@@ -7,7 +7,7 @@ don't have to.
 
 This book contains the following sections:
 
-## 1. Jupyter Books explored
+## 1. [Jupyter Books explored](jupyter-book)
 
 In this section, I literally take you through how I
 learned to set this Jupyter Book up.
