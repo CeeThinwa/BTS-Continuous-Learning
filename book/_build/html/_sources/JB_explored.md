@@ -1,3 +1,4 @@
+(jupyter-book)=
 # Jupyter Books explored
 
 When I came across Khuyen Tran's brilliant LinkedIn
@@ -9,5 +10,5 @@ getting cosy with Jupyter Notebooks.
 
 I will take you through:
 1. My experience with initial setup of the book
-2. How I altered the front-end of the book
-3. My maintenance routine
+2. My maintenance routine
+3. How I altered the front-end of the book
