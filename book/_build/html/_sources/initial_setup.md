@@ -47,7 +47,7 @@ here</a> and then navigating to
 Working on Windows</a>
 
 :::{admonition} Lesson 1:
-:class: tip
+:class: note
 Learn how to set up Jupyter Book based on your OS
 environment.
 :::
@@ -57,7 +57,7 @@ environment.
 When I found that Python 3.7 was required, my natural
 inclination was to go
 <a href='https://www.python.org/downloads/'>here</a>
-and zoomed in to Python 3.7.12:
+and zoom in to Python 3.7.12:
 
 ![py1](./images/img1.png)
 
@@ -85,10 +85,12 @@ I clicked the *Download Windows x86-64 executable
 installer* because my machine is 64-bit. I installed
 it with default installation instructions, and I was
 able to create a virtual environment `venv` in my project
-that ran on Python 3.7 with the following code:
+that ran on Python 3.7 as follows:
+
+I changed to the main directory, `BTS-Continuous-Learning`
+then ran
 
 ```
-# cd to \directory then run
 virtualenv -p python3.7 venv
 ```
 
@@ -108,3 +110,79 @@ jupyter-book create mynewbook/
 ```
 
 I added all `venv` files to `.gitignore`.
+
+:::{admonition} Lesson 2:
+:class: note
+Use a `.exe` installer to install Python on your
+machine; avoid zipped files.
+:::
+
+## Activating a virtual environment in PyCharm
+
+The first time (when the only Git branch that I had
+was `main`, it was easy enough to activate the virtual
+environment in PyCharm. However, when I navidated to the
+`gh-pages` branch in GitHub Desktop, I started getting a
+weird error in the terminal like
+
+![pycharm1](./images/img3.png)
+
+When I upgraded my PyCharm community Edition program,
+the error changed to this:
+
+![pycharm2](./images/img4.png)
+
+Following the suggestion, this happened:
+
+![pycharm3](./images/img5.png)
+
+So what was the solution?
+
+I navigated first to the `File` menu, then clicked on
+`Settings` resulting in the following screen:
+
+![pycharm4](./images/img6.png)
+
+I then navigated to `Tools`, then `Terminal`, and changed the
+Shell path from `Powershell`'s path to `cmd`'s path like so:
+
+![pycharm5](./images/img7.png)
+
+Problem solved!
+
+![pycharm6](./images/img8.png)
+
+Work within the environment and clear the workspace with `cls`
+command.
+
+:::{admonition} Lesson 3:
+:class: note
+Use a `cmd` engine within Pycharm instead of `Powershell` to
+activate the virtual environment.
+:::
+
+## Deployment of the site
+
+Updating the book was easy enough with the `jb build --all book/`
+command once the virtual environment was activated.
+
+I then
+* Pushed all the changes in the repo on the `main` branch to remote
+* Installed `ghp-import` with the `pip install ghp-import` command
+* Changed into the directory containing the files with `cd books/` command
+* Created a `gh-pages` branch (when the command ran the first time) or pushed the changes to the `gh-pages` branch with the `ghp-import -n -p -f _build/html` command
+
+:::{admonition} Warning:
+:class: warning
+When running the `ghp-import -n -p -f _build/html` command,
+DO NOT forget to add `-n`; the reason why is well explained
+<a href='https://jupyterbook.org/publish/gh-pages.html'>here
+</a>.
+:::
+
+Initially, after deploying the page, I would navigate to the
+`gh-pages` branch, but I realised that it was not necessary since
+running the `ghp-import -n -p -f _build/html` command
+automatically local changes to remote in the `gh-pages` branch.
+
+<br>
