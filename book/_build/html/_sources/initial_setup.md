@@ -1,4 +1,4 @@
-# Initial Setup
+# Initial Setup \& Maintenance
 
 The tech stack that I had to create and deploy this
 book was:
@@ -183,6 +183,7 @@ DO NOT forget to add `-n`; the reason why is well explained
 Initially, after deploying the page, I would navigate to the
 `gh-pages` branch, but I realised that it was not necessary since
 running the `ghp-import -n -p -f _build/html` command
-automatically local changes to remote in the `gh-pages` branch.
+automatically sends local changes to remote in the `gh-pages`
+branch.
 
 <br>
