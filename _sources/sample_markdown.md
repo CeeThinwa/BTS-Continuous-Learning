@@ -1,4 +1,4 @@
-# A Sample Markdown File
+# A Sample Markdown File 📃
 
 :::{note}
 Here is a note!

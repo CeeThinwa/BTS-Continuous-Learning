@@ -1,4 +1,4 @@
-# Behind the Scenes of my Learning Journey
+# Behind the Scenes of my Learning Journey <br> 🤔💡
 
 This book is an effort for me to document my journey
 as I learn different technologies and share both the
@@ -7,26 +7,33 @@ don't have to.
 
 This book contains the following sections:
 
-## 1. [Jupyter Books explored](jupyter-book)
+## 1. [Jupyter Books explored 📙](jupyter-book)
+
+Jupyter Book is a flexible tool built on top of Sphinx to
+* tell data stories, and/or
+* share code that can allow the reader to replicate experiments, and/or
+* discuss scientific research
 
 In this section, I literally take you through how I
-learned to set this Jupyter Book up.
+learned to set this Jupyter Book up - it is my first time working
+with documentation tech in general :smile:
 
-## 2. The NLP toolbox
+## 2. [Natural Language Processing explored 🔠📢🈺](NLP)
 
-This was created during my time as a 2021 Delta
-Analytics Fellow. This framework really enabled me
-to structure my NLP problem in an optimal way,
-leading to my first YouTube lecture.
+My journey in this space began from a need to identify in-demand
+skills of marketing researchers, because I wanted to create
+research that impacts not only marketing operations in a business
+(marketing was my first qualification) but also leverages tech
+to ease those operations. That project helped me mine and handle text
+data and set the stage for my NLP project as a 2021 Delta Analytics
+fellow.
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/2TUK9QytzFo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+Machine Learning, Natural Language Processing (NLP) in
+particular, is affecting our daily lives more and more, as
+advances in tech are made over time. In this section, I discuss my journey
+learning NLP.
 
-BONUS! You get to also learn from my struggles in model
-selection and optimization, working with JSON and
-translating data between Python and R environments.
-
-
-## 3. Streamlit rediscovered
+## 3. Streamlit rediscovered 🧑🏾‍💻
 
 I first came across Streamlit in a Data Umbrella webinar,
 and it really piqued my interest. Fast-forward to my
@@ -52,7 +59,7 @@ Streamlit is learning how to customize the front-end
 and see if I can incorporate transformers.
 
 
-## 4. Graph Databases Relearned
+## 4. Graph Databases Relearned 🕸️🗄️
 
 I got to interact with graph technology for the
 first time in a team at Bootcamp 33, and it was
@@ -68,7 +75,7 @@ share my journey in recreating:
 I aim to share both platform-specific and
 platform-agnostic solutions around graphs.
 
-## 5. Building my first website
+## 5. Building my first website 🖥️💻📱
 
 One of the things that I learned in my internship
 experience at Adrian Ltd. was that machine learning
@@ -90,7 +97,7 @@ Here I share the challenges I faced
 and setting up an SSL certificate) and the lessons
 I learned along the way.
 
-## 6. Open-source data mining explored
+## 6. Open-source data mining explored 👩‍💻⛏️
 
 Heavily inspired  by my marketing roots and a strong
 desire to understand what skills were marketable for
@@ -102,17 +109,7 @@ zone.
 In this section I share what it took for me to come
 up with a data mining Jupyter notebook that worked.
 
-
-## 7. Text analysis 101
-
-The first unstructured data that I ventured to use
-for a data science project was text.
-
-In this section, I share what it took to come up with
-the collection of notebooks. It was at this point that
-I really got comfortable with Google Colab.
-
-## 8. Behind my KIVA project
+## 7. Behind my KIVA project 🗂️
 
 I had volunteered to mentor in a local initiative to
 motivate Kenyans to master Data Science called Master

@@ -1,5 +1,5 @@
 (jupyter-book)=
-# Jupyter Books explored
+# Jupyter Books explored 📙
 
 When I came across Khuyen Tran's brilliant LinkedIn
 post where she shared her Jupyter Book, a light bulb
