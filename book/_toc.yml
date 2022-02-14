@@ -10,3 +10,8 @@ chapters:
     - file: customised_front_end
     - file: sample_markdown
     - file: sample_notebook
+- file: NLP_explored
+  sections:
+    - file: NLP_toolbox
+    - file: text_analysis
+    - file: KOT
