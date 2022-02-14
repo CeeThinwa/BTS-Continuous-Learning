@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # A Sample Jupyter Notebook
+# # A Sample Jupyter Notebook 📃
 # 
 # You can also create content with Jupyter Notebooks. This means that you can include
 # code blocks and their outputs in your book.
