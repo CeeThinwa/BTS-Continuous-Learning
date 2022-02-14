@@ -12,6 +12,6 @@ chapters:
     - file: sample_notebook
 - file: NLP_explored
   sections:
+    - file: KOT
     - file: NLP_toolbox
     - file: text_analysis
-    - file: KOT
