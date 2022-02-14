@@ -1,4 +1,4 @@
-# Initial Setup \& Maintenance
+# Initial Setup \& Maintenance 🛠️
 
 The tech stack that I had to create and deploy this
 book was:
@@ -15,7 +15,7 @@ Some challenges I faced in setup include:
 * Deploying the sample book
 * Activating a virtual environment in PyCharm after navigating between Git branches
 
-Let's go through these mistakes in more detail:
+__Let's go through these mistakes in more detail!__
 
 ## Installing and running Jupyter Book on Python 3.9
 
