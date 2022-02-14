@@ -1,4 +1,4 @@
-# Customizing the Front End
+# Customizing the Front End 🌼
 
 A brand identity is very important because it makes
 your communications look and feel consistent across
@@ -10,6 +10,8 @@ The next logical step after creating a newly minted
 notebook is to customize it and make it yours.
 
 How?
+
+## 1. Through *css*
 
 Through `css` of course! Jupyter Book allows for
 tweaking css though a `custom.css` file created in the
@@ -60,5 +62,14 @@ to white (hex code #fff), I would create the following code in
 
 With enough time and patience, I was able to customize it into
 the book you are now browsing.
+
+## Through *emojis*!
+
+You can also use emojis in your markdown by
+* referencing the relevant decimal/hexadecimal code (a list can be found <a href='https://www.w3schools.com/charsets/ref_emoji.asp'> here</a>), or
+  * In this case, *How cool is `&#10024;` + `&#x2728;`* becomes *How cool is &#10024; + &#x2728;* 
+* directly pasting it into the markdown before running the `build` command.
+  * In this case, we directly get *How cool is that ✨!* 
+
 
 <br>
