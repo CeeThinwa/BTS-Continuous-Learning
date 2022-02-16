@@ -30,16 +30,23 @@ channels.
 The mistakes that I made at this point include:
 1. I repeated myself a lot and did not make use of functions
 and list comprehension. An example of such code is below:<br>
+<br>
 ![Alexa1](./images/img11.png)
+<br>
+<br>
 2. While my code did get the job done, it was not reproducible.
 I did too many custom tweaks during feature engineering, such
 that if I tried using this code on another text dataset, it would
 break. This would include use of specific words as filters as
 shown below:<br>
-![Alexa2](./images/img12.png)<br>
+<br>
+![Alexa2](./images/img12.png)
+<br>
+<br>
 3. I didn't do any model evaluation and interpretation - this
 was my version of explaining why I chose a model and a certain
 loss function:<br>
+<br>
 ![Alexa3](./images/img13.png)
 
 ## Working with job ad data
@@ -57,10 +64,14 @@ former.
 I also saw that joining words in sequence (way before I had ever
 even heard of LSTMs) gave greater context compared to getting
 frequency of the word alone.<br>
+
 To that end, I wrote a function systemizing the same:<br>
+<br>
 ![JAd1](./images/img14.png)<br>
+<br>
 and wrote another function that could generate a mini-report of
 the top 5 phrases:<br>
+<br>
 ![JAd2](./images/img15.png)
 
 ## Working with Twitter data in my Delta Analytics fellowship
@@ -121,24 +132,27 @@ This makes running the project okay in the lab, but it makes the
 code very hard to use in production as is. Thankfully, I got to
 experience a code lab with *Streamlit* (a Python library
 designed to turn a Python script into an app) and join
-*Masakhane*. In both spaces, I was introduced to the concept of
-a transformer for the first time.<br><br>
+*Masakhane*, a grassroots movement advancing African
+language access in digital spaces. In both spaces, I was
+introduced to the concept of a transformer for the first time.
+<br><br>
 4. __Make JSON and other unconventional data formats your
 friend.__<br>
 The Twitter data had a column in JSON, which was a pain to read 
-in R:<br>![KOT1](./images/img16.png)<br>
+in R:<br><br>
+![KOT1](./images/img16.png)<br><br>
 because it was loaded as a string. After troubleshooting with
 my coach, she found
 <a href='https://stackoverflow.com/a/42631426'>this solution</a>
-and shared how to read JSON in Python:
-<br>![KOT2](./images/img17.png)<br>
-and R:
+and shared how to read JSON in Python:<br>
+<br>![KOT2](./images/img17.png)<br><br>
+and R:<br>
 <br>![KOT3](./images/img18.png)<br><br>
 5. __Rehearse, rehearse, rehearse.__<br>
-A common thing an ad agency will do that is standard practice
-is to conduct a "*dry run*" 24 hours to a pitch. This is where
-the presenter presents to the office as if they were the client.
-<br>This concept applied to teaching or sharing ML/AI concepts
+A common thing an ad agency will do is to conduct a "*dry run*"
+24 hours to a pitch. This is where the presenter presents to the
+office as if they were the client.<br>
+This concept applied to teaching or sharing ML/AI concepts
 is to do this kind of rehearsal as many times as possible
 before the main event (maybe 5 times or more).<br>
 Additionally, the presenter, if live-streaming, has to run an
