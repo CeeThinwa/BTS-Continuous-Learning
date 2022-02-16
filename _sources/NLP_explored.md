@@ -149,10 +149,10 @@ and shared how to read JSON in Python:<br>
 and R:<br>
 <br>![KOT3](./images/img18.png)<br><br>
 5. __Rehearse, rehearse, rehearse.__<br>
-A common thing an ad agency will do that is standard practice
-is to conduct a "*dry run*" 24 hours to a pitch. This is where
-the presenter presents to the office as if they were the client.
-<br>This concept applied to teaching or sharing ML/AI concepts
+A common thing that an ad agency will do is to conduct a "*dry run*"
+24 hours to a pitch. This is where the presenter presents to the
+office as if they were the client.<br>
+This concept applied to teaching or sharing ML/AI concepts
 is to do this kind of rehearsal as many times as possible
 before the main event (maybe 5 times or more).<br>
 Additionally, the presenter, if live-streaming, has to run an
