@@ -16,7 +16,7 @@ Jupyter Book is a flexible tool built on top of Sphinx to
 
 In this section, I literally take you through how I
 learned to set this Jupyter Book up - it is my first time working
-with documentation tech in general :smile:
+with documentation tech in general ☺️
 
 ## 2. [Natural Language Processing explored 🔠📢🈺](NLP)
 

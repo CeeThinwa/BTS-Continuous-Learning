@@ -167,7 +167,7 @@ Updating the book was easy enough with the `jb build --all book/`
 command once the virtual environment was activated.
 
 I then
-* Pushed all the changes in the repo on the `main` branch to remote
+* Pushed any changes in `book`, `_static` and `images` folders on the `main` branch to remote
 * Installed `ghp-import` with the `pip install ghp-import` command
 * Changed into the directory containing the files with `cd books/` command
 * Created a `gh-pages` branch (when the command ran the first time) or pushed the changes to the `gh-pages` branch with the `ghp-import -n -p -f _build/html` command
