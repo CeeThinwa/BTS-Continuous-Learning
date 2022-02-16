@@ -125,7 +125,8 @@ experience a code lab with *Streamlit* (a Python library
 designed to turn a Python script into an app) and join
 *Masakhane*. In both spaces, I was introduced to the concept of
 a transformer for the first time.<br><br>
-4. __Make JSON and other unconventional data formats your friend.__
+4. __Make JSON and other unconventional data formats your
+friend.__<br>
 The Twitter data had a column in JSON, which was a pain to read 
 in R:<br>[KOT1](./images/img16.png)<br>
 because it was loaded as a string. After troubleshooting with
