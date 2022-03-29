@@ -42,7 +42,6 @@ book/_build/html/_sources/customised_front_end.md
 book/_build/html/_sources/initial_setup.md
 book/_build/html/_sources/intro.md
 book/_build/html/_sources/JB_explored.md
-*.md
 book/_build/html/_sources/sample_notebook.ipynb
 book/_build/html/_static/__init__.py
 book/_build/html/_static/__pycache__/__init__.cpython-37.pyc
@@ -59,7 +58,6 @@ book/_build/html/_static/css/theme.css
 book/_build/html/_static/custom.css
 book/_build/html/_static/doctools.js
 book/_build/html/_static/documentation_options.js
-*.png
 book/_build/html/_static/images/logo_binder.svg
 book/_build/html/_static/images/logo_jupyterhub.svg
 book/_build/html/_static/jquery-3.5.1.js
@@ -107,3 +105,5 @@ book/_build/html/JB_explored.html
 book/_build/html/KOT.html
 book/_build/html/NLP_explored.html
 book/_build/html/objects.inv
+book/_build/html/reports/sample_notebook.log
+book/_build/html/sample_markdown.html
