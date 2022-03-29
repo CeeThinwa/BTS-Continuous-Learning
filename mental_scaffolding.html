@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; BTS: Continuous Learning</title>
+    <title>Mental Scaffolding &#8212; BTS: Continuous Learning</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -43,9 +43,17 @@
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="_static/favicon.png"/>
-    <link rel="index" title="Index" href="#" />
+    <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Natural Language Processing explored 🔠📢🈺" href="NLP_explored.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -91,7 +99,7 @@
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="JB_explored.html">
    Jupyter Books explored 📙
@@ -114,20 +122,20 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="NLP_explored.html">
    Natural Language Processing explored
    <br/>
    🔠📢🈺
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="mental_scaffolding.html">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Mental Scaffolding
     </a>
    </li>
@@ -162,6 +170,23 @@
             </button>
             
             
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/mental_scaffolding.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
             <!-- Source interaction buttons -->
 
             <!-- Full screen (wrap in <a> to have style consistency -->
@@ -185,7 +210,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1></h1>
+                <h1>Mental Scaffolding</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -196,19 +221,67 @@
             
               <div>
                 
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="tex2jax_ignore mathjax_ignore section" id="mental-scaffolding">
+<h1>Mental Scaffolding<a class="headerlink" href="#mental-scaffolding" title="Permalink to this headline">¶</a></h1>
+<p>Technical concepts in general can be difficult to understand, and NLP is no different. For me to teach NLP to mixed audiences, I had to create a learning framework for myself and my audience, so that I could understand how to communicate key concepts in the space and at the same time help my audience to follow my train of thought and understand NLP just a bit better.</p>
+<p>To that end, I created for my self a learning and planning framework for NLP which I call <u>the NLP toolbox</u>. Below is an excerpt from <a class="reference external" href="https://medium.com/&#64;ceethinwa/delivering-success-in-natural-language-processing-projects-part-one-40c4775cf6a9">an article I wrote outlining this thought process</a>:</p>
+<p><em>First things first:</em></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>We are unique people learning in a dynamic world.
+</pre></div>
+</div>
+<p><em>It is no secret that the path to learning is not the same for everyone. It can be incredibly challenging for some and quite straightforward and smooth for others.</em></p>
+<p><em>Quick hacks can be great when you want to cram key information before an important meeting where you have to have all the answers. However, if you are in the world of tech, you know that new concepts, ideas and tools are being created rapidly — this means that in a day or a couple of weeks, what you crammed for that meeting may be irrelevant by the time you are ready to present.</em></p>
+<p><em>You need to understand key underlying concepts, so that your knowledge can stand the test of time and these concepts can be applied and/or combined in new ways. Use of meta-tools can help people to understand technical concepts and apply them in the real world.</em></p>
+<p><em>Scaffolding is a learning theory initially conceived by Vygotsky where</em></p>
+<ol class="simple">
+<li><p><em>a learner uses structured support provided by a teacher or more advanced student</em></p></li>
+<li><p><em>which is used to learn a challenging concept, slightly above their level of understanding</em></p></li>
+<li><p><em>until the student no longer needs the support, enabling the teacher/more advanced student to fade away</em></p></li>
+</ol>
+<p><em>It is important to note that</em></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Just like scaffolding can be provided by a teacher to make the learning process faster,
+the learner can create for themselves and others their own scaffolding.
+</pre></div>
+</div>
+<p><em>As part of my Delta Analytics fellowship, I had to complete a multilingual NLP project (which I had never done before) and present my work in a short amount of time — I had to have tools that could help me understand the NLP concepts that I was struggling with and at the same time structure my project. Even with an incredibly helpful coach, I had to figure out stuff for myself.</em></p>
+<p><em>I had no choice; I had to create my own mental scaffolding.</em></p>
+<p><em>My scaffolding was the NLP toolbox, which I created to help myself and others seeking to understand and implement an NLP project — end-to-end. After all, understanding and implementing NLP projects is crucial to their success.</em></p>
+<p><em><strong>The NLP toolbox is a collection of concepts, tools and ideas available for building applications that can handle real-world challenges around understanding content from all over the world.</strong></em><br>
+<em>It can be used for any NLP task such as sentiment analysis, translation, transcription, audio synthesis etc.</em></p>
 </div>
 
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="NLP_explored.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Natural Language Processing explored <br> 🔠📢🈺</p>
+        </div>
+    </a>
 </div>
             
         </div>
