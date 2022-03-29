@@ -4,8 +4,6 @@ Technical concepts in general can be difficult to understand, and NLP is no diff
 
 To that end, I created for my self a learning and planning framework for NLP which I call <u>the NLP toolbox</u>. Below is an excerpt from [an article I wrote outlining this thought process](https://medium.com/@ceethinwa/delivering-success-in-natural-language-processing-projects-part-one-40c4775cf6a9):
 
-<u>_**Mental Scaffolding**_</u>
-
 *First things first:*
 
     We are unique people learning in a dynamic world.
