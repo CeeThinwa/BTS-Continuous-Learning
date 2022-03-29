@@ -11,3 +11,5 @@ chapters:
     - file: sample_markdown
     - file: sample_notebook
 - file: NLP_explored
+  sections:
+    - file: mental_scaffolding
