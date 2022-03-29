@@ -8,8 +8,6 @@ chapters:
   sections:
     - file: initial_setup
     - file: customised_front_end
-    - file: sample_markdown
-    - file: sample_notebook
 - file: NLP_explored
   sections:
     - file: mental_scaffolding
