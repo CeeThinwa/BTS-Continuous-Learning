@@ -1,4 +1,4 @@
-# Mental Scaffolding & why it matters
+# Mental Scaffolding
 
 Technical concepts in general can be difficult to understand, and NLP is no different. For me to teach NLP to mixed audiences, I had to create a learning framework for myself and my audience, so that I could understand how to communicate key concepts in the space and at the same time help my audience to follow my train of thought and understand NLP just a bit better.
 
@@ -8,7 +8,7 @@ To that end, I created for my self a learning and planning framework for NLP whi
 
 *First things first:*
 
-  We are unique people learning in a dynamic world.
+    We are unique people learning in a dynamic world.
 
 *It is no secret that the path to learning is not the same for everyone. It can be incredibly challenging for some and quite straightforward and smooth for others.*
 
@@ -23,7 +23,8 @@ To that end, I created for my self a learning and planning framework for NLP whi
 
 *It is important to note that*
 
-  Just like scaffolding can be provided by a teacher to make the learning process faster, the learner can create for themselves and others their own scaffolding.
+    Just like scaffolding can be provided by a teacher to make the learning process faster,
+    the learner can create for themselves and others their own scaffolding.
 
 *As part of my Delta Analytics fellowship, I had to complete a multilingual NLP project (which I had never done before) and present my work in a short amount of time — I had to have tools that could help me understand the NLP concepts that I was struggling with and at the same time structure my project. Even with an incredibly helpful coach, I had to figure out stuff for myself.*
 
