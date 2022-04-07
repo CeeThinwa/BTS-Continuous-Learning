@@ -109,7 +109,7 @@ zone.
 In this section I share what it took for me to come
 up with a data mining Jupyter notebook that worked.
 
-## 7. Behind my KIVA project 🗂️
+## 7. [Behind my KIVA project 🗂️](kiva)
 
 I had volunteered to mentor in a local initiative to
 motivate Kenyans to master Data Science called Master
