@@ -49,6 +49,8 @@ loss function:<br>
 <br>
 ![Alexa3](./images/img13.png)
 
+****
+
 ## Working with job ad data
 
 Fast-forward to some months later, I wanted to know what would be
@@ -73,6 +75,29 @@ and wrote another function that could generate a mini-report of
 the top 5 phrases:<br>
 <br>
 ![JAd2](./images/img15.png)
+
+### Project Summary
+
+The goal of this research is to help job-seekers seeking to work in the niche area of marketing research to gain a clear and current understanding of how they should package themselves to become attractive to the "global" employer. Research was based on data obtained from Indeed.com in January 2020.
+
+#### Research Conclusions
+
+***Parts of Speech***
+
+*Nouns tended to give the most complete information compared to verbs or pronouns when used in n-grams.*
+
+***Traits of a Marketing Researcher***
+
+* *Soft skills were emphasised by recruiters as qualities they were looking for compared to technical skills*
+* *Recruiters were seeking someone who has had hands-on marketing experience in the past*
+* *Candidates with 3 years of experience were most sought after*
+
+#### Resources
+
+* *[The full report](https://drive.google.com/file/d/1UTNIz8CHg2-bXxo5Sb540aXk--q6ZEza/view?usp=sharing)*
+* *[Jupyter Notebook](https://github.com/CeeThinwa/MyLittleScraper/blob/master/EDA-Jan2020.ipynb)*
+
+****
 
 ## Working with Twitter data in my Delta Analytics fellowship
 
@@ -200,3 +225,5 @@ As part of my [Delta Analytics Teaching Fellowship](http://www.deltanalytics.org
 * *[Jupyter Notebook](https://github.com/CeeThinwa/Delta-Analytics-2021-CT-Project/blob/main/KOT%20EDA.ipynb)*
 * *[Presentation Slides](https://github.com/CeeThinwa/Delta-Analytics-2021-CT-Project/blob/main/Delta%20Analytics%20-%20Teaching%20Fellow%20Cynthia.pdf)*
 * *BONUS! [NLP Toolbox](https://github.com/CeeThinwa/Delta-Analytics-2021-CT-Project/blob/main/NLP%20Toolbox%20-%20Teaching%20Fellow%20Cynthia.pdf)*
+
+****
