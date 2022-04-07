@@ -1,11 +1,11 @@
 (kiva)=
 # Behind the Scenes of the Kiva Project
 
-### About the Kiva Project
+## About the Kiva Project
 
 In this project, I sought to estimate the welfare level of KIVA borrowers. The objective was to pair Kiva's 2014-2018 data with additional data sources to estimate welfare level in specific regions, based on shared economic and demographic characteristics.
 
-#### Research Conclusions
+### Research Conclusions
 
 ***The impact of KIVA donors***
 
@@ -24,6 +24,6 @@ In this project, I sought to estimate the welfare level of KIVA borrowers. The o
 
 *With that said, it is concerning to see that countries that have many more people in need are not accessing large amounts of funds; furthermore, even when they do, places like Burkina Faso, Sierra Leone and Mali had a high debt burden, trapping borrowers from these countries in poverty.*
 
-#### Resources
+### Resources
 
 *Interact with the Jupyter Notebook [here](https://ceethinwa.github.io/knowledge-hub/kiva.html).*
