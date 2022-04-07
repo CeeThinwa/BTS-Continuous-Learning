@@ -1,9 +1,24 @@
 (kiva)=
 # Behind the Scenes of the Kiva Project
 
+I had volunteered to mentor in a local initiative to
+motivate Kenyans to master Data Science called Master
+Cohorts. I decided to attempt the first assignment,
+which was based on a past Kaggle competition aiming
+to solve a problem for KIVA.
+
+One of the highlights around working on this project
+was that I really stretched my Pandas skills and also
+got to marry two completely different datasets to
+create the final notebook.
+
 ## About the Kiva Project
 
-In this project, I sought to estimate the welfare level of KIVA borrowers. The objective was to pair Kiva's 2014-2018 data with additional data sources to estimate welfare level in specific regions, based on shared economic and demographic characteristics.
+In this project, I sought to estimate the welfare level
+of KIVA borrowers. The objective was to pair Kiva's 
+2014-2018 data with additional data sources to estimate 
+welfare level in specific regions, based on shared economic 
+and demographic characteristics.
 
 ### Research Conclusions
 
