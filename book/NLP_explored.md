@@ -179,6 +179,8 @@ the following reasons:
 
 ### Project Summary
 
+As part of my [Delta Analytics Teaching Fellowship](http://www.deltanalytics.org/global-teaching-fellows.html), I sought to show how current NLP frameworks fail to work in multilingual, code-switching cultures, and how we can use a pipeline that tackles this problem and helps automate data annotation.
+
 #### Watch the full talk here:
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=2TUK9QytzFo" target="_blank">
