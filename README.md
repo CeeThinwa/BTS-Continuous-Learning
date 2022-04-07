@@ -1,4 +1,4 @@
-<img src="resources/img/profile.svg"
+<img src="https://raw.githubusercontent.com/CeeThinwa/ceethinwa.github.io/main/resources/img/profile.svg"
        alt="Cynthia profile" width="25%" />
 
 # Welcome to my Website Repo!
