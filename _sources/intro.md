@@ -96,30 +96,3 @@ Here I share the challenges I faced
 (especially interacting with Linux for the first time
 and setting up an SSL certificate) and the lessons
 I learned along the way.
-
-## 6. Open-source data mining explored 👩‍💻⛏️
-
-Heavily inspired  by my marketing roots and a strong
-desire to understand what skills were marketable for
-a marketing researcher, I decided to mine job ads.
-This was a project that really helped clarify my
-career path and stretch myself beyond my comfort
-zone.
-
-In this section I share what it took for me to come
-up with a data mining Jupyter notebook that worked.
-
-## 7. Behind my KIVA project 🗂️
-
-I had volunteered to mentor in a local initiative to
-motivate Kenyans to master Data Science called Master
-Cohorts. I decided to attempt the first assignment,
-which was based on a past Kaggle competition aiming
-to solve a problem for KIVA.
-
-One of the highlights around working on this project
-was that I really stretched my Pandas skills and also
-got to marry two completely different datasets to
-create the final notebook.
-
-I share my Pandas journey in this section.

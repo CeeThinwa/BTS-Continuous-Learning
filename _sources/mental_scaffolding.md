@@ -1,3 +1,4 @@
+(mental-scaffolding)=
 # Mental Scaffolding
 
 Technical concepts in general can be difficult to understand, and NLP is no different. For me to teach NLP to mixed audiences, I had to create a learning framework for myself and my audience, so that I could understand how to communicate key concepts in the space and at the same time help my audience to follow my train of thought and understand NLP just a bit better.
