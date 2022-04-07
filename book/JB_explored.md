@@ -9,6 +9,5 @@ attempt at Jupyter Books after getting years of
 getting cosy with Jupyter Notebooks.
 
 I will take you through:
-1. My experience with initial setup of the book
-2. My maintenance routine
-3. How I altered the front-end of the book
+1. [My experience with initial setup of the book and my maintenance routine](initial-setup)
+2. [How I altered the front-end of the book](customised-front-end)
