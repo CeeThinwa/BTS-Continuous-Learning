@@ -1,6 +1,9 @@
 (NLP-experience)=
 # My NLP Experiences
 
+The first unstructured data that I ventured to use
+for a data science project was text.
+
 ## My first experience - handling Amazon Alexa data
 
 Looking for data science work armed with a theoretical foundation
