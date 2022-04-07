@@ -1,3 +1,4 @@
+(initial-setup)=
 # Initial Setup \& Maintenance 🛠️
 
 The tech stack that I had to create and deploy this
