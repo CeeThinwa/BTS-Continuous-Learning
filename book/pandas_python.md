@@ -13,6 +13,7 @@ import numpy as np
 ```
 :::{admonition} Data representation in Python:
 :class: note
+
 A good idea for transformation tracking is to represent a collection of Pandas dataframes using a dictionary because it helps you easily locate a particular dictionary to perform operations on. It can be represented like so:
 ```
 dict = {
