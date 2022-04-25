@@ -47,7 +47,9 @@ code below as `'category'`)
 and checking for any missing headers or unwanted data in the last values of the dataset.
 
 ```
-def dataframes_displayed(df_dict={}, input_string='', boolean=bool()):
+def dataframes_displayed(df_dict={}, input_string=''):
+
+    boolean=bool()
 
     dataframe_describer(df=df_dict[input_string], var_name=input_string)
 
