@@ -65,6 +65,16 @@ def dataframes_displayed(df_dict={}, input_string='', boolean=bool()):
         display(df_dict[input_string].tail(5))
 ```
 
+:::{admonition} What does `column.find('Unnamed:') != -1` mean?
+:class: note
+According to [this source](https://tech-related.com/p/6q3ePQloAv):
+    The `str.find` method is to find whether there is a character or substring to be found in a given string or a substring within the range of the start and end index. If found, return the index of the appearance position, if not found, return -1.
+
+So `column.find('Unnamed:') != -1` means that the `'Unnamed'` substring **is not** missing in the
+column name.
+<br>
+:::
+
 ### Modifying your dataframes
 
 Sometimes you may wish to do a standard operation on a number of dataframes, so it is helpful to
