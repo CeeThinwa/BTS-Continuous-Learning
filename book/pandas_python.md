@@ -109,3 +109,14 @@ current_dataframes = {**original_dataframes, **transformed_dataframes}
 Be VERY CAREFUL with the order; the transformed dictionary is put second, so that the update is reflected; if this is not done, the changes will be overwritten.
 :::
 
+🔎 The `column_remover` is really useful in deleting blank rows in each dataframe; `thresh=3` means that blank rows and rows that have 2 filled values or less will be deleted. 
+
+```
+def blank_row_remover(affected_dfs={}):
+    modified_dfs = {}
+    vals = list(affected_dfs.keys())
+    for val in vals:
+        modified_df = affected_dfs[val].copy()
+        modified_dfs[val] = modified_df.dropna(axis=0,how='all',thresh=3)
+    return modified_dfs
+```
