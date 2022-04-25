@@ -71,9 +71,9 @@ def dataframes_displayed(df_dict={}, input_string='', boolean=bool()):
 
 According to [this source](https://tech-related.com/p/6q3ePQloAv):
 
-    The `str.find` method is to find whether there is a character or substring to be found in<br>
-    a given string or a substring within the range of the start and end index. If found, return<br>
-    the index of the appearance position, if not found, return -1.
+*The `str.find` method is to find whether there is a character or substring to be found in*<br>
+*a given string or a substring within the range of the start and end index. If found, return*<br>
+*the index of the appearance position, if not found, return -1.*
 
 So `column.find('Unnamed:') != -1` means that the `'Unnamed'` substring **is not** missing in the
 column name.
