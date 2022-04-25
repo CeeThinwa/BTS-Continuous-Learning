@@ -22,7 +22,6 @@ dict = {
     'df3': df3,
 }
 ```
-<br>
 :::
 
 ### Visualizing your dataset
@@ -78,7 +77,6 @@ According to [this source](https://tech-related.com/p/6q3ePQloAv):
 
 So `column.find('Unnamed:') != -1` means that the `'Unnamed'` substring **is not** missing in the
 column name.
-<br>
 :::
 
 ### Modifying your dataframes
