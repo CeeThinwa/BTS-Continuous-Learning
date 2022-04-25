@@ -7,6 +7,12 @@ don't have to.
 
 This book contains the following sections:
 
+## 1. [Functional Pandas in Python workflow 🐼🐍](pandas-python)
+
+I have been using Pandas and Numpy (the Python libraries) since late 2018, but it is only
+now that I have to functionize my operations. In this section, I share what I have learned
+behind the scenes.
+
 ## 1. [Jupyter Books explored 📙](jupyter-book)
 
 Jupyter Book is a flexible tool built on top of Sphinx to
