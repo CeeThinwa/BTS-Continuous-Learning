@@ -70,7 +70,6 @@ def dataframes_displayed(df_dict={}, input_string=''):
 
 :::{admonition} What does `column.find('Unnamed:') != -1` mean?
 :class: note
-
 According to [this source](https://tech-related.com/p/6q3ePQloAv):
 
 *The `str.find` method is to find whether there is a character or substring to be found in*<br>
@@ -121,10 +120,13 @@ transformed_dataframes =   {'df1':df1,
 
 current_dataframes = {**original_dataframes, **transformed_dataframes}
 ```
-:::{admonition}
+
+:::{admonition} Warning:
 :class: warning
-Be VERY CAREFUL with the order; the transformed dictionary is put second, so that the update is reflected; if this is not done, the changes will be overwritten.
+Be VERY CAREFUL with the order; the transformed dictionary is put second, so
+that the update is reflected; if this is not done, the changes will be overwritten.
 :::
+
 
 🔎 The `blank_row_remover` is really useful in deleting blank rows in each dataframe; `thresh=3` means that blank rows and rows that have 2 filled values or less will be deleted. 
 
