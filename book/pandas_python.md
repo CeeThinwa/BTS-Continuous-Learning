@@ -6,10 +6,23 @@ completely change.
 
 ## Sample functions
 
+The packages being discussed in this part are loaded into Python as follows:
 ```
 import pandas as pd
 import numpy as np
 ```
+:::{admonition} Data representation in Python:
+:class: note
+A good idea for transformation tracking is to represent a collection of Pandas dataframes using a dictionary because it helps you easily locate a particular dictionary to perform operations on. It can be represented like so:
+```
+dict = {
+    'df1': df1,
+    'df2': df2,
+    'df3': df3,
+}
+```
+<br>
+:::
 
 ### Visualizing your dataset
 
@@ -23,26 +36,14 @@ def dataframe_describer(df,var_name=''):
         print(f'{list(df.columns).index(item)+1}.', item)
 ```
 
-:::{admonition} Lesson 1:
-:class: note
-A good idea is to represent a collection of Pandas dataframes using a dictionary because it
-helps you easily locate a particular dictionary to perform operations on. It can be represented like so:
-```
-dict = {
-    'df1': df1,
-    'df2': df2,
-    'df3': df3,
-}
-```
-<br>
-:::
-
-🔎 The `dataframes_displayed` function is really useful in checking for any missing headers, and getting summaries of the various columns in each dataframe describing their
+🔎 The `dataframes_displayed` function is really useful in getting summaries of the various columns in each dataframe describing their
 
 * measures of central tendency and data distribution if the datatype is numeric (shown in the code
 below as `np.number`)
 * the count, the number of unique values, the mode and its frequency if the datatype is an object (a combination of strings shown in the code below as `'O'`) or a categorical variable (shown in the
 code below as `'category'`)
+
+and checking for any missing headers or unwanted data in the last values of the dataset.
 
 ```
 def dataframes_displayed(df_dict={}, input_string='', boolean=bool()):
@@ -63,4 +64,39 @@ def dataframes_displayed(df_dict={}, input_string='', boolean=bool()):
     else:
         display(df_dict[input_string].tail(5))
 ```
+
+### Modifying your dataframes
+
+Sometimes you may wish to do a standard operation on a number of dataframes, so it is helpful to
+have functions that can do the transformations in one batch, instead of repeating code.
+
+🔎 The `column_remover` is really useful in deleting columns in each dataframe that share the same
+column name(s)
+
+```
+def column_remover(removed_columns=[],affected_dfs={}):
+    modified_dfs = {}
+    vals = list(affected_dfs.keys())
+    for val in vals:
+        modified_df = affected_dfs[val].copy()
+        modified_dfs[val] = modified_df.drop(removed_columns,axis=1)
+    return modified_dfs
+```
+
+🔎 If we wish to merge changes made to dataframes, ensure the modified dataframes and original dataframes share the same name, then we can run the following code:
+
+```
+original_dataframes =  {'df1':df1,
+                        'df2':df2,
+                        'df3':df3}
+
+transformed_dataframes =   {'df1':df1,
+                            'df3':df3}
+
+current_dataframes = {**original_dataframes, **transformed_dataframes}
+```
+:::{admonition}
+:class: warning
+Be VERY CAREFUL with the order; the transformed dictionary is put second, so that the update is reflected; if this is not done, the changes will be overwritten.
+:::
 
