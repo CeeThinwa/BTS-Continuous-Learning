@@ -135,3 +135,27 @@ def blank_row_remover(affected_dfs={}):
         modified_dfs[val] = modified_df.dropna(axis=0,how='all',thresh=3)
     return modified_dfs
 ```
+
+🔎 The `header_promoter` is really useful in identifying dataframes within a dictionary that are
+missing headers, and then promoting the header in that case.
+
+```
+def header_promoter(affected_dfs={},boolean=bool()):
+    
+    modified_dfs = {}
+    vals = list(affected_dfs.keys())
+    
+    for val in vals:
+        for column in affected_dfs[val].columns:
+            if column.find('Unnamed:') != -1:
+                boolean = True
+                
+        if boolean == True:
+            modified_df = affected_dfs[val].copy()
+            modified_df.columns = modified_df.iloc[0,:]
+            # drop the column name source
+            modified_df = modified_df.drop(index=modified_df.index[0], axis=0)
+            modified_dfs[val] = modified_df
+    
+    return modified_dfs
+```
