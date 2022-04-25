@@ -27,8 +27,8 @@ dict = {
 
 ### Visualizing your dataset
 
-🔎 The `dataframe_describer` is really useful in viewing characteristics of dataframes contained
-in a dictionary within a particular app.
+🔎 The `dataframe_describer` is really useful in viewing the shape and column names of each
+dataframe contained in a dictionary within a particular app.
 
 ```
 def dataframe_describer(df,var_name=''):
@@ -140,8 +140,9 @@ def blank_row_remover(affected_dfs={}):
 missing headers, and then promoting the header in that case.
 
 ```
-def header_promoter(affected_dfs={},boolean=bool()):
+def header_promoter(affected_dfs={}):
     
+    boolean=bool()
     modified_dfs = {}
     vals = list(affected_dfs.keys())
     
