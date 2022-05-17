@@ -101,9 +101,11 @@ def column_remover(removed_columns=[],affected_dfs={}):
 To reflect a transformation, make a copy of the dataframe, then modify the dataframe. Store it in a new dictionary and return the transformed dictionary.
 
 It would be best practice to then save the transformation like so:
+```
 transformed_dataframes = column_remover(
     removed_columns=['a','b'],
     affected_dfs=original_dataframes)
+```  
 :::
 
 🔎 If we wish to merge changes made to dataframes, ensure the modified dataframes and original dataframes share the same name, then we can run the following code:
