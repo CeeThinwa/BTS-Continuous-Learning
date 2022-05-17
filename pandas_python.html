@@ -376,10 +376,12 @@ column name(s)</p>
 <div class="note admonition">
 <p class="admonition-title">Changing the actual variable</p>
 <p>To reflect a transformation, make a copy of the dataframe, then modify the dataframe. Store it in a new dictionary and return the transformed dictionary.</p>
-<p>It would be best practice to then save the transformation like so:
-transformed_dataframes = column_remover(
-removed_columns=[‘a’,’b’],
-affected_dfs=original_dataframes)</p>
+<p>It would be best practice to then save the transformation like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">transformed_dataframes</span> <span class="o">=</span> <span class="n">column_remover</span><span class="p">(</span>
+    <span class="n">removed_columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">],</span>
+    <span class="n">affected_dfs</span><span class="o">=</span><span class="n">original_dataframes</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 <p>🔎 If we wish to merge changes made to dataframes, ensure the modified dataframes and original dataframes share the same name, then we can run the following code:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">original_dataframes</span> <span class="o">=</span>  <span class="p">{</span><span class="s1">&#39;df1&#39;</span><span class="p">:</span><span class="n">df1</span><span class="p">,</span>
