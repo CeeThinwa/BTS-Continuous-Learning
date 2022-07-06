@@ -235,5 +235,5 @@ and if we want it to exist only locally:
 new_number = dict_key + '_new_number'
 locals()[new_number] = 25
 ```
-
+Local variables are stored in the `locals()` dictionary and global variables are stored in the `globals` dictionary.
 :::
