@@ -22,13 +22,14 @@ dict = {
     'df3': df3,
 }
 ```
-:::
 
 A great rule of thumb is this:
 
-**If you find yourself repeating lines of code, create a $\color{magenta}{\text{loop}}$ or $\color{magenta}{\text{lambda function}}$**<br>
-**If you find yourself repeating loops and/or lambda functions, create a $\color{magenta}{\text{Python function}}$**<br>
-**If you find yourself with many functions, create a $\color{magenta}{\text{Python class}}$**
+**If you find yourself repeating lines of code, create a <u>loop</u> or <u>lambda function</u>**<br>
+**If you find yourself repeating loops and/or lambda functions, create a <u>Python function</u>**<br>
+**If you find yourself with many functions, create a <u>Python class</u>**
+:::
+
 
 ### Visualizing your dataset
 
