@@ -4,6 +4,12 @@
 When beginning Data Science, it is common to directly apply Pandas functions on individual dataframes. But what if you are creating code for a Python dataflow? The approach has to
 completely change.
 
+A great rule of thumb is this:
+
+**If you find yourself repeating lines of code, create a <u>loop</u> or <u>lambda function</u>**<br>
+**If you find yourself repeating loops and/or lambda functions, create a <u>Python function</u>**<br>
+**If you find yourself with many functions, create a <u>Python class</u>**
+
 ## Sample functions
 
 The packages being discussed in this part are loaded into Python as follows:
@@ -16,13 +22,21 @@ import numpy as np
 
 A good idea for transformation tracking is to represent a collection of Pandas dataframes using a dictionary because it helps you easily locate a particular dictionary to perform operations on. It can be represented like so:
 ```
-dict = {
+dictionary = {
     'df1': df1,
     'df2': df2,
     'df3': df3,
 }
 ```
+
+If you wish to concatenate the dataframes within the dictionary to form one dataframe, run this code:
+
+```
+concatenated_df = pd.concat(dictionary.values(), ignore_index=True)
+```
+
 :::
+
 
 ### Visualizing your dataset
 
@@ -131,12 +145,34 @@ that the update is reflected; if this is not done, the changes will be overwritt
 🔎 The `blank_row_remover` is really useful in deleting blank rows in each dataframe; `thresh=3` means that blank rows and rows that have 2 filled values or less will be deleted. 
 
 ```
-def blank_row_remover(affected_dfs={}):
+def blank_row_remover(affected_dfs={}, silent=bool()):
     modified_dfs = {}
-    vals = list(affected_dfs.keys())
-    for val in vals:
+    
+    if silent == False:
+        print('Before:')
+        for key in affected_dfs:
+            blank_rows = affected_dfs[key][
+                affected_dfs[key].isna().all(axis=1) == True].shape[0]
+            any_nulls = affected_dfs[key][
+                affected_dfs[key].isna().any(axis=1) == True].shape[0]        
+            print(f'There were {blank_rows} blank rows and {any_nulls} rows',
+                  f'containing null values in {key}.')
+
+    for val in affected_dfs:
         modified_df = affected_dfs[val].copy()
-        modified_dfs[val] = modified_df.dropna(axis=0,how='all',thresh=3)
+        modified_dfs[val] = modified_df.dropna(axis=0,how='all',thresh=4)
+
+    if silent == False:
+        print('\n')
+        print('After:')
+        for key in modified_dfs:
+            blank_rows = modified_dfs[key][
+                modified_dfs[key].isna().all(axis=1) == True].shape[0]
+            any_nulls = modified_dfs[key][
+                modified_dfs[key].isna().any(axis=1) == True].shape[0]
+            print(f'There were {blank_rows} blank rows and {any_nulls} rows',
+                  f'containing null values in {key}.')
+        
     return modified_dfs
 ```
 
@@ -144,13 +180,12 @@ def blank_row_remover(affected_dfs={}):
 missing headers, and then promoting the header in that case.
 
 ```
-def header_promoter(affected_dfs={}):
+def header_promoter(affected_dfs={}, silent=bool()):
     
     boolean=bool()
     modified_dfs = {}
-    vals = list(affected_dfs.keys())
     
-    for val in vals:
+    for val in affected_dfs:
         for column in affected_dfs[val].columns:
             if column.find('Unnamed:') != -1:
                 boolean = True
@@ -162,5 +197,44 @@ def header_promoter(affected_dfs={}):
             modified_df = modified_df.drop(index=modified_df.index[0], axis=0)
             modified_dfs[val] = modified_df
     
+    if silent == False:
+        for key in affected_dfs:
+            df_name = key.upper()
+            df_name = df_name.replace('_',' ')
+        
+            print(f'{df_name} before:')
+            display(affected_dfs[key].head(3))
+            print('\n')
+        
+            print(f'{df_name} after:')
+            display(modified_dfs[key].head(3))
+            print('\n')
+    
     return modified_dfs
 ```
+
+Notice that in the 3 example functions, we incorporate
+* output that allows us to see the before and after transformation
+* use of `silent=bool()` argument to show or hide the output as needed
+
+:::{admonition} N/B:
+:class: note
+
+You can also name variables using the dictionary keys (which are strings)
+
+If we want the variable to be a global one:
+
+```
+new_number = dict_key + '_new_number'
+globals()[new_number] = 25
+```
+
+and if we want it to exist only locally:
+
+```
+new_number = dict_key + '_new_number'
+locals()[new_number] = 25
+```
+Local variables are stored in the `locals()` dictionary and global variables are stored in the `globals()` dictionary.
+
+:::

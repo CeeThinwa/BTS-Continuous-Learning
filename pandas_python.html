@@ -291,6 +291,10 @@
 <span id="pandas-python"></span><h1>Functional Pandas in Python workflow 🐼🐍<a class="headerlink" href="#functional-pandas-in-python-workflow" title="Permalink to this headline">¶</a></h1>
 <p>When beginning Data Science, it is common to directly apply Pandas functions on individual dataframes. But what if you are creating code for a Python dataflow? The approach has to
 completely change.</p>
+<p>A great rule of thumb is this:</p>
+<p><strong>If you find yourself repeating lines of code, create a <u>loop</u> or <u>lambda function</u></strong><br>
+<strong>If you find yourself repeating loops and/or lambda functions, create a <u>Python function</u></strong><br>
+<strong>If you find yourself with many functions, create a <u>Python class</u></strong></p>
 <div class="section" id="sample-functions">
 <h2>Sample functions<a class="headerlink" href="#sample-functions" title="Permalink to this headline">¶</a></h2>
 <p>The packages being discussed in this part are loaded into Python as follows:</p>
@@ -301,11 +305,15 @@ completely change.</p>
 <div class="note admonition">
 <p class="admonition-title">Data representation in Python:</p>
 <p>A good idea for transformation tracking is to represent a collection of Pandas dataframes using a dictionary because it helps you easily locate a particular dictionary to perform operations on. It can be represented like so:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dictionary</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;df1&#39;</span><span class="p">:</span> <span class="n">df1</span><span class="p">,</span>
     <span class="s1">&#39;df2&#39;</span><span class="p">:</span> <span class="n">df2</span><span class="p">,</span>
     <span class="s1">&#39;df3&#39;</span><span class="p">:</span> <span class="n">df3</span><span class="p">,</span>
 <span class="p">}</span>
+</pre></div>
+</div>
+<p>If you wish to concatenate the dataframes within the dictionary to form one dataframe, run this code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">concatenated_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dictionary</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -400,24 +408,45 @@ column name(s)</p>
 that the update is reflected; if this is not done, the changes will be overwritten.</p>
 </div>
 <p>🔎 The <code class="docutils literal notranslate"><span class="pre">blank_row_remover</span></code> is really useful in deleting blank rows in each dataframe; <code class="docutils literal notranslate"><span class="pre">thresh=3</span></code> means that blank rows and rows that have 2 filled values or less will be deleted.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">blank_row_remover</span><span class="p">(</span><span class="n">affected_dfs</span><span class="o">=</span><span class="p">{}):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">blank_row_remover</span><span class="p">(</span><span class="n">affected_dfs</span><span class="o">=</span><span class="p">{},</span> <span class="n">silent</span><span class="o">=</span><span class="nb">bool</span><span class="p">()):</span>
     <span class="n">modified_dfs</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">vals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">affected_dfs</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-    <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">vals</span><span class="p">:</span>
+    
+    <span class="k">if</span> <span class="n">silent</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Before:&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">affected_dfs</span><span class="p">:</span>
+            <span class="n">blank_rows</span> <span class="o">=</span> <span class="n">affected_dfs</span><span class="p">[</span><span class="n">key</span><span class="p">][</span>
+                <span class="n">affected_dfs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">any_nulls</span> <span class="o">=</span> <span class="n">affected_dfs</span><span class="p">[</span><span class="n">key</span><span class="p">][</span>
+                <span class="n">affected_dfs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>        
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;There were </span><span class="si">{</span><span class="n">blank_rows</span><span class="si">}</span><span class="s1"> blank rows and </span><span class="si">{</span><span class="n">any_nulls</span><span class="si">}</span><span class="s1"> rows&#39;</span><span class="p">,</span>
+                  <span class="sa">f</span><span class="s1">&#39;containing null values in </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">affected_dfs</span><span class="p">:</span>
         <span class="n">modified_df</span> <span class="o">=</span> <span class="n">affected_dfs</span><span class="p">[</span><span class="n">val</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-        <span class="n">modified_dfs</span><span class="p">[</span><span class="n">val</span><span class="p">]</span> <span class="o">=</span> <span class="n">modified_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span><span class="n">thresh</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">modified_dfs</span><span class="p">[</span><span class="n">val</span><span class="p">]</span> <span class="o">=</span> <span class="n">modified_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span><span class="n">thresh</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">silent</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;After:&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">modified_dfs</span><span class="p">:</span>
+            <span class="n">blank_rows</span> <span class="o">=</span> <span class="n">modified_dfs</span><span class="p">[</span><span class="n">key</span><span class="p">][</span>
+                <span class="n">modified_dfs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">any_nulls</span> <span class="o">=</span> <span class="n">modified_dfs</span><span class="p">[</span><span class="n">key</span><span class="p">][</span>
+                <span class="n">modified_dfs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;There were </span><span class="si">{</span><span class="n">blank_rows</span><span class="si">}</span><span class="s1"> blank rows and </span><span class="si">{</span><span class="n">any_nulls</span><span class="si">}</span><span class="s1"> rows&#39;</span><span class="p">,</span>
+                  <span class="sa">f</span><span class="s1">&#39;containing null values in </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+        
     <span class="k">return</span> <span class="n">modified_dfs</span>
 </pre></div>
 </div>
 <p>🔎 The <code class="docutils literal notranslate"><span class="pre">header_promoter</span></code> is really useful in identifying dataframes within a dictionary that are
 missing headers, and then promoting the header in that case.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">header_promoter</span><span class="p">(</span><span class="n">affected_dfs</span><span class="o">=</span><span class="p">{}):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">header_promoter</span><span class="p">(</span><span class="n">affected_dfs</span><span class="o">=</span><span class="p">{},</span> <span class="n">silent</span><span class="o">=</span><span class="nb">bool</span><span class="p">()):</span>
     
     <span class="n">boolean</span><span class="o">=</span><span class="nb">bool</span><span class="p">()</span>
     <span class="n">modified_dfs</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">vals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">affected_dfs</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
     
-    <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">vals</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">affected_dfs</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">affected_dfs</span><span class="p">[</span><span class="n">val</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">column</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;Unnamed:&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
                 <span class="n">boolean</span> <span class="o">=</span> <span class="kc">True</span>
@@ -429,8 +458,41 @@ missing headers, and then promoting the header in that case.</p>
             <span class="n">modified_df</span> <span class="o">=</span> <span class="n">modified_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">modified_df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
             <span class="n">modified_dfs</span><span class="p">[</span><span class="n">val</span><span class="p">]</span> <span class="o">=</span> <span class="n">modified_df</span>
     
+    <span class="k">if</span> <span class="n">silent</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">affected_dfs</span><span class="p">:</span>
+            <span class="n">df_name</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+            <span class="n">df_name</span> <span class="o">=</span> <span class="n">df_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">df_name</span><span class="si">}</span><span class="s1"> before:&#39;</span><span class="p">)</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">affected_dfs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">df_name</span><span class="si">}</span><span class="s1"> after:&#39;</span><span class="p">)</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">modified_dfs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    
     <span class="k">return</span> <span class="n">modified_dfs</span>
 </pre></div>
+</div>
+<p>Notice that in the 3 example functions, we incorporate</p>
+<ul class="simple">
+<li><p>output that allows us to see the before and after transformation</p></li>
+<li><p>use of <code class="docutils literal notranslate"><span class="pre">silent=bool()</span></code> argument to show or hide the output as needed</p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">N/B:</p>
+<p>You can also name variables using the dictionary keys (which are strings)</p>
+<p>If we want the variable to be a global one:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">new_number</span> <span class="o">=</span> <span class="n">dict_key</span> <span class="o">+</span> <span class="s1">&#39;_new_number&#39;</span>
+<span class="nb">globals</span><span class="p">()[</span><span class="n">new_number</span><span class="p">]</span> <span class="o">=</span> <span class="mi">25</span>
+</pre></div>
+</div>
+<p>and if we want it to exist only locally:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">new_number</span> <span class="o">=</span> <span class="n">dict_key</span> <span class="o">+</span> <span class="s1">&#39;_new_number&#39;</span>
+<span class="nb">locals</span><span class="p">()[</span><span class="n">new_number</span><span class="p">]</span> <span class="o">=</span> <span class="mi">25</span>
+</pre></div>
+</div>
+<p>Local variables are stored in the <code class="docutils literal notranslate"><span class="pre">locals()</span></code> dictionary and global variables are stored in the <code class="docutils literal notranslate"><span class="pre">globals()</span></code> dictionary.</p>
 </div>
 </div>
 </div>
