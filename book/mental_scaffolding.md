@@ -10,7 +10,7 @@ To that end, I created for my self a learning and planning framework for NLP whi
 is an excerpt from
 [an article I wrote outlining this thought process](https://medium.com/@ceethinwa/delivering-success-in-natural-language-processing-projects-part-one-40c4775cf6a9):
 
-:::{admonition} Data representation in Python:
+:::{admonition} EXCERPT
 :class: tip
 
 *First things first:*
