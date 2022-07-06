@@ -407,7 +407,8 @@ column name(s)</p>
 <p>Be VERY CAREFUL with the order; the transformed dictionary is put second, so
 that the update is reflected; if this is not done, the changes will be overwritten.</p>
 </div>
-<p>🔎 The <code class="docutils literal notranslate"><span class="pre">blank_row_remover</span></code> is really useful in deleting blank rows in each dataframe; <code class="docutils literal notranslate"><span class="pre">thresh=3</span></code> means that blank rows and rows that have 2 filled values or less will be deleted.</p>
+<p>🔎 The <code class="docutils literal notranslate"><span class="pre">blank_row_remover</span></code> is really useful in deleting blank rows in each dataframe; <code class="docutils literal notranslate"><span class="pre">thresh=4</span></code> means that blank rows
+and rows that have 3 filled values or less will be deleted.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">blank_row_remover</span><span class="p">(</span><span class="n">affected_dfs</span><span class="o">=</span><span class="p">{},</span> <span class="n">silent</span><span class="o">=</span><span class="nb">bool</span><span class="p">()):</span>
     <span class="n">modified_dfs</span> <span class="o">=</span> <span class="p">{}</span>
     
