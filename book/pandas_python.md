@@ -4,6 +4,12 @@
 When beginning Data Science, it is common to directly apply Pandas functions on individual dataframes. But what if you are creating code for a Python dataflow? The approach has to
 completely change.
 
+A great rule of thumb is this:
+
+**If you find yourself repeating lines of code, create a <u>loop</u> or <u>lambda function</u>**<br>
+**If you find yourself repeating loops and/or lambda functions, create a <u>Python function</u>**<br>
+**If you find yourself with many functions, create a <u>Python class</u>**
+
 ## Sample functions
 
 The packages being discussed in this part are loaded into Python as follows:
@@ -14,20 +20,21 @@ import numpy as np
 :::{admonition} Data representation in Python:
 :class: note
 
+
 A good idea for transformation tracking is to represent a collection of Pandas dataframes using a dictionary because it helps you easily locate a particular dictionary to perform operations on. It can be represented like so:
 ```
-dict = {
+dictionary = {
     'df1': df1,
     'df2': df2,
     'df3': df3,
 }
 ```
 
-A great rule of thumb is this:
+If you wish to concatenate the dataframes within the dictionary to form one dataframe, run this code:
 
-**If you find yourself repeating lines of code, create a <u>loop</u> or <u>lambda function</u>**<br>
-**If you find yourself repeating loops and/or lambda functions, create a <u>Python function</u>**<br>
-**If you find yourself with many functions, create a <u>Python class</u>**
+```
+concatenated_df = pd.concat(dictionary.values(), ignore_index=True)
+```
 
 :::
 
