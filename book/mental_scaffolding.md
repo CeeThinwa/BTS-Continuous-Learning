@@ -11,7 +11,7 @@ is an excerpt from
 [an article I wrote outlining this thought process](https://medium.com/@ceethinwa/delivering-success-in-natural-language-processing-projects-part-one-40c4775cf6a9):
 
 :::{admonition} Data representation in Python:
-:class: idea
+:class: tip
 
 *First things first:*
 
