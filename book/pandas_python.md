@@ -155,7 +155,6 @@ def blank_row_remover(affected_dfs={}, silent=bool()):
     for val in affected_dfs:
         modified_df = affected_dfs[val].copy()
         modified_dfs[val] = modified_df.dropna(axis=0,how='all',thresh=4)
-        # thresh=3 means that blank rows and rows that have 3 filled values or less will be deleted.
 
     if silent == False:
         print('\n')
