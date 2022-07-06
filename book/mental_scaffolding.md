@@ -1,9 +1,17 @@
 (mental-scaffolding)=
 # Mental Scaffolding
 
-Technical concepts in general can be difficult to understand, and NLP is no different. For me to teach NLP to mixed audiences, I had to create a learning framework for myself and my audience, so that I could understand how to communicate key concepts in the space and at the same time help my audience to follow my train of thought and understand NLP just a bit better.
+Technical concepts in general can be difficult to understand, and NLP is no different. For me to teach NLP to mixed
+audiences, I had to create a learning framework for myself and my audience, so that I could understand how to communicate
+key concepts in the space and at the same time help my audience to follow my train of thought and understand NLP just a
+bit better.
 
-To that end, I created for my self a learning and planning framework for NLP which I call <u>the NLP toolbox</u>. Below is an excerpt from [an article I wrote outlining this thought process](https://medium.com/@ceethinwa/delivering-success-in-natural-language-processing-projects-part-one-40c4775cf6a9):
+To that end, I created for my self a learning and planning framework for NLP which I call <u>the NLP toolbox</u>. Below
+is an excerpt from
+[an article I wrote outlining this thought process](https://medium.com/@ceethinwa/delivering-success-in-natural-language-processing-projects-part-one-40c4775cf6a9):
+
+:::{admonition} Data representation in Python:
+:class: idea
 
 *First things first:*
 
@@ -34,3 +42,5 @@ _**the learner can create for themselves and others their own scaffolding.**_
 _**The NLP toolbox is a collection of concepts, tools and ideas available for building applications that can handle
 real-world challenges around understanding content from all over the world.**_<br>
 *It can be used for any NLP task such as sentiment analysis, translation, transcription, audio synthesis etc.*
+
+:::
