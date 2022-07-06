@@ -13,7 +13,7 @@ I have been using Pandas and Numpy (the Python libraries) since late 2018, but i
 now that I have to functionize my operations. In this section, I share what I have learned
 behind the scenes.
 
-## 1. [Jupyter Books explored 📙](jupyter-book)
+## 2. [Jupyter Books explored 📙](jupyter-book)
 
 Jupyter Book is a flexible tool built on top of Sphinx to
 * tell data stories, and/or
@@ -24,7 +24,7 @@ In this section, I literally take you through how I
 learned to set this Jupyter Book up - it is my first time working
 with documentation tech in general ☺️
 
-## 2. [Natural Language Processing explored 🔠📢🈺](NLP)
+## 3. [Natural Language Processing explored 🔠📢🈺](NLP)
 
 My journey in this space began from a need to identify in-demand
 skills of marketing researchers, because I wanted to create
@@ -39,7 +39,7 @@ particular, is affecting our daily lives more and more, as
 advances in tech are made over time. In this section, I discuss my journey
 learning NLP.
 
-## 3. Streamlit rediscovered 🧑🏾‍💻
+## 4. Streamlit rediscovered 🧑🏾‍💻
 
 I first came across Streamlit in a Data Umbrella webinar,
 and it really piqued my interest. Fast-forward to my
@@ -65,7 +65,7 @@ Streamlit is learning how to customize the front-end
 and see if I can incorporate transformers.
 
 
-## 4. Graph Databases Relearned 🕸️🗄️
+## 5. Graph Databases Relearned 🕸️🗄️
 
 I got to interact with graph technology for the
 first time in a team at Bootcamp 33, and it was
@@ -81,7 +81,7 @@ share my journey in recreating:
 I aim to share both platform-specific and
 platform-agnostic solutions around graphs.
 
-## 5. Building my first website 🖥️💻📱
+## 6. Building my first website 🖥️💻📱
 
 One of the things that I learned in my internship
 experience at Adrian Ltd. was that machine learning
