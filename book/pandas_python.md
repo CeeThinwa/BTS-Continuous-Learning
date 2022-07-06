@@ -24,6 +24,12 @@ dict = {
 ```
 :::
 
+A great rule of thumb is this:
+
+**If you find yourself repeating lines of code, create a $\color{red}{\text{ciao}}$ loop or lambda function**
+**If you find yourself repeating loops and/or lambda functions, create a Python function**
+**If you find yourself with many functions, create a Python class**
+
 ### Visualizing your dataset
 
 🔎 The `dataframe_describer` is really useful in viewing the shape and column names of each
@@ -164,3 +170,7 @@ def header_promoter(affected_dfs={}):
     
     return modified_dfs
 ```
+
+Notice that in the 3 example functions, we incorporate
+* output that allows us to see the before and after transformation
+* use of `silent=bool()` argument to show or hide the output as needed
