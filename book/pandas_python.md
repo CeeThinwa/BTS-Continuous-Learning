@@ -26,7 +26,7 @@ dict = {
 
 A great rule of thumb is this:
 
-**If you find yourself repeating lines of code, create a $\color{magenta}{\text{loop}}$  or $\color{magenta}{\text{lambda function}}$**<br>
+**If you find yourself repeating lines of code, create a $\color{magenta}{\text{loop}}$ or $\color{magenta}{\text{lambda function}}$**<br>
 **If you find yourself repeating loops and/or lambda functions, create a $\color{magenta}{\text{Python function}}$**<br>
 **If you find yourself with many functions, create a $\color{magenta}{\text{Python class}}$**
 
