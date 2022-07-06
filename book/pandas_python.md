@@ -20,7 +20,6 @@ import numpy as np
 :::{admonition} Data representation in Python:
 :class: note
 
-
 A good idea for transformation tracking is to represent a collection of Pandas dataframes using a dictionary because it helps you easily locate a particular dictionary to perform operations on. It can be represented like so:
 ```
 dictionary = {
@@ -217,3 +216,16 @@ def header_promoter(affected_dfs={}, silent=bool()):
 Notice that in the 3 example functions, we incorporate
 * output that allows us to see the before and after transformation
 * use of `silent=bool()` argument to show or hide the output as needed
+
+:::{admonition} N/B:
+:class: note
+
+You can also name variables using the dictionary keys (which are strings in Python) like so:
+
+```
+new_number = dict_key + '_new_number'
+assign(new_number, 25)
+```
+
+:::
+
