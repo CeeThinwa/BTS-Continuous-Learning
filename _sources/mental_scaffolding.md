@@ -7,7 +7,7 @@ To that end, I created for my self a learning and planning framework for NLP whi
 
 *First things first:*
 
-    We are unique people learning in a dynamic world.
+_**We are unique people learning in a dynamic world.**_
 
 *It is no secret that the path to learning is not the same for everyone. It can be incredibly challenging for some and quite straightforward and smooth for others.*
 
@@ -22,8 +22,8 @@ To that end, I created for my self a learning and planning framework for NLP whi
 
 *It is important to note that*
 
-    Just like scaffolding can be provided by a teacher to make the learning process faster,
-    the learner can create for themselves and others their own scaffolding.
+_**Just like scaffolding can be provided by a teacher to make the learning process faster,**_<br>
+_**the learner can create for themselves and others their own scaffolding.**_
 
 *As part of my Delta Analytics fellowship, I had to complete a multilingual NLP project (which I had never done before) and present my work in a short amount of time — I had to have tools that could help me understand the NLP concepts that I was struggling with and at the same time structure my project. Even with an incredibly helpful coach, I had to figure out stuff for myself.*
 
@@ -31,5 +31,6 @@ To that end, I created for my self a learning and planning framework for NLP whi
 
 *My scaffolding was the NLP toolbox, which I created to help myself and others seeking to understand and implement an NLP project — end-to-end. After all, understanding and implementing NLP projects is crucial to their success.*
 
-_**The NLP toolbox is a collection of concepts, tools and ideas available for building applications that can handle real-world challenges around understanding content from all over the world.**_<br>
+_**The NLP toolbox is a collection of concepts, tools and ideas available for building applications that can handle
+real-world challenges around understanding content from all over the world.**_<br>
 *It can be used for any NLP task such as sentiment analysis, translation, transcription, audio synthesis etc.*
