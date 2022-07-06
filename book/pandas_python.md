@@ -205,7 +205,8 @@ def header_promoter(affected_dfs={}, silent=bool()):
             display(modified_dfs[key].head(3))
             print('\n')
     
-    return modified_dfs```
+    return modified_dfs
+    ```
 
 Notice that in the 3 example functions, we incorporate
 * output that allows us to see the before and after transformation
