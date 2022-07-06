@@ -142,7 +142,8 @@ that the update is reflected; if this is not done, the changes will be overwritt
 :::
 
 
-🔎 The `blank_row_remover` is really useful in deleting blank rows in each dataframe; `thresh=3` means that blank rows and rows that have 2 filled values or less will be deleted. 
+🔎 The `blank_row_remover` is really useful in deleting blank rows in each dataframe; `thresh=4` means that blank rows
+and rows that have 3 filled values or less will be deleted. 
 
 ```
 def blank_row_remover(affected_dfs={}, silent=bool()):
