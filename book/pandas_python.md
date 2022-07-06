@@ -220,11 +220,20 @@ Notice that in the 3 example functions, we incorporate
 :::{admonition} N/B:
 :class: note
 
-You can also name variables using the dictionary keys (which are strings in Python) like so:
+You can also name variables using the dictionary keys (which are strings)
+
+If we want the variable to be a global one:
 
 ```
 new_number = dict_key + '_new_number'
-assign(new_number, 25)
+globals()[new_number] = 25
+```
+
+and if we want it to exist only locally:
+
+```
+new_number = dict_key + '_new_number'
+locals()[new_number] = 25
 ```
 
 :::
