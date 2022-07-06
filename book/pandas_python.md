@@ -28,6 +28,7 @@ A great rule of thumb is this:
 **If you find yourself repeating lines of code, create a <u>loop</u> or <u>lambda function</u>**<br>
 **If you find yourself repeating loops and/or lambda functions, create a <u>Python function</u>**<br>
 **If you find yourself with many functions, create a <u>Python class</u>**
+
 :::
 
 
