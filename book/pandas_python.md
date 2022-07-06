@@ -139,12 +139,35 @@ that the update is reflected; if this is not done, the changes will be overwritt
 🔎 The `blank_row_remover` is really useful in deleting blank rows in each dataframe; `thresh=3` means that blank rows and rows that have 2 filled values or less will be deleted. 
 
 ```
-def blank_row_remover(affected_dfs={}):
+def blank_row_remover(affected_dfs={}, silent=bool()):
     modified_dfs = {}
-    vals = list(affected_dfs.keys())
-    for val in vals:
+    
+    if silent == False:
+        print('Before:')
+        for key in affected_dfs:
+            blank_rows = affected_dfs[key][
+                affected_dfs[key].isna().all(axis=1) == True].shape[0]
+            any_nulls = affected_dfs[key][
+                affected_dfs[key].isna().any(axis=1) == True].shape[0]        
+            print(f'There were {blank_rows} blank rows and {any_nulls} rows',
+                  f'containing null values in {key}.')
+
+    for val in affected_dfs:
         modified_df = affected_dfs[val].copy()
-        modified_dfs[val] = modified_df.dropna(axis=0,how='all',thresh=3)
+        modified_dfs[val] = modified_df.dropna(axis=0,how='all',thresh=4)
+        # thresh=3 means that blank rows and rows that have 3 filled values or less will be deleted.
+
+    if silent == False:
+        print('\n')
+        print('After:')
+        for key in modified_dfs:
+            blank_rows = modified_dfs[key][
+                modified_dfs[key].isna().all(axis=1) == True].shape[0]
+            any_nulls = modified_dfs[key][
+                modified_dfs[key].isna().any(axis=1) == True].shape[0]
+            print(f'There were {blank_rows} blank rows and {any_nulls} rows',
+                  f'containing null values in {key}.')
+        
     return modified_dfs
 ```
 
@@ -152,13 +175,12 @@ def blank_row_remover(affected_dfs={}):
 missing headers, and then promoting the header in that case.
 
 ```
-def header_promoter(affected_dfs={}):
+def header_promoter(affected_dfs={}, silent=bool()):
     
     boolean=bool()
     modified_dfs = {}
-    vals = list(affected_dfs.keys())
     
-    for val in vals:
+    for val in affected_dfs:
         for column in affected_dfs[val].columns:
             if column.find('Unnamed:') != -1:
                 boolean = True
@@ -170,8 +192,20 @@ def header_promoter(affected_dfs={}):
             modified_df = modified_df.drop(index=modified_df.index[0], axis=0)
             modified_dfs[val] = modified_df
     
-    return modified_dfs
-```
+    if silent == False:
+        for key in affected_dfs:
+            df_name = key.upper()
+            df_name = df_name.replace('_',' ')
+        
+            print(f'{df_name} before:')
+            display(affected_dfs[key].head(3))
+            print('\n')
+        
+            print(f'{df_name} after:')
+            display(modified_dfs[key].head(3))
+            print('\n')
+    
+    return modified_dfs```
 
 Notice that in the 3 example functions, we incorporate
 * output that allows us to see the before and after transformation
