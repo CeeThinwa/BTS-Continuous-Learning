@@ -58,7 +58,7 @@ then you probably need to rename them.
 
 **Source: [Stack Overflow](https://stackoverflow.com/questions/35084071/concat-dataframe-reindexing-only-valid-with-uniquely-valued-index-objects/66124333#66124333)**
 
-![stack1](./images/img20.png)
+![stack1](./images/img20.PNG)
 
 :::
 
