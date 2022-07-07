@@ -56,6 +56,22 @@ assert df.columns.is_unique, df.loc[:,df.columns.duplicated()]
 
 then you probably need to rename them.
 
+Diagnostic code if working with a dictionary with many dataframes would be:
+
+```
+for key in dictionary:
+    df = dictionary[key]
+    print(key,'\n','len(df.columns) == len(set(df.columns)) is',
+          len(df.columns) == len(set(df.columns)),'\n',
+          'df.columns = '+str(len(df.columns)),'\n',
+          'set(df.columns = '+str(len(set(df.columns))),'\n',
+         )
+
+    duplicates = [duplicate for duplicate in list(df.columns) if list(df.columns).count(duplicate) > 1]
+    print(duplicates)
+    print('\n')
+```
+
 **Source: [Stack Overflow](https://stackoverflow.com/questions/35084071/concat-dataframe-reindexing-only-valid-with-uniquely-valued-index-objects/66124333#66124333)**
 
 ![stack1](./images/img20.PNG)
