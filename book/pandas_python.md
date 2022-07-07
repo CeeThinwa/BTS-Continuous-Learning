@@ -35,8 +35,35 @@ If you wish to concatenate the dataframes within the dictionary to form one data
 concatenated_df = pd.concat(dictionary.values(), ignore_index=True)
 ```
 
+:::{admonition} Warning!
+:class: warning
+
+Be careful to ensure that BOTH your columns and rows have unique names
+
+If when using `pd.concat()` you keep getting the error message
+`InvalidIndexError: Reindexing only valid with uniquely valued Index objects` even after
+modifying the indices of the dataframe, look into your columns.
+
+If your column names fail either of the following logical tests:
+
+```
+len(df.columns) == len(set(df.columns))
+```
+
+```
+assert df.columns.is_unique, df.loc[:,df.columns.duplicated()]
+```
+
+then you probably need to rename them.
+
+**Source: [Stack Overflow](https://stackoverflow.com/questions/35084071/concat-dataframe-reindexing-only-valid-with-uniquely-valued-index-objects/66124333#66124333)**
+
+![stack1](./images/img20.png)
+
 :::
 
+
+:::
 
 ### Visualizing your dataset
 
