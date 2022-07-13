@@ -35,8 +35,51 @@ If you wish to concatenate the dataframes within the dictionary to form one data
 concatenated_df = pd.concat(dictionary.values(), ignore_index=True)
 ```
 
+:::{admonition} Warning!
+:class: warning
+
+Be careful to ensure that BOTH your columns and rows have unique names
+
+If when using `pd.concat()` you keep getting the error message
+`InvalidIndexError: Reindexing only valid with uniquely valued Index objects` even after
+modifying the indices of the dataframe, look into your columns.
+
+If your column names fail either of the following logical tests:
+
+```
+len(df.columns) == len(set(df.columns))
+```
+
+```
+assert df.columns.is_unique, df.loc[:,df.columns.duplicated()]
+```
+
+then you probably need to rename them.
+
+Diagnostic code if working with a dictionary with many dataframes would be:
+
+```
+for key in dictionary:
+    df = dictionary[key]
+    print(key,'\n','len(df.columns) == len(set(df.columns)) is',
+          len(df.columns) == len(set(df.columns)),'\n',
+          'df.columns = '+str(len(df.columns)),'\n',
+          'set(df.columns = '+str(len(set(df.columns))),'\n',
+         )
+
+    duplicates = [duplicate for duplicate in list(df.columns) if list(df.columns).count(duplicate) > 1]
+    print(duplicates)
+    print('\n')
+```
+
+**Source: [Stack Overflow](https://stackoverflow.com/questions/35084071/concat-dataframe-reindexing-only-valid-with-uniquely-valued-index-objects/66124333#66124333)**
+
+![stack1](./images/img20.PNG)
+
 :::
 
+
+:::
 
 ### Visualizing your dataset
 
