@@ -6,7 +6,7 @@ audiences, I had to create a learning framework for myself and my audience, so t
 key concepts in the space and at the same time help my audience to follow my train of thought and understand NLP just a
 bit better.
 
-To that end, I created for my self a learning and planning framework for NLP which I call <u>the NLP toolbox</u>. Below
+To that end, I created for myself a learning and planning framework for NLP which I call <u>the NLP toolbox</u>. Below
 is an excerpt from
 [an article I wrote outlining this thought process](https://medium.com/@ceethinwa/delivering-success-in-natural-language-processing-projects-part-one-40c4775cf6a9):
 
