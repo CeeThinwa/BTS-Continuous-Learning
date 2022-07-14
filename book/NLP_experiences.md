@@ -76,15 +76,6 @@ the top 5 phrases:<br>
 <br>
 ![JAd2](./images/img15.png)
 
-### Project Summary
-
-The goal of this research is to help job-seekers seeking to work in the niche area of marketing research to gain a clear and current understanding of how they should package themselves to become attractive to the "global" employer. Research was based on data obtained from Indeed.com in January 2020.
-
-#### Research Conclusions
-
-***Parts of Speech***
-
-*Nouns tended to give the most complete information compared to verbs or pronouns when used in n-grams.*
 
 ***Traits of a Marketing Researcher***
 
