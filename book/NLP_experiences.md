@@ -43,6 +43,12 @@ loss function:<br>
 <br>
 ![Alexa3](./images/img13.png)
 
+### Skills at work
+
+* Data Exploration
+* Data Visualization
+* Model Training & Evaluation
+
 ****
 
 ## Working with job ad data
