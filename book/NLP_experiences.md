@@ -76,17 +76,11 @@ the top 5 phrases:<br>
 <br>
 ![JAd2](./images/img15.png)
 
+### Skills at work
 
-***Traits of a Marketing Researcher***
-
-* *Soft skills were emphasised by recruiters as qualities they were looking for compared to technical skills*
-* *Recruiters were seeking someone who has had hands-on marketing experience in the past*
-* *Candidates with 3 years of experience were most sought after*
-
-#### Resources
-
-* *[The full report](https://drive.google.com/file/d/1UTNIz8CHg2-bXxo5Sb540aXk--q6ZEza/view?usp=sharing)*
-* *[Jupyter Notebook](https://github.com/CeeThinwa/MyLittleScraper/blob/master/EDA-Jan2020.ipynb)*
+* Data Mining
+* Data Exploration
+* Data Visualization
 
 ****
 
