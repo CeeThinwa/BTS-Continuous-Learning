@@ -77,9 +77,8 @@ for key in dictionary:
 ![stack1](./images/img20.PNG)
 
 :::
-
-
 :::
+
 
 ### Visualizing your dataset
 
