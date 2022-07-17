@@ -37,7 +37,7 @@ concatenated_df = pd.concat(dictionary.values(), ignore_index=True)
 
 :::
 
-:::{admonition} Warning for data representation in Python
+:::{admonition} Warning for data representation in Python:
 :class: warning
 
 Be careful to ensure that BOTH your columns and rows have unique names
