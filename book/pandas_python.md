@@ -35,7 +35,9 @@ If you wish to concatenate the dataframes within the dictionary to form one data
 concatenated_df = pd.concat(dictionary.values(), ignore_index=True)
 ```
 
-:::{admonition} Warning!
+:::
+
+:::{admonition} Warning for data representation in Python:
 :class: warning
 
 Be careful to ensure that BOTH your columns and rows have unique names
@@ -78,8 +80,6 @@ for key in dictionary:
 
 :::
 
-
-:::
 
 ### Visualizing your dataset
 
@@ -126,6 +126,7 @@ def dataframes_displayed(df_dict={}, input_string=''):
 
 :::{admonition} What does `column.find('Unnamed:') != -1` mean?
 :class: note
+
 According to [this source](https://tech-related.com/p/6q3ePQloAv):
 
 *The `str.find` method is to find whether there is a character or substring to be found in*<br>
