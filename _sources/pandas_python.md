@@ -35,6 +35,8 @@ If you wish to concatenate the dataframes within the dictionary to form one data
 concatenated_df = pd.concat(dictionary.values(), ignore_index=True)
 ```
 
+:::
+
 :::{admonition} Warning!
 :class: warning
 
@@ -76,7 +78,6 @@ for key in dictionary:
 
 ![stack1](./images/img20.PNG)
 
-:::
 :::
 
 
