@@ -283,3 +283,7 @@ locals()[new_number] = 25
 Local variables are stored in the `locals()` dictionary and global variables are stored in the `globals()` dictionary.
 
 :::
+
+## Leveraging `numpy` with `pandas` in Python
+
+`np.repeat(a=np.array()|pd.Series()|pd.DataFrame(),n,axis=0|1)` allows you to repeat each item in `a` $n$ number of times, creating either `n` number of columns if `axis=1` or `n` number of rows if `axis=0`, while `np.tile(a=np.array()|pd.Series()|pd.DataFrame(),n)` allows you to duplicate `a` $n$ number of times.
