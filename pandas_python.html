@@ -43,6 +43,8 @@
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -241,6 +243,23 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#leveraging-numpy-with-pandas-in-python">
+   Leveraging
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     numpy
+    </span>
+   </code>
+   with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pandas
+    </span>
+   </code>
+   in Python
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -277,6 +296,23 @@
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#leveraging-numpy-with-pandas-in-python">
+   Leveraging
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     numpy
+    </span>
+   </code>
+   with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pandas
+    </span>
+   </code>
+   in Python
+  </a>
  </li>
 </ul>
 
@@ -527,6 +563,10 @@ missing headers, and then promoting the header in that case.</p>
 <p>Local variables are stored in the <code class="docutils literal notranslate"><span class="pre">locals()</span></code> dictionary and global variables are stored in the <code class="docutils literal notranslate"><span class="pre">globals()</span></code> dictionary.</p>
 </div>
 </div>
+</div>
+<div class="section" id="leveraging-numpy-with-pandas-in-python">
+<h2>Leveraging <code class="docutils literal notranslate"><span class="pre">numpy</span></code> with <code class="docutils literal notranslate"><span class="pre">pandas</span></code> in Python<a class="headerlink" href="#leveraging-numpy-with-pandas-in-python" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">np.repeat(a=np.array()|pd.Series()|pd.DataFrame(),n,axis=0|1)</span></code> allows you to repeat each item in <code class="docutils literal notranslate"><span class="pre">a</span></code> <span class="math notranslate nohighlight">\(n\)</span> number of times, creating either <code class="docutils literal notranslate"><span class="pre">n</span></code> number of columns if <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> or <code class="docutils literal notranslate"><span class="pre">n</span></code> number of rows if <code class="docutils literal notranslate"><span class="pre">axis=0</span></code>, while <code class="docutils literal notranslate"><span class="pre">np.tile(a=np.array()|pd.Series()|pd.DataFrame(),n)</span></code> allows you to duplicate <code class="docutils literal notranslate"><span class="pre">a</span></code> <span class="math notranslate nohighlight">\(n\)</span> number of times.</p>
 </div>
 </div>
 
