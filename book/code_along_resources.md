@@ -1,6 +1,6 @@
 # Code-Along Resources
 
-These are resources that I used to build various data products
+These are resources that I used to build various data products through imitation and slight tweaks.
 
 ## Project 1: Django web app by Corey Schafer
 
