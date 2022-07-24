@@ -14,4 +14,7 @@ chapters:
     - file: mental_scaffolding
     - file: NLP_experiences
 - file: Kiva
-- file: code_along_resources
+- file: resources
+  sections:
+    - file: code_along_resources
+    - file: career_resources
