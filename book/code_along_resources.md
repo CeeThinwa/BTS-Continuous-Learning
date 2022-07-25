@@ -14,13 +14,13 @@ These are resources that I used to build various data products through imitation
 8. [Python Django Tutorial: Full-Featured Web App Part 8 - User Profile and Picture](https://www.youtube.com/watch?v=FdVuKt_iuSI&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=8)
 9. [Python Django Tutorial: Full-Featured Web App Part 9 - Update User Profile](https://www.youtube.com/watch?v=CQ90L5jfldw&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=9)
 10. [Python Django Tutorial: Full-Featured Web App Part 10 - Create, Update, and Delete Posts](https://www.youtube.com/watch?v=-s7e_Fy6NRU&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=10)
-11. []()
-12. []()
-13. []()
-14. []()
-15. []()
-16. []()
-17. []()
+11. [Python Django Tutorial: Full-Featured Web App Part 11 - Pagination](https://www.youtube.com/watch?v=acOktTcTVEQ&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=11)
+12. [Python Django Tutorial: Full-Featured Web App Part 12 - Email and Password Reset](https://www.youtube.com/watch?v=-tyBEsHSv7w&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=12)
+13. [Python Django Tutorial: Deploying Your Application (Option #1) - Deploy to a Linux Server](https://www.youtube.com/watch?v=Sa_kQheCnds&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=13)
+14. [Python Django Tutorial: How to Use a Custom Domain Name for Our Application](https://www.youtube.com/watch?v=D2lwk1Ukgz0&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=14)
+15. [Python Django Tutorial: How to enable HTTPS with a free SSL/TLS Certificate using Let's Encrypt](https://www.youtube.com/watch?v=NhidVhNHfeU&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=15)
+16. [Python Django Tutorial: Full-Featured Web App Part 13 - Using AWS S3 for File Uploads](https://www.youtube.com/watch?v=kt3ZtW9MXhw&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=16)
+17. [Python Django Tutorial: Deploying Your Application (Option #2) - Deploy using Heroku](https://www.youtube.com/watch?v=6DI_7Zja8Zc&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=17)
 
 <br>
 
@@ -34,6 +34,8 @@ These are resources that I used to build various data products through imitation
 <br>
 
 ## Project 3: PostgreSQL database
+
+[How To Deploy A Postgres Database For Free](https://towardsdatascience.com/how-to-deploy-a-postgres-database-for-free-95cf1d8387bf)
 
 <br>
 
