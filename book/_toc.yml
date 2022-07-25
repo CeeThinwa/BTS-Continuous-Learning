@@ -13,7 +13,6 @@ chapters:
   sections:
     - file: mental_scaffolding
     - file: NLP_experiences
-- file: Kiva
 - file: resources
   sections:
     - file: code_along_resources
