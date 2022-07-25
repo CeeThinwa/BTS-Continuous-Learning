@@ -13,6 +13,7 @@ chapters:
   sections:
     - file: mental_scaffolding
     - file: NLP_experiences
+- file: learning_path
 - file: resources
   sections:
     - file: code_along_resources
