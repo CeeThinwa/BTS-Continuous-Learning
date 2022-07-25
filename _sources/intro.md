@@ -102,3 +102,17 @@ Here I share the challenges I faced
 (especially interacting with Linux for the first time
 and setting up an SSL certificate) and the lessons
 I learned along the way.
+
+## 7. The Kiva project
+
+In early 2019, I volunteered to mentor in a local initiative to
+motivate Kenyans to master Data Science called Master
+Cohorts. I decided to attempt the first assignment,
+which was based on a past Kaggle competition aiming
+to solve a problem for Kiva.
+
+One of the highlights around working on this project
+was that I really stretched my Pandas skills and also
+got to marry two completely different datasets to
+create the final notebook.
+
