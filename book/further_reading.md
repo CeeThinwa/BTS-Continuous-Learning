@@ -10,12 +10,12 @@
 
 1. [](https://medium.com/@ahmedomrane/documentation-in-data-analytics-8963a9be19ac)
 
-## DevOps - Data
+## DevOps
 1. [The Back-end developer roadmap](https://medium.com/@prajix/backend-developer-roadmap-e61ce30ab10d)
 2. [Stop using notebooks (or why you should start making data science as a developer would do)](https://medium.com/@johan-jublanc/stop-using-notebooks-or-why-you-should-start-making-data-science-as-a-developer-would-do-5d67c8990df5)
 3. [Stop using json web tokens for authentication - use stateful sessions instead](https://medium.com/betterprogramming.pub/stop-using-json-web-tokens-for-authentication-use-stateful-sessions-instead-c0a803931a5d)
-1. [](https://medium.com/)
-1. [](https://medium.com/)
+4. [](https://medium.com/we-built-a-spreadsheet-engine-from-scratch-heres-what-we-learned-e4800ab9edf1)
+5. [](https://medium.com/@cem.eygi/7-css-tips-for-writing-better-code-that-every-developer-should-know-in-2021-fd8c881a1e0e)
 1. [](https://medium.com/)
 1. [](https://medium.com/)
 
