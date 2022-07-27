@@ -12,3 +12,4 @@
 ## General
 
 1. [What are some unspoken rules of the IT industry?](https://medium.com/@imjosef/what-are-some-unspoken-rules-of-the-i-t-industry-afe017bf6a5)
+2. [Tech corporate culture anti-patterns](https://medium.com/@cruise_woolens_0w/tech-corporate-culture-anti-patterns-ae24e6c46e2f)
