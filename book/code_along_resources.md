@@ -33,6 +33,14 @@ These are resources that I used to build various data products through imitation
 
 <br>
 
+## Project 3: Data Engineering
+
+[Building an End-to-End Open-Source Modern Data Platform](https://towardsdatascience.com/building-an-end-to-end-open-source-modern-data-platform-c906be2f31bd)
+
+
+
+<br>
+
 ## Project 3: PostgreSQL database
 
 [How To Deploy A Postgres Database For Free](https://towardsdatascience.com/how-to-deploy-a-postgres-database-for-free-95cf1d8387bf)
