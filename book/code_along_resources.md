@@ -37,7 +37,9 @@ These are resources that I used to build various data products through imitation
 
 [Building an End-to-End Open-Source Modern Data Platform](https://towardsdatascience.com/building-an-end-to-end-open-source-modern-data-platform-c906be2f31bd)
 
+[Open-source data engineering project](https://www.sspaeti.com/blog/data-engineering-project-in-twenty-minutes/)
 
+[Open-source/proprietary data engineering project](https://www.startdataengineering.com/post/data-engineering-project-for-beginners-batch-edition/)
 
 <br>
 
