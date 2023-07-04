@@ -1,3 +1,3 @@
 (VM-setup)=
-# Server Setup 101
+# Server Setup Notes
 
