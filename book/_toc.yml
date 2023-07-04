@@ -4,18 +4,18 @@
 format: jb-book
 root: intro
 chapters:
-- file: pandas_python
-- file: JB_explored
+- file: 1/pandas_python
+- file: 2/JB_explored
   sections:
-    - file: initial_setup
-    - file: customised_front_end
-- file: NLP_explored
+    - file: 2/initial_setup
+    - file: 2/customised_front_end
+- file: 3/NLP_explored
   sections:
-    - file: mental_scaffolding
-    - file: NLP_experiences
-- file: elasticsearch_explored
-- file: resources
+    - file: 3/mental_scaffolding
+    - file: 3/NLP_experiences
+- file: 6/cloud-explored
+- file: ref/resources
   sections:
-    - file: code_along_resources
-    - file: career_resources
-    - file: further_reading
+    - file: ref/code_along_resources
+    - file: ref/career_resources
+    - file: ref/further_reading
