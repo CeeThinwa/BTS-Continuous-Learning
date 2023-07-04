@@ -81,7 +81,7 @@ share my journey in recreating:
 I aim to share both platform-specific and
 platform-agnostic solutions around graphs.
 
-## 6. Building my first website 🖥️💻📱
+## 6. [Developing in the cloud ☁️🖥️💻📱](cloud)
 
 One of the things that I learned in my internship
 experience at Adrian Ltd. was that machine learning

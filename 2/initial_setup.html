@@ -1,0 +1,533 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Initial Setup &amp; Maintenance 🛠️ &#8212; BTS: Continuous Learning</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Customizing the Front End 🌼" href="customised_front_end.html" />
+    <link rel="prev" title="Jupyter Books explored 📙" href="JB_explored.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">BTS: Continuous Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Behind the Scenes of my Learning Journey
+   <br/>
+   🤔💡
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1/pandas_python.html">
+   Functional Pandas in Python workflow 🐼🐍
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="JB_explored.html">
+   Jupyter Books explored 📙
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Initial Setup &amp; Maintenance 🛠️
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="customised_front_end.html">
+     Customizing the Front End 🌼
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../3/NLP_explored.html">
+   Natural Language Processing explored
+   <br/>
+   🔠📢🈺
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3/mental_scaffolding.html">
+     Mental Scaffolding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3/NLP_experiences.html">
+     My NLP Experiences
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ref/resources.html">
+   Resource Bin
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ref/code_along_resources.html">
+     Code-Along Resources
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ref/career_resources.html">
+     Career Resources for Data Professionals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ref/further_reading.html">
+     Further reading
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/2/initial_setup.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-and-running-jupyter-book-on-python-3-9">
+   Installing and running Jupyter Book on Python 3.9
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trying-to-install-the-latest-version-of-python-3-7">
+   Trying to install the latest version of Python 3.7
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#activating-a-virtual-environment-in-pycharm">
+   Activating a virtual environment in PyCharm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deployment-of-the-site">
+   Deployment of the site
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Initial Setup & Maintenance 🛠️</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-and-running-jupyter-book-on-python-3-9">
+   Installing and running Jupyter Book on Python 3.9
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trying-to-install-the-latest-version-of-python-3-7">
+   Trying to install the latest version of Python 3.7
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#activating-a-virtual-environment-in-pycharm">
+   Activating a virtual environment in PyCharm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deployment-of-the-site">
+   Deployment of the site
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="initial-setup-maintenance">
+<span id="initial-setup"></span><h1>Initial Setup &amp; Maintenance 🛠️<a class="headerlink" href="#initial-setup-maintenance" title="Permalink to this headline">¶</a></h1>
+<p>The tech stack that I had to create and deploy this
+book was:</p>
+<ul class="simple">
+<li><p>A Windows environment</p></li>
+<li><p>PyCharm Community Edition</p></li>
+<li><p>GitHub Desktop</p></li>
+</ul>
+<p>Some mistakes I made in setup include:</p>
+<ul class="simple">
+<li><p>Installing and running Jupyter Book on Python 3.9</p></li>
+<li><p>Trying to install a g-zipped version of Python 3.7 to install the latest version (Python 3.7.12)</p></li>
+<li><p>Navigating to the gh-pages branch</p></li>
+</ul>
+<p>Some challenges I faced in setup include:</p>
+<ul class="simple">
+<li><p>Deploying the sample book</p></li>
+<li><p>Activating a virtual environment in PyCharm after navigating between Git branches</p></li>
+</ul>
+<p><strong>Let’s go through these mistakes in more detail!</strong></p>
+<div class="section" id="installing-and-running-jupyter-book-on-python-3-9">
+<h2>Installing and running Jupyter Book on Python 3.9<a class="headerlink" href="#installing-and-running-jupyter-book-on-python-3-9" title="Permalink to this headline">¶</a></h2>
+<p>The latest version of Python today is Python 3.10, but
+I routinely use Python 3.9 on my local machine.</p>
+<p>I managed to install <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> and successfully
+ran the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">create</span> <span class="n">mynewbook</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>So imagine the surprise I experienced, following
+<a href='https://jupyterbook.org/start/create.html'>this
+tutorial</a> when I ran</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">build</span> <span class="n">book</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>and got <a href='https://github.com/executablebooks/jupyter-book/issues/906'>
+this problem</a>.</p>
+<p>I wish I started by reading the warning
+<a href='https://jupyterbook.org/start/your-first-book.html'>
+here</a> and then navigating to
+<a href='https://jupyterbook.org/advanced/windows.html#working-on-windows'>
+Working on Windows</a></p>
+<div class="note admonition">
+<p class="admonition-title">Lesson 1:</p>
+<p>Learn how to set up Jupyter Book based on your OS
+environment.</p>
+</div>
+</div>
+<div class="section" id="trying-to-install-the-latest-version-of-python-3-7">
+<h2>Trying to install the latest version of Python 3.7<a class="headerlink" href="#trying-to-install-the-latest-version-of-python-3-7" title="Permalink to this headline">¶</a></h2>
+<p>When I found that Python 3.7 was required, my natural
+inclination was to go
+<a href='https://www.python.org/downloads/'>here</a>
+and zoom in to Python 3.7.12:</p>
+<p><img alt="py1" src="../_images/img1.png" /></p>
+<p>It came as a <code class="docutils literal notranslate"><span class="pre">.tgz</span></code> which I unzipped on Administrator
+Windows <code class="docutils literal notranslate"><span class="pre">cmd</span></code> with the following code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">xvzf</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">CT</span>\<span class="n">Downloads</span>\<span class="n">Python</span><span class="o">-</span><span class="mf">3.7.12</span><span class="o">.</span><span class="n">tgz</span> <span class="o">-</span><span class="n">C</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">CT</span>\<span class="n">Downloads</span>  
+</pre></div>
+</div>
+<p>When I unzipped it, I felt stuck because I couldn’t
+activate it without a crazy amount of searching.</p>
+<p>There had to be a better way.</p>
+<p>So I decided to search for versions of Python 3.7
+that had a <code class="docutils literal notranslate"><span class="pre">.exe</span></code> file for Windows
+<a href='https://www.python.org/downloads/windows/'>
+here</a>
+settling on Python 3.7.9:</p>
+<p><img alt="py2" src="../_images/img2.png" /></p>
+<p>I clicked the <em>Download Windows x86-64 executable
+installer</em> because my machine is 64-bit. I installed
+it with default installation instructions, and I was
+able to create a virtual environment <code class="docutils literal notranslate"><span class="pre">venv</span></code> in my project
+that ran on Python 3.7 as follows:</p>
+<p>I changed to the main directory, <code class="docutils literal notranslate"><span class="pre">BTS-Continuous-Learning</span></code>
+then ran</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">virtualenv</span> <span class="o">-</span><span class="n">p</span> <span class="n">python3</span><span class="mf">.7</span> <span class="n">venv</span>
+</pre></div>
+</div>
+<p>All that’s left is activating <code class="docutils literal notranslate"><span class="pre">venv</span></code> and checking that
+the correct version of Python is running with the code
+below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">py</span> <span class="o">--</span><span class="n">version</span>
+</pre></div>
+</div>
+<p>Finally, in Github Desktop after committing the files
+created with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">create</span> <span class="n">mynewbook</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>I added all <code class="docutils literal notranslate"><span class="pre">venv</span></code> files to <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>.</p>
+<div class="note admonition">
+<p class="admonition-title">Lesson 2:</p>
+<p>Use a <code class="docutils literal notranslate"><span class="pre">.exe</span></code> installer to install Python on your
+machine; avoid zipped files.</p>
+</div>
+</div>
+<div class="section" id="activating-a-virtual-environment-in-pycharm">
+<h2>Activating a virtual environment in PyCharm<a class="headerlink" href="#activating-a-virtual-environment-in-pycharm" title="Permalink to this headline">¶</a></h2>
+<p>The first time (when the only Git branch that I had
+was <code class="docutils literal notranslate"><span class="pre">main</span></code>, it was easy enough to activate the virtual
+environment in PyCharm. However, when I navidated to the
+<code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch in GitHub Desktop, I started getting a
+weird error in the terminal like</p>
+<p><img alt="pycharm1" src="../_images/img3.png" /></p>
+<p>When I upgraded my PyCharm community Edition program,
+the error changed to this:</p>
+<p><img alt="pycharm2" src="../_images/img4.png" /></p>
+<p>Following the suggestion, this happened:</p>
+<p><img alt="pycharm3" src="../_images/img5.png" /></p>
+<p>So what was the solution?</p>
+<p>I navigated first to the <code class="docutils literal notranslate"><span class="pre">File</span></code> menu, then clicked on
+<code class="docutils literal notranslate"><span class="pre">Settings</span></code> resulting in the following screen:</p>
+<p><img alt="pycharm4" src="../_images/img6.png" /></p>
+<p>I then navigated to <code class="docutils literal notranslate"><span class="pre">Tools</span></code>, then <code class="docutils literal notranslate"><span class="pre">Terminal</span></code>, and changed the
+Shell path from <code class="docutils literal notranslate"><span class="pre">Powershell</span></code>’s path to <code class="docutils literal notranslate"><span class="pre">cmd</span></code>’s path like so:</p>
+<p><img alt="pycharm5" src="../_images/img7.png" /></p>
+<p>Problem solved!</p>
+<p><img alt="pycharm6" src="../_images/img8.png" /></p>
+<p>Work within the environment and clear the workspace with <code class="docutils literal notranslate"><span class="pre">cls</span></code>
+command.</p>
+<div class="note admonition">
+<p class="admonition-title">Lesson 3:</p>
+<p>Use a <code class="docutils literal notranslate"><span class="pre">cmd</span></code> engine within Pycharm instead of <code class="docutils literal notranslate"><span class="pre">Powershell</span></code> to
+activate the virtual environment.</p>
+</div>
+</div>
+<div class="section" id="deployment-of-the-site">
+<h2>Deployment of the site<a class="headerlink" href="#deployment-of-the-site" title="Permalink to this headline">¶</a></h2>
+<p>Updating the book was easy enough with the <code class="docutils literal notranslate"><span class="pre">jb</span> <span class="pre">build</span> <span class="pre">--all</span> <span class="pre">book/</span></code>
+command once the virtual environment was activated.</p>
+<p>I then</p>
+<ul class="simple">
+<li><p>Pushed any changes in <code class="docutils literal notranslate"><span class="pre">book</span></code>, <code class="docutils literal notranslate"><span class="pre">_static</span></code> and <code class="docutils literal notranslate"><span class="pre">images</span></code> folders on the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch to remote</p></li>
+<li><p>Installed <code class="docutils literal notranslate"><span class="pre">ghp-import</span></code> with the <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ghp-import</span></code> command</p></li>
+<li><p>Changed into the directory containing the files with <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">books/</span></code> command</p></li>
+<li><p>Created a <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch (when the command ran the first time) or pushed the changes to the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch with the <code class="docutils literal notranslate"><span class="pre">ghp-import</span> <span class="pre">-n</span> <span class="pre">-p</span> <span class="pre">-f</span> <span class="pre">_build/html</span></code> command</p></li>
+</ul>
+<div class="warning admonition">
+<p class="admonition-title">Warning:</p>
+<p>When running the <code class="docutils literal notranslate"><span class="pre">ghp-import</span> <span class="pre">-n</span> <span class="pre">-p</span> <span class="pre">-f</span> <span class="pre">_build/html</span></code> command,
+DO NOT forget to add <code class="docutils literal notranslate"><span class="pre">-n</span></code>; the reason why is well explained
+<a href='https://jupyterbook.org/publish/gh-pages.html'>here
+</a>.</p>
+</div>
+<p>Initially, after deploying the page, I would navigate to the
+<code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch, but I realised that it was not necessary since
+running the <code class="docutils literal notranslate"><span class="pre">ghp-import</span> <span class="pre">-n</span> <span class="pre">-p</span> <span class="pre">-f</span> <span class="pre">_build/html</span></code> command
+automatically sends local changes to remote in the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code>
+branch.</p>
+<br>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="JB_explored.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Jupyter Books explored 📙</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="customised_front_end.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Customizing the Front End 🌼</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Cynthia Thinwa<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,655 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Functional Pandas in Python workflow 🐼🐍 &#8212; BTS: Continuous Learning</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Jupyter Books explored 📙" href="../2/JB_explored.html" />
+    <link rel="prev" title="Behind the Scenes of my Learning Journey 🤔💡" href="../intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">BTS: Continuous Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Behind the Scenes of my Learning Journey
+   <br/>
+   🤔💡
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Functional Pandas in Python workflow 🐼🐍
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../2/JB_explored.html">
+   Jupyter Books explored 📙
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2/initial_setup.html">
+     Initial Setup &amp; Maintenance 🛠️
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2/customised_front_end.html">
+     Customizing the Front End 🌼
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../3/NLP_explored.html">
+   Natural Language Processing explored
+   <br/>
+   🔠📢🈺
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3/mental_scaffolding.html">
+     Mental Scaffolding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3/NLP_experiences.html">
+     My NLP Experiences
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ref/resources.html">
+   Resource Bin
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ref/code_along_resources.html">
+     Code-Along Resources
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ref/career_resources.html">
+     Career Resources for Data Professionals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ref/further_reading.html">
+     Further reading
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/1/pandas_python.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sample-functions">
+   Sample functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualizing-your-dataset">
+     Visualizing your dataset
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modifying-your-dataframes">
+     Modifying your dataframes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#leveraging-numpy-with-pandas-in-python">
+   Leveraging
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     numpy
+    </span>
+   </code>
+   with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pandas
+    </span>
+   </code>
+   in Python
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Functional Pandas in Python workflow 🐼🐍</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sample-functions">
+   Sample functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualizing-your-dataset">
+     Visualizing your dataset
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modifying-your-dataframes">
+     Modifying your dataframes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#leveraging-numpy-with-pandas-in-python">
+   Leveraging
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     numpy
+    </span>
+   </code>
+   with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pandas
+    </span>
+   </code>
+   in Python
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="functional-pandas-in-python-workflow">
+<span id="pandas-python"></span><h1>Functional Pandas in Python workflow 🐼🐍<a class="headerlink" href="#functional-pandas-in-python-workflow" title="Permalink to this headline">¶</a></h1>
+<p>When beginning Data Science, it is common to directly apply Pandas functions on individual dataframes. But what if you are creating code for a Python dataflow? The approach has to
+completely change.</p>
+<p>A great rule of thumb is this:</p>
+<p><strong>If you find yourself repeating lines of code, create a <u>loop</u> or <u>lambda function</u></strong><br>
+<strong>If you find yourself repeating loops and/or lambda functions, create a <u>Python function</u></strong><br>
+<strong>If you find yourself with many functions, create a <u>Python class</u></strong></p>
+<div class="section" id="sample-functions">
+<h2>Sample functions<a class="headerlink" href="#sample-functions" title="Permalink to this headline">¶</a></h2>
+<p>The packages being discussed in this part are loaded into Python as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Data representation in Python:</p>
+<p>A good idea for transformation tracking is to represent a collection of Pandas dataframes using a dictionary because it helps you easily locate a particular dictionary to perform operations on. It can be represented like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dictionary</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;df1&#39;</span><span class="p">:</span> <span class="n">df1</span><span class="p">,</span>
+    <span class="s1">&#39;df2&#39;</span><span class="p">:</span> <span class="n">df2</span><span class="p">,</span>
+    <span class="s1">&#39;df3&#39;</span><span class="p">:</span> <span class="n">df3</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you wish to concatenate the dataframes within the dictionary to form one dataframe, run this code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">concatenated_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dictionary</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Warning for data representation in Python:</p>
+<p>Be careful to ensure that BOTH your columns and rows have unique names</p>
+<p>If when using <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> you keep getting the error message
+<code class="docutils literal notranslate"><span class="pre">InvalidIndexError:</span> <span class="pre">Reindexing</span> <span class="pre">only</span> <span class="pre">valid</span> <span class="pre">with</span> <span class="pre">uniquely</span> <span class="pre">valued</span> <span class="pre">Index</span> <span class="pre">objects</span></code> even after
+modifying the indices of the dataframe, look into your columns.</p>
+<p>If your column names fail either of the following logical tests:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">is_unique</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()]</span>
+</pre></div>
+</div>
+<p>then you probably need to rename them.</p>
+<p>Diagnostic code if working with a dictionary with many dataframes would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="s1">&#39;len(df.columns) == len(set(df.columns)) is&#39;</span><span class="p">,</span>
+          <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)),</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;df.columns = &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)),</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;set(df.columns = &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">))),</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span>
+         <span class="p">)</span>
+
+    <span class="n">duplicates</span> <span class="o">=</span> <span class="p">[</span><span class="n">duplicate</span> <span class="k">for</span> <span class="n">duplicate</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="k">if</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">duplicate</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">duplicates</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Source: <a class="reference external" href="https://stackoverflow.com/questions/35084071/concat-dataframe-reindexing-only-valid-with-uniquely-valued-index-objects/66124333#66124333">Stack Overflow</a></strong></p>
+<p><img alt="stack1" src="../_images/img20.PNG" /></p>
+</div>
+<div class="section" id="visualizing-your-dataset">
+<h3>Visualizing your dataset<a class="headerlink" href="#visualizing-your-dataset" title="Permalink to this headline">¶</a></h3>
+<p>🔎 The <code class="docutils literal notranslate"><span class="pre">dataframe_describer</span></code> is really useful in viewing the shape and column names of each
+dataframe contained in a dictionary within a particular app.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dataframe_describer</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">var_name</span><span class="si">}</span><span class="s1"> has </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows and </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> columns namely:&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">item</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>🔎 The <code class="docutils literal notranslate"><span class="pre">dataframes_displayed</span></code> function is really useful in getting summaries of the various columns in each dataframe describing their</p>
+<ul class="simple">
+<li><p>measures of central tendency and data distribution if the datatype is numeric (shown in the code
+below as <code class="docutils literal notranslate"><span class="pre">np.number</span></code>)</p></li>
+<li><p>the count, the number of unique values, the mode and its frequency if the datatype is an object (a combination of strings shown in the code below as <code class="docutils literal notranslate"><span class="pre">'O'</span></code>) or a categorical variable (shown in the
+code below as <code class="docutils literal notranslate"><span class="pre">'category'</span></code>)</p></li>
+</ul>
+<p>and checking for any missing headers or unwanted data in the last values of the dataset.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dataframes_displayed</span><span class="p">(</span><span class="n">df_dict</span><span class="o">=</span><span class="p">{},</span> <span class="n">input_string</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+
+    <span class="n">boolean</span><span class="o">=</span><span class="nb">bool</span><span class="p">()</span>
+
+    <span class="n">dataframe_describer</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_dict</span><span class="p">[</span><span class="n">input_string</span><span class="p">],</span> <span class="n">var_name</span><span class="o">=</span><span class="n">input_string</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">df_dict</span><span class="p">[</span><span class="n">input_string</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">df_dict</span><span class="p">[</span><span class="n">input_string</span><span class="p">][</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span>
+            <span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;O&#39;</span><span class="p">,</span><span class="s1">&#39;category&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">]))</span>
+
+    <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">df_dict</span><span class="p">[</span><span class="n">input_string</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">column</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;Unnamed:&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">boolean</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">if</span> <span class="n">boolean</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">df_dict</span><span class="p">[</span><span class="n">input_string</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">df_dict</span><span class="p">[</span><span class="n">input_string</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">df_dict</span><span class="p">[</span><span class="n">input_string</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">What does <code class="docutils literal notranslate"><span class="pre">column.find('Unnamed:')</span> <span class="pre">!=</span> <span class="pre">-1</span></code> mean?</p>
+<p>According to <a class="reference external" href="https://tech-related.com/p/6q3ePQloAv">this source</a>:</p>
+<p><em>The <code class="docutils literal notranslate"><span class="pre">str.find</span></code> method is to find whether there is a character or substring to be found in</em><br>
+<em>a given string or a substring within the range of the start and end index. If found, return</em><br>
+<em>the index of the appearance position, if not found, return -1.</em></p>
+<p>So <code class="docutils literal notranslate"><span class="pre">column.find('Unnamed:')</span> <span class="pre">!=</span> <span class="pre">-1</span></code> means that the <code class="docutils literal notranslate"><span class="pre">'Unnamed'</span></code> substring <strong>is not</strong> missing in the
+column name.</p>
+</div>
+</div>
+<div class="section" id="modifying-your-dataframes">
+<h3>Modifying your dataframes<a class="headerlink" href="#modifying-your-dataframes" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes you may wish to do a standard operation on a number of dataframes, so it is helpful to
+have functions that can do the transformations in one batch, instead of repeating code.</p>
+<p>🔎 The <code class="docutils literal notranslate"><span class="pre">column_remover</span></code> is really useful in deleting columns in each dataframe that share the same
+column name(s)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">column_remover</span><span class="p">(</span><span class="n">removed_columns</span><span class="o">=</span><span class="p">[],</span><span class="n">affected_dfs</span><span class="o">=</span><span class="p">{}):</span>
+    <span class="n">modified_dfs</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">affected_dfs</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">vals</span><span class="p">:</span>
+        <span class="n">modified_df</span> <span class="o">=</span> <span class="n">affected_dfs</span><span class="p">[</span><span class="n">val</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">modified_dfs</span><span class="p">[</span><span class="n">val</span><span class="p">]</span> <span class="o">=</span> <span class="n">modified_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">removed_columns</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">modified_dfs</span>
+</pre></div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Changing the actual variable</p>
+<p>To reflect a transformation, make a copy of the dataframe, then modify the dataframe. Store it in a new dictionary and return the transformed dictionary.</p>
+<p>It would be best practice to then save the transformation like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">transformed_dataframes</span> <span class="o">=</span> <span class="n">column_remover</span><span class="p">(</span>
+    <span class="n">removed_columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">],</span>
+    <span class="n">affected_dfs</span><span class="o">=</span><span class="n">original_dataframes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>🔎 If we wish to merge changes made to dataframes, ensure the modified dataframes and original dataframes share the same name, then we can run the following code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">original_dataframes</span> <span class="o">=</span>  <span class="p">{</span><span class="s1">&#39;df1&#39;</span><span class="p">:</span><span class="n">df1</span><span class="p">,</span>
+                        <span class="s1">&#39;df2&#39;</span><span class="p">:</span><span class="n">df2</span><span class="p">,</span>
+                        <span class="s1">&#39;df3&#39;</span><span class="p">:</span><span class="n">df3</span><span class="p">}</span>
+
+<span class="n">transformed_dataframes</span> <span class="o">=</span>   <span class="p">{</span><span class="s1">&#39;df1&#39;</span><span class="p">:</span><span class="n">df1</span><span class="p">,</span>
+                            <span class="s1">&#39;df3&#39;</span><span class="p">:</span><span class="n">df3</span><span class="p">}</span>
+
+<span class="n">current_dataframes</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">original_dataframes</span><span class="p">,</span> <span class="o">**</span><span class="n">transformed_dataframes</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Warning:</p>
+<p>Be VERY CAREFUL with the order; the transformed dictionary is put second, so
+that the update is reflected; if this is not done, the changes will be overwritten.</p>
+</div>
+<p>🔎 The <code class="docutils literal notranslate"><span class="pre">blank_row_remover</span></code> is really useful in deleting blank rows in each dataframe; <code class="docutils literal notranslate"><span class="pre">thresh=4</span></code> means that blank rows
+and rows that have 3 filled values or less will be deleted.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">blank_row_remover</span><span class="p">(</span><span class="n">affected_dfs</span><span class="o">=</span><span class="p">{},</span> <span class="n">silent</span><span class="o">=</span><span class="nb">bool</span><span class="p">()):</span>
+    <span class="n">modified_dfs</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="k">if</span> <span class="n">silent</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Before:&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">affected_dfs</span><span class="p">:</span>
+            <span class="n">blank_rows</span> <span class="o">=</span> <span class="n">affected_dfs</span><span class="p">[</span><span class="n">key</span><span class="p">][</span>
+                <span class="n">affected_dfs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">any_nulls</span> <span class="o">=</span> <span class="n">affected_dfs</span><span class="p">[</span><span class="n">key</span><span class="p">][</span>
+                <span class="n">affected_dfs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>        
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;There were </span><span class="si">{</span><span class="n">blank_rows</span><span class="si">}</span><span class="s1"> blank rows and </span><span class="si">{</span><span class="n">any_nulls</span><span class="si">}</span><span class="s1"> rows&#39;</span><span class="p">,</span>
+                  <span class="sa">f</span><span class="s1">&#39;containing null values in </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">affected_dfs</span><span class="p">:</span>
+        <span class="n">modified_df</span> <span class="o">=</span> <span class="n">affected_dfs</span><span class="p">[</span><span class="n">val</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">modified_dfs</span><span class="p">[</span><span class="n">val</span><span class="p">]</span> <span class="o">=</span> <span class="n">modified_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span><span class="n">thresh</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">silent</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;After:&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">modified_dfs</span><span class="p">:</span>
+            <span class="n">blank_rows</span> <span class="o">=</span> <span class="n">modified_dfs</span><span class="p">[</span><span class="n">key</span><span class="p">][</span>
+                <span class="n">modified_dfs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">any_nulls</span> <span class="o">=</span> <span class="n">modified_dfs</span><span class="p">[</span><span class="n">key</span><span class="p">][</span>
+                <span class="n">modified_dfs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;There were </span><span class="si">{</span><span class="n">blank_rows</span><span class="si">}</span><span class="s1"> blank rows and </span><span class="si">{</span><span class="n">any_nulls</span><span class="si">}</span><span class="s1"> rows&#39;</span><span class="p">,</span>
+                  <span class="sa">f</span><span class="s1">&#39;containing null values in </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+        
+    <span class="k">return</span> <span class="n">modified_dfs</span>
+</pre></div>
+</div>
+<p>🔎 The <code class="docutils literal notranslate"><span class="pre">header_promoter</span></code> is really useful in identifying dataframes within a dictionary that are
+missing headers, and then promoting the header in that case.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">header_promoter</span><span class="p">(</span><span class="n">affected_dfs</span><span class="o">=</span><span class="p">{},</span> <span class="n">silent</span><span class="o">=</span><span class="nb">bool</span><span class="p">()):</span>
+    
+    <span class="n">boolean</span><span class="o">=</span><span class="nb">bool</span><span class="p">()</span>
+    <span class="n">modified_dfs</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">affected_dfs</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">affected_dfs</span><span class="p">[</span><span class="n">val</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">column</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;Unnamed:&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">boolean</span> <span class="o">=</span> <span class="kc">True</span>
+                
+        <span class="k">if</span> <span class="n">boolean</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">modified_df</span> <span class="o">=</span> <span class="n">affected_dfs</span><span class="p">[</span><span class="n">val</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">modified_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">modified_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span>
+            <span class="c1"># drop the column name source</span>
+            <span class="n">modified_df</span> <span class="o">=</span> <span class="n">modified_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">modified_df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">modified_dfs</span><span class="p">[</span><span class="n">val</span><span class="p">]</span> <span class="o">=</span> <span class="n">modified_df</span>
+    
+    <span class="k">if</span> <span class="n">silent</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">affected_dfs</span><span class="p">:</span>
+            <span class="n">df_name</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+            <span class="n">df_name</span> <span class="o">=</span> <span class="n">df_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">df_name</span><span class="si">}</span><span class="s1"> before:&#39;</span><span class="p">)</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">affected_dfs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">df_name</span><span class="si">}</span><span class="s1"> after:&#39;</span><span class="p">)</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">modified_dfs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">modified_dfs</span>
+</pre></div>
+</div>
+<p>Notice that in the 3 example functions, we incorporate</p>
+<ul class="simple">
+<li><p>output that allows us to see the before and after transformation</p></li>
+<li><p>use of <code class="docutils literal notranslate"><span class="pre">silent=bool()</span></code> argument to show or hide the output as needed</p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">N/B:</p>
+<p>You can also name variables using the dictionary keys (which are strings)</p>
+<p>If we want the variable to be a global one:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">new_number</span> <span class="o">=</span> <span class="n">dict_key</span> <span class="o">+</span> <span class="s1">&#39;_new_number&#39;</span>
+<span class="nb">globals</span><span class="p">()[</span><span class="n">new_number</span><span class="p">]</span> <span class="o">=</span> <span class="mi">25</span>
+</pre></div>
+</div>
+<p>and if we want it to exist only locally:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">new_number</span> <span class="o">=</span> <span class="n">dict_key</span> <span class="o">+</span> <span class="s1">&#39;_new_number&#39;</span>
+<span class="nb">locals</span><span class="p">()[</span><span class="n">new_number</span><span class="p">]</span> <span class="o">=</span> <span class="mi">25</span>
+</pre></div>
+</div>
+<p>Local variables are stored in the <code class="docutils literal notranslate"><span class="pre">locals()</span></code> dictionary and global variables are stored in the <code class="docutils literal notranslate"><span class="pre">globals()</span></code> dictionary.</p>
+</div>
+</div>
+</div>
+<div class="section" id="leveraging-numpy-with-pandas-in-python">
+<h2>Leveraging <code class="docutils literal notranslate"><span class="pre">numpy</span></code> with <code class="docutils literal notranslate"><span class="pre">pandas</span></code> in Python<a class="headerlink" href="#leveraging-numpy-with-pandas-in-python" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">np.repeat(a=np.array()|pd.Series()|pd.DataFrame(),n,axis=0|1)</span></code> allows you to repeat each item in <code class="docutils literal notranslate"><span class="pre">a</span></code> <span class="math notranslate nohighlight">\(n\)</span> number of times, creating either <code class="docutils literal notranslate"><span class="pre">n</span></code> number of columns if <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> or <code class="docutils literal notranslate"><span class="pre">n</span></code> number of rows if <code class="docutils literal notranslate"><span class="pre">axis=0</span></code>, while <code class="docutils literal notranslate"><span class="pre">np.tile(a=np.array()|pd.Series()|pd.DataFrame(),n)</span></code> allows you to duplicate <code class="docutils literal notranslate"><span class="pre">a</span></code> <span class="math notranslate nohighlight">\(n\)</span> number of times.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Behind the Scenes of my Learning Journey <br> 🤔💡</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../2/JB_explored.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Jupyter Books explored 📙</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Cynthia Thinwa<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,612 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My NLP Experiences &#8212; BTS: Continuous Learning</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Resource Bin" href="../ref/resources.html" />
+    <link rel="prev" title="Mental Scaffolding" href="mental_scaffolding.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">BTS: Continuous Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Behind the Scenes of my Learning Journey
+   <br/>
+   🤔💡
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1/pandas_python.html">
+   Functional Pandas in Python workflow 🐼🐍
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../2/JB_explored.html">
+   Jupyter Books explored 📙
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2/initial_setup.html">
+     Initial Setup &amp; Maintenance 🛠️
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2/customised_front_end.html">
+     Customizing the Front End 🌼
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="NLP_explored.html">
+   Natural Language Processing explored
+   <br/>
+   🔠📢🈺
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="mental_scaffolding.html">
+     Mental Scaffolding
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     My NLP Experiences
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ref/resources.html">
+   Resource Bin
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ref/code_along_resources.html">
+     Code-Along Resources
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ref/career_resources.html">
+     Career Resources for Data Professionals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ref/further_reading.html">
+     Further reading
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/3/NLP_experiences.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#my-first-experience-handling-amazon-alexa-data">
+   My first experience - handling Amazon Alexa data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#skills-at-work">
+     Skills at work
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-job-ad-data">
+   Working with job ad data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Skills at work
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-twitter-data-in-my-delta-analytics-fellowship">
+   Working with Twitter data in my Delta Analytics fellowship
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Skills at work
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>My NLP Experiences</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#my-first-experience-handling-amazon-alexa-data">
+   My first experience - handling Amazon Alexa data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#skills-at-work">
+     Skills at work
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-job-ad-data">
+   Working with job ad data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Skills at work
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-twitter-data-in-my-delta-analytics-fellowship">
+   Working with Twitter data in my Delta Analytics fellowship
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Skills at work
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="my-nlp-experiences">
+<span id="nlp-experience"></span><h1>My NLP Experiences<a class="headerlink" href="#my-nlp-experiences" title="Permalink to this headline">¶</a></h1>
+<p>The first unstructured data that I ventured to use
+for a data science project was text.</p>
+<div class="section" id="my-first-experience-handling-amazon-alexa-data">
+<h2>My first experience - handling Amazon Alexa data<a class="headerlink" href="#my-first-experience-handling-amazon-alexa-data" title="Permalink to this headline">¶</a></h2>
+<p>Looking for data science work armed with a theoretical foundation
+(Microsoft Professional Program in Data Science) and a capstone
+project, I was given a challenge based on Amazon Alexa review
+data. It was the first time I came across text data. It also did
+not help that it had a tight time window - I had to write the
+code and markdown for the notebook from scratch, then test and
+submit it within 2 hours (he would check the log to confirm).
+Needless to say, I did not finish on time - I struggled with it
+for a day.</p>
+<p>That said, that experience allowed my to get my hands dirty with
+text data. In my mind, the use case was obvious in marketing -
+analysing written customer feedback from all communication
+channels.</p>
+<p>The mistakes that I made at this point include:</p>
+<ol class="simple">
+<li><p>I repeated myself a lot and did not make use of functions
+and list comprehension. An example of such code is below:<br>
+<br>
+<img alt="Alexa1" src="../_images/img11.png" />
+<br>
+<br></p></li>
+<li><p>While my code did get the job done, it was not reproducible.
+I did too many custom tweaks during feature engineering, such
+that if I tried using this code on another text dataset, it would
+break. This would include use of specific words as filters as
+shown below:<br>
+<br>
+<img alt="Alexa2" src="../_images/img12.png" />
+<br>
+<br></p></li>
+<li><p>I didn’t do any model evaluation and interpretation - this
+was my version of explaining why I chose a model and a certain
+loss function:<br>
+<br>
+<img alt="Alexa3" src="../_images/img13.png" /></p></li>
+</ol>
+<div class="section" id="skills-at-work">
+<h3>Skills at work<a class="headerlink" href="#skills-at-work" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Data Exploration</p></li>
+<li><p>Data Visualization</p></li>
+<li><p>Model Training &amp; Evaluation</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="working-with-job-ad-data">
+<h2>Working with job ad data<a class="headerlink" href="#working-with-job-ad-data" title="Permalink to this headline">¶</a></h2>
+<p>Fast-forward to some months later, I wanted to know what would be
+needed to get an applied data science role in marketing. The job
+title that I knew at the time was ‘Marketing Researcher’.</p>
+<p>I decided to mine a job board and restrict results to the USA.
+I wondered how to visualise the frequency of words and phrases.
+It was at this point that I decided to use <em>PowerBI</em> instead of
+<em>Python</em>’s <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> - I was more comfortable using the
+former.</p>
+<p>I also saw that joining words in sequence (way before I had ever
+even heard of LSTMs) gave greater context compared to getting
+frequency of the word alone.<br></p>
+<p>To that end, I wrote a function systemizing the same:<br>
+<br>
+<img alt="JAd1" src="../_images/img14.png" /><br>
+<br>
+and wrote another function that could generate a mini-report of
+the top 5 phrases:<br>
+<br>
+<img alt="JAd2" src="../_images/img15.png" /></p>
+<div class="section" id="id1">
+<h3>Skills at work<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Data Mining</p></li>
+<li><p>Data Exploration</p></li>
+<li><p>Data Visualization</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="working-with-twitter-data-in-my-delta-analytics-fellowship">
+<h2>Working with Twitter data in my Delta Analytics fellowship<a class="headerlink" href="#working-with-twitter-data-in-my-delta-analytics-fellowship" title="Permalink to this headline">¶</a></h2>
+<p>This period is where I got to really practice and hone skills
+in this space, and delve deeper into NLP practices as a whole.</p>
+<p>NLP as a field is very wide because it has a variety of data
+forms (text, audio and video) and it also has a wide variety of
+uses (automation of tasks like translation, data annotation,
+transcription, voice synthesis, call analysis, synopsis
+generation etc.)</p>
+<p>Due to its broad nature, I was forced to create a framework for myself that captured the
+overarching concepts in NLP and then solve the problem at hand.
+The problem that I aimed to solve in my fellowship was
+determining sentiment in multilingual, code-switched
+conversations, especially in the Kenyan context. This framework,
+the NLP toolbox 🧰, was so useful in helping me structure my
+talk in a more scientific way.</p>
+<p>The mistakes that I made in this third NLP project were more
+meta, less technical in terms of error.
+This project helped me learn a lot of things like</p>
+<ol class="simple">
+<li><p><strong>Determine if you want to tell a technical or real-world
+story.</strong><br>
+As I was preparing my graduation lecture, I wanted to show my
+process from start to finish - how my conceptual framework/
+mental scaffolding worked, and launch into the localised
+story and how the framework was applied.<br>
+I found that I needed to choose either the local application
+or the framework to present to avoid causing my audience
+unnecessary confusion.<br>
+<br></p></li>
+<li><p><strong>Balance simplicity and complexity.</strong><br>
+One of the things that made this project gruelling is that I had
+to clean data and optimize my model to deliver feasible results
+in a short time <em>AND</em> make the content and presenter (me) as
+compelling as possible to mixed (technical and non-technical)
+audiences while describing the model and interpreting model
+findings.<br>
+The fellowship taught a lot of pedagogy that I had to apply
+such that</p>
+<ul class="simple">
+<li><p>technical aspects of the project have to be innovative
+(I combined existing techniques in a new way for local data)</p></li>
+<li><p>key concepts and findings have to be designed into a
+compelling data story and presented in a compelling way
+<br><br></p></li>
+</ul>
+</li>
+<li><p><strong>The project has to leave the lab and enter production.</strong>
+<br>
+This was the first time that I ran R and Python
+code in the same notebook, which was great! That said, one of
+the challenges of maneuvering a mixed environment in my
+notebook is the data had to be downloaded from one environment,
+then uploaded into the other environment ready for manipulation.
+<br>
+This makes running the project okay in the lab, but it makes the
+code very hard to use in production as is. Thankfully, I got to
+experience a code lab with <em>Streamlit</em> (a Python library
+designed to turn a Python script into an app) and join
+<em>Masakhane</em>, a grassroots movement advancing African
+language access in digital spaces. In both spaces, I was
+introduced to the concept of a transformer for the first time.
+<br><br></p></li>
+<li><p><strong>Make JSON and other unconventional data formats your
+friend.</strong><br>
+The Twitter data had a column in JSON, which was a pain to read
+in R:<br><br>
+<img alt="KOT1" src="../_images/img16.png" /><br><br>
+because it was loaded as a string. After troubleshooting with
+my coach, she found
+<a href='https://stackoverflow.com/a/42631426'>this solution</a>
+and shared how to read JSON in Python:<br>
+<br><img alt="KOT2" src="../_images/img17.png" /><br><br>
+and R:<br>
+<br><img alt="KOT3" src="../_images/img18.png" /><br><br></p></li>
+<li><p><strong>Rehearse, rehearse, rehearse.</strong><br>
+A common thing that an ad agency will do is to conduct a “<em>dry run</em>”
+24 hours to a pitch. This is where the presenter presents to the
+office as if they were the client.<br>
+This concept applied to teaching or sharing ML/AI concepts
+is: do a dry-run as many times as possible
+before the main event (maybe 3 times or more).<br>
+Additionally, the presenter, if live-streaming, has to run an
+actual live-stream with the team (in my case, my coach Ugaso and
+a key facilitator, Melissa). This is incredibly important for
+the following reasons:</p>
+<ul class="simple">
+<li><p>it calms nerves on the actual day</p></li>
+<li><p>it allows the presenter and/or team to spot mistakes in the
+presentation like typos, misaligned content, unclear
+illustrations, slides that are too wordy etc.</p></li>
+<li><p>it allows the team, at the end of the rehearsal, to identify
+mistakes in presentation delivery such as poor flow,
+mispronunciation, lack of eye contact with camera/physical
+audience etc.</p></li>
+<li><p>it allows the team as a whole to master the streaming
+software and preempt possible technical issues e.g. internet
+outage, power outage, poor lighting etc.</p></li>
+<li><p>it trains the presenter to avoid reading the presentation
+slides word for word and instead highlight</p></li>
+<li><p>it ensures that eventually, pedagogy and presenting best
+practice is implemented, such that the presenter can smoothly
+deliver the presentation even with unexpected questions and
+feedback from the audience on the day of the presentation.</p></li>
+</ul>
+</li>
+</ol>
+<div class="section" id="id2">
+<h3>Skills at work<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Data Mining</p></li>
+<li><p>Data Exploration</p></li>
+<li><p>Data Visualization</p></li>
+<li><p>Model Training &amp; Evaluation</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="mental_scaffolding.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Mental Scaffolding</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../ref/resources.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Resource Bin</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Cynthia Thinwa<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
