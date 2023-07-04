@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mental Scaffolding &#8212; BTS: Continuous Learning</title>
+    <title>Server Setup Notes &#8212; BTS: Continuous Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="My NLP Experiences" href="NLP_experiences.html" />
-    <link rel="prev" title="Natural Language Processing explored 🔠📢🈺" href="NLP_explored.html" />
+    <link rel="next" title="Resource Bin" href="../ref/resources.html" />
+    <link rel="prev" title="Cloud explored" href="cloud_explored.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -128,42 +128,42 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="NLP_explored.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../3/NLP_explored.html">
    Natural Language Processing explored
    <br/>
    🔠📢🈺
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3/mental_scaffolding.html">
+     Mental Scaffolding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3/NLP_experiences.html">
+     My NLP Experiences
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="cloud_explored.html">
+   Cloud explored
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Mental Scaffolding
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="NLP_experiences.html">
-     My NLP Experiences
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../6/cloud_explored.html">
-   Cloud explored
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../6/VM_setup.html">
      Server Setup Notes
     </a>
    </li>
@@ -233,7 +233,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/3/mental_scaffolding.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/6/VM_setup.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -265,7 +265,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Mental Scaffolding</h1>
+                <h1>Server Setup Notes</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -276,38 +276,8 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="mental-scaffolding">
-<span id="id1"></span><h1>Mental Scaffolding<a class="headerlink" href="#mental-scaffolding" title="Permalink to this headline">¶</a></h1>
-<p>Technical concepts in general can be difficult to understand, and NLP is no different. For me to teach NLP to mixed
-audiences, I had to create a learning framework for myself and my audience, so that I could understand how to communicate
-key concepts in the space and at the same time help my audience to follow my train of thought and understand NLP just a
-bit better.</p>
-<p>To that end, I created for myself a learning and planning framework for NLP which I call <u>the NLP toolbox</u>. Below
-is an excerpt from
-<a class="reference external" href="https://medium.com/&#64;ceethinwa/delivering-success-in-natural-language-processing-projects-part-one-40c4775cf6a9">an article I wrote outlining this thought process</a>:</p>
-<div class="tip admonition">
-<p class="admonition-title">EXCERPT</p>
-<p><em>First things first:</em></p>
-<p><em><strong>We are unique people learning in a dynamic world.</strong></em></p>
-<p><em>It is no secret that the path to learning is not the same for everyone. It can be incredibly challenging for some and quite straightforward and smooth for others.</em></p>
-<p><em>Quick hacks can be great when you want to cram key information before an important meeting where you have to have all the answers. However, if you are in the world of tech, you know that new concepts, ideas and tools are being created rapidly — this means that in a day or a couple of weeks, what you crammed for that meeting may be irrelevant by the time you are ready to present.</em></p>
-<p><em>You need to understand key underlying concepts, so that your knowledge can stand the test of time and these concepts can be applied and/or combined in new ways. Use of meta-tools can help people to understand technical concepts and apply them in the real world.</em></p>
-<p><em>Scaffolding is a learning theory initially conceived by Vygotsky where</em></p>
-<ol class="simple">
-<li><p><em>a learner uses structured support provided by a teacher or more advanced student</em></p></li>
-<li><p><em>which is used to learn a challenging concept, slightly above their level of understanding</em></p></li>
-<li><p><em>until the student no longer needs the support, enabling the teacher/more advanced student to fade away</em></p></li>
-</ol>
-<p><em>It is important to note that</em></p>
-<p><em><strong>Just like scaffolding can be provided by a teacher to make the learning process faster,</strong></em><br>
-<em><strong>the learner can create for themselves and others their own scaffolding.</strong></em></p>
-<p><em>As part of my Delta Analytics fellowship, I had to complete a multilingual NLP project (which I had never done before) and present my work in a short amount of time — I had to have tools that could help me understand the NLP concepts that I was struggling with and at the same time structure my project. Even with an incredibly helpful coach, I had to figure out stuff for myself.</em></p>
-<p><em>I had no choice; I had to create my own mental scaffolding.</em></p>
-<p><em>My scaffolding was the NLP toolbox, which I created to help myself and others seeking to understand and implement an NLP project — end-to-end. After all, understanding and implementing NLP projects is crucial to their success.</em></p>
-<p><em><strong>The NLP toolbox is a collection of concepts, tools and ideas available for building applications that can handle
-real-world challenges around understanding content from all over the world.</strong></em><br>
-<em>It can be used for any NLP task such as sentiment analysis, translation, transcription, audio synthesis etc.</em></p>
-</div>
+  <div class="tex2jax_ignore mathjax_ignore section" id="server-setup-notes">
+<span id="vm-setup"></span><h1>Server Setup Notes<a class="headerlink" href="#server-setup-notes" title="Permalink to this headline">¶</a></h1>
 </div>
 
     <script type="text/x-thebe-config">
@@ -323,7 +293,7 @@ real-world challenges around understanding content from all over the world.</str
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./3"
+            path: "./6"
         },
         predefinedOutput: true
     }
@@ -335,17 +305,17 @@ real-world challenges around understanding content from all over the world.</str
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="NLP_explored.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="cloud_explored.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Natural Language Processing explored <br> 🔠📢🈺</p>
+            <p class="prev-next-title">Cloud explored</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="NLP_experiences.html" title="next page">
+    <a class='right-next' id="next-link" href="../ref/resources.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">My NLP Experiences</p>
+        <p class="prev-next-title">Resource Bin</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
