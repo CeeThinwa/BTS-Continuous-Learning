@@ -13,7 +13,9 @@ chapters:
   sections:
     - file: 3/mental_scaffolding
     - file: 3/NLP_experiences
-- file: 6/cloud-explored
+- file: 6/cloud_explored
+  sections:
+    - file: 6/VM_setup
 - file: ref/resources
   sections:
     - file: ref/code_along_resources
