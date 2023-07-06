@@ -258,6 +258,29 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#server-access">
+   Server Access
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#superuser-creation">
+   Superuser creation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#restrict-root-access">
+   Restrict root access
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -270,6 +293,29 @@
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#server-access">
+   Server Access
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#superuser-creation">
+   Superuser creation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#restrict-root-access">
+   Restrict root access
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -290,9 +336,66 @@ and <a class="reference external" href="https://docs.digitalocean.com/products/d
 <p>In as much as a SSH key is safer, it is simpler to</p>
 <ol class="simple">
 <li><p>setup using a password,</p></li>
+<li><p>setup a superuser</p></li>
 <li><p>generate the pair of SSH keys and passphrase within the server itself, then</p></li>
-<li><p>block password authentication to only rely on SSH authentication.</p></li>
+<li><p>block root user access and</p></li>
+<li><p>block password authentication to only rely on SSH authentication</p></li>
 </ol>
+<div class="section" id="server-access">
+<h2>Server Access<a class="headerlink" href="#server-access" title="Permalink to this headline">¶</a></h2>
+<p>The first step if using a Windows device is to install PuTTY, a SSH and telnet client that allows you to connect
+securely to a particular physical or virtual server. The latest version can be downloaded
+from <a class="reference external" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">here</a>. Once it is installed, navigate to it as
+shown below:</p>
+<p><img alt="accessing PuTTY" src="../_images/putty-first-time1.jpg" /></p>
+<p>Once you open it, paste the IP address into the correct field; also ensure the port is set to <code class="docutils literal notranslate"><span class="pre">22</span></code> and
+the connection type selected is <code class="docutils literal notranslate"><span class="pre">SSH</span></code> like so:</p>
+<p><img alt="PuTTY homepage" src="../_images/putty-first-time3.jpg" /></p>
+<p>For the first login, you will get the following disclaimer:</p>
+<p><img alt="PuTTY homepage" src="../_images/putty-first-time2.jpg" /></p>
+<p>The best thing to do is so choose the option <code class="docutils literal notranslate"><span class="pre">No</span></code> as selected above, so that you can do the entire configuration without
+it being cached.</p>
+</div>
+<div class="section" id="superuser-creation">
+<h2>Superuser creation<a class="headerlink" href="#superuser-creation" title="Permalink to this headline">¶</a></h2>
+<p>You will then be prompted for your username, which in this case is <code class="docutils literal notranslate"><span class="pre">root</span></code> and your password.
+For security purposes, you will not see it even as you type it out, but once you press the <code class="docutils literal notranslate"><span class="pre">enter</span></code>
+button, you will be successfully logged in as shown below:</p>
+<p><img alt="PuTTY successfull access" src="../_images/putty-first-time4.jpg" /></p>
+<p>Once logged in, add the new superuser like so:</p>
+<p><img alt="new superuser" src="../_images/putty-first-time5.jpg" /></p>
+<p>Then make them a superuser by changing their usergroup from the group they are currently
+in (same as the username itself) to <code class="docutils literal notranslate"><span class="pre">sudo</span></code> group like so:</p>
+<p><img alt="new superuser" src="../_images/putty-first-time6.jpg" /></p>
+<p>(For a deeper dive into configuring sudo users, you can read <a class="reference external" href="https://jumpcloud.com/blog/how-to-create-sudo-user-manage-sudo-access-ubuntu-22-04">this article</a>.)</p>
+<p>We then test if this new user actually does have administrative rights like so:</p>
+<p><img alt="superuser sudo 1" src="../_images/putty-first-time7.jpg" /></p>
+<p>As shown above, we can see that the user does have admin rights once sudo is put in front of the command and
+they key in their password; this user can control administrative privileges of subsequent users.</p>
+<p>The next step is to generate a pair of SSH keys for this user like so:</p>
+<p><img alt="superuser ssh 1" src="../_images/putty-first-time8.jpg" /></p>
+<p>Also authenticate your newly generated key, then test ssh login like so:</p>
+<p><img alt="superuser ssh 2" src="../_images/putty-first-time9.jpg" /></p>
+</div>
+<div class="section" id="restrict-root-access">
+<h2>Restrict root access<a class="headerlink" href="#restrict-root-access" title="Permalink to this headline">¶</a></h2>
+<p>To prevent any localized logins as root using a password, (as per <a class="reference external" href="https://www.howtogeek.com/828538/how-and-why-to-disable-root-login-over-ssh-on-linux/">this article</a>)
+you use both the <code class="docutils literal notranslate"><span class="pre">-l</span></code> (lock) and <code class="docutils literal notranslate"><span class="pre">-d</span></code> (delete password) options, combined as <code class="docutils literal notranslate"><span class="pre">-ld</span></code> like so:</p>
+<p><img alt="root disabled 1" src="../_images/putty-first-time12.jpg" /></p>
+<p>As you can now see below, users are no longer able to log into the server under <code class="docutils literal notranslate"><span class="pre">root</span></code>.</p>
+<p><img alt="root disabled 2" src="../_images/putty-first-time13.jpg" /></p>
+<p>To prevent root login via ssh, as the superuser, navigate to the <code class="docutils literal notranslate"><span class="pre">sshd_config</span></code> file and set</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PasswordAuthentication</span></code> to <code class="docutils literal notranslate"><span class="pre">no</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PermitRootLogin</span></code> to <code class="docutils literal notranslate"><span class="pre">no</span></code></p></li>
+</ul>
+<p><img alt="ssh config 1" src="../_images/putty-first-time10.jpg" /></p>
+<p><img alt="ssh config 2" src="../_images/putty-first-time11.jpg" /></p>
+<p><img alt="ssh config 3" src="../_images/putty-first-time14.jpg" /></p>
+<p>Save your changes, then restart the server for the changes to take effect. If we test login,
+after 3 attempts <code class="docutils literal notranslate"><span class="pre">root</span></code> will be locked out, as shown below:</p>
+<p><img alt="ssh reboot and test for root" src="../_images/putty-first-time15.jpg" /></p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
