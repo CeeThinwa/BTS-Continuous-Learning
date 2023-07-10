@@ -10,5 +10,5 @@ In this section, I will take you through how:
 1. [I set up my virtual private server as simply yet securely as possible](VM-setup)
 2. I manage users and credentials securely
 3. I build an API to programmatically fetch data from different sources in sequence
-4. I connect to and out-of-the-box ML
+4. I connect to an out-of-the-box ML
 5. I track and preserve data lineage and provenance records
