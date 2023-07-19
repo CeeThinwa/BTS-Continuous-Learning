@@ -16,6 +16,7 @@ chapters:
 - file: 6/cloud_explored
   sections:
     - file: 6/server_setup
+    - file: 6/database_setup
     - file: 6/api_setup
 - file: ref/resources
   sections:
