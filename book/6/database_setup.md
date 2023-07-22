@@ -40,19 +40,19 @@ So as per the advice in these 2 articles ([here](https://stackoverflow.com/quest
 [here](https://stackoverflow.com/questions/56141254/enabling-hyper-v-in-bios-is-required-for-docker-to-work)),
 I ran the following commands in Windows Powershell as an admin:
 
-![Admin Powershell Output 1](../images/Hyper-V%201.jpg)
+![Admin Powershell Output 1](../images/Hyper-V-1.jpg)
 
 However, due to the error shown, I had to navigate to control panel "Turn Windows Features on or off"
 and select the checkbox for the feature pointed at (as you can see, it was off):
 
-![Turn Windows Features On 1](../images/Hyper-V%202.jpg)
+![Turn Windows Features On 1](../images/Hyper-V-2.jpg)
 
-![Turn Windows Features On 2](../images/Hyper-V%203.jpg)
+![Turn Windows Features On 2](../images/Hyper-V-3.jpg)
 
 Once I checked it and the update finished installation, I got the following prompt to restart my
 machine:
 
-![Turn Windows Features On 3](../images/Hyper-V%204.jpg)
+![Turn Windows Features On 3](../images/Hyper-V-4.jpg)
 
 To turn on Virtualization in the BIOS menu, as per [this article](https://www.thewindowsclub.com/disable-hardware-virtualization-in-windows-10),
 when restarting the computer, press `shift` and `F10` until you access the Windows blue screen where you:
@@ -66,7 +66,7 @@ Once in the BIOS menu, navigate to the `Virtualization` option and select `Enabl
 
 When opening Docker again, I got a new error:
 
-![Docker error 2](../images/docker-home%202.jpg)
+![Docker error 2](../images/docker-home-2.jpg)
 
 When I went to [this link](https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package), I ran the
 `wsl.exe --update` command in Powershell as an admin like so:
