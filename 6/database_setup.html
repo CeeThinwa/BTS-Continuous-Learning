@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Server Setup Notes &#8212; BTS: Continuous Learning</title>
+    <title>Database Setup Notes &#8212; BTS: Continuous Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Database Setup Notes" href="database_setup.html" />
-    <link rel="prev" title="Cloud explored" href="cloud_explored.html" />
+    <link rel="next" title="API" href="api_setup.html" />
+    <link rel="prev" title="Server Setup Notes" href="server_setup.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -162,13 +162,13 @@
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="server_setup.html">
      Server Setup Notes
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="database_setup.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Database Setup Notes
     </a>
    </li>
@@ -243,7 +243,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/6/server_setup.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/6/database_setup.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -274,19 +274,36 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#server-access">
-   Server Access
+  <a class="reference internal nav-link" href="#nosql-database">
+   NoSQL Database
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#superuser-creation">
-   Superuser creation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#restrict-root-access">
-   Restrict root access
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#local-elasticsearch-setup">
+     Local
+     <em>
+      ElasticSearch
+     </em>
+     setup
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#u-docker-setup-on-windows-my-experience-u">
+       <u>
+        Docker setup on Windows: my experience
+       </u>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#u-elasticsearch-setup-u">
+       <u>
+        ElasticSearch Setup
+       </u>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -298,7 +315,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Server Setup Notes</h1>
+                <h1>Database Setup Notes</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -309,19 +326,36 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#server-access">
-   Server Access
+  <a class="reference internal nav-link" href="#nosql-database">
+   NoSQL Database
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#superuser-creation">
-   Superuser creation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#restrict-root-access">
-   Restrict root access
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#local-elasticsearch-setup">
+     Local
+     <em>
+      ElasticSearch
+     </em>
+     setup
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#u-docker-setup-on-windows-my-experience-u">
+       <u>
+        Docker setup on Windows: my experience
+       </u>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#u-elasticsearch-setup-u">
+       <u>
+        ElasticSearch Setup
+       </u>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -332,79 +366,84 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="server-setup-notes">
-<span id="vm-setup"></span><h1>Server Setup Notes<a class="headerlink" href="#server-setup-notes" title="Permalink to this headline">¶</a></h1>
-<p>My first task was to identify a suitable server in terms of compute and storage space that worked for the project that I had in mind</p>
-<ul class="simple">
-<li><p>For my first project, a tiny server was enough</p></li>
-<li><p>For an ElasticSearch database, I worked with (as per this <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-20-04">recommendation</a>) a slightly larger Ubuntu 22.10 server with 4GB RAM, 2 CPUs and regular disk type</p></li>
-</ul>
-<p>During setup, I learned the hard way after getting the <code class="docutils literal notranslate"><span class="pre">PuTTY</span> <span class="pre">Fatal</span> <span class="pre">Error</span></code> error <code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">supported</span> <span class="pre">authentication</span> <span class="pre">methods</span> <span class="pre">available</span> <span class="pre">(server</span> <span class="pre">sent:</span> <span class="pre">publickey)</span></code> (in spite of following <a class="reference external" href="https://www.bingehacking.net/2022/01/putty-no-supported-authentication.html">this</a>
-and <a class="reference external" href="https://docs.digitalocean.com/products/droplets/how-to/connect-with-ssh/putty/">this</a>
-and <a class="reference external" href="https://docs.digitalocean.com/products/droplets/how-to/add-ssh-keys/create-with-putty/">this</a>)
-<strong>setup the server using a password for root user</strong>!</p>
-<p>In as much as a SSH key is safer, it is simpler to</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="database-setup-notes">
+<span id="db-setup"></span><h1>Database Setup Notes<a class="headerlink" href="#database-setup-notes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="nosql-database">
+<h2>NoSQL Database<a class="headerlink" href="#nosql-database" title="Permalink to this headline">¶</a></h2>
+<p>The database of choice that I decided to adopt in this category was <em>ElasticSearch</em>.</p>
+<p>Based on <a class="reference external" href="https://www.elastic.co/webinars/getting-started-elasticsearch">the page where one could get started</a>,
+I went to their <a class="reference external" href="https://www.elastic.co/downloads/elasticsearch">download page</a>.</p>
+<div class="section" id="local-elasticsearch-setup">
+<h3>Local <em>ElasticSearch</em> setup<a class="headerlink" href="#local-elasticsearch-setup" title="Permalink to this headline">¶</a></h3>
+<p>I decided to first set it up locally on my Windows.</p>
+<div class="section" id="u-docker-setup-on-windows-my-experience-u">
+<h4><u>Docker setup on Windows: my experience</u><a class="headerlink" href="#u-docker-setup-on-windows-my-experience-u" title="Permalink to this headline">¶</a></h4>
+<p>Elasticsearch runs within a Docker container, so I went <a class="reference external" href="https://www.docker.com/products/docker-desktop/">here</a>
+to download Docker Desktop.</p>
+<p>If you directly attempt to install Docker Desktop, you get the following error:</p>
+<p><img alt="Docker error" src="../_images/docker-error.jpg" /></p>
+<p>As per the guidance in <a class="reference external" href="https://stackoverflow.com/questions/71095210/installing-docker-desktop-4-5-0-failed-componet-communityinstaller-enablefeatur">this article</a>
+I managed the Windows Management Instrumentation (WMI) by entering my Command Prompt and running the commands below:</p>
+<p><img alt="WMI commands 1" src="../_images/WMI-commands1.jpg" /></p>
+<p><img alt="WMI commands 2" src="../_images/WMI-commands2.jpg" /></p>
+<p>I then rebooted and voila!</p>
+<p><img alt="Docker success" src="../_images/docker-success.jpg" /></p>
+<p>However when I started Docker, I got the following notice:</p>
+<p><img alt="Docker error 2" src="../_images/docker-home.jpg" /></p>
+<p>So as per the advice in these 2 articles (<a class="reference external" href="https://stackoverflow.com/questions/39684974/docker-for-windows-error-hardware-assisted-virtualization-and-data-execution-p">here</a> and
+<a class="reference external" href="https://stackoverflow.com/questions/56141254/enabling-hyper-v-in-bios-is-required-for-docker-to-work">here</a>),
+I ran the following commands in Windows Powershell as an admin:</p>
+<p><img alt="Admin Powershell Output 1" src="../_images/Hyper-V-1.jpg" /></p>
+<p>However, due to the error shown, I had to navigate to control panel “Turn Windows Features on or off”
+and select the checkbox for the feature pointed at (as you can see, it was off):</p>
+<p><img alt="Turn Windows Features On 1" src="../_images/Hyper-V-2.jpg" /></p>
+<p><img alt="Turn Windows Features On 2" src="../_images/Hyper-V-3.jpg" /></p>
+<p>Once I checked it and the update finished installation, I got the following prompt to restart my
+machine:</p>
+<p><img alt="Turn Windows Features On 3" src="../_images/Hyper-V-4.jpg" /></p>
+<p>To turn on Virtualization in the BIOS menu, as per <a class="reference external" href="https://www.thewindowsclub.com/disable-hardware-virtualization-in-windows-10">this article</a>,
+when restarting the computer, press <code class="docutils literal notranslate"><span class="pre">shift</span></code> and <code class="docutils literal notranslate"><span class="pre">F10</span></code> until you access the Windows blue screen where you:</p>
 <ol class="simple">
-<li><p>setup using a password,</p></li>
-<li><p>setup a superuser</p></li>
-<li><p>generate the pair of SSH keys and passphrase within the server itself, then</p></li>
-<li><p>block root user access and</p></li>
-<li><p>block password authentication to only rely on SSH authentication</p></li>
+<li><p>click the <code class="docutils literal notranslate"><span class="pre">Troubleshoot</span></code> tile, then</p></li>
+<li><p>select <code class="docutils literal notranslate"><span class="pre">Advanced</span> <span class="pre">Options</span></code>,</p></li>
+<li><p>and select <code class="docutils literal notranslate"><span class="pre">UEFI</span> <span class="pre">Firmware</span> <span class="pre">Settings</span></code>;</p></li>
+<li><p>click the <code class="docutils literal notranslate"><span class="pre">Restart</span></code> option afterward and</p></li>
+<li><p>once the black screen appears click <code class="docutils literal notranslate"><span class="pre">F10</span></code> to enter the BIOS menu.</p></li>
 </ol>
-<div class="section" id="server-access">
-<h2>Server Access<a class="headerlink" href="#server-access" title="Permalink to this headline">¶</a></h2>
-<p>The first step if using a Windows device is to install PuTTY, a SSH and telnet client that allows you to connect
-securely to a particular physical or virtual server. The latest version can be downloaded
-from <a class="reference external" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">here</a>. Once it is installed, navigate to it as
-shown below:</p>
-<p><img alt="accessing PuTTY" src="../_images/putty-first-time1.jpg" /></p>
-<p>Once you open it, paste the IP address into the correct field; also ensure the port is set to <code class="docutils literal notranslate"><span class="pre">22</span></code> and
-the connection type selected is <code class="docutils literal notranslate"><span class="pre">SSH</span></code> like so:</p>
-<p><img alt="PuTTY homepage" src="../_images/putty-first-time3.jpg" /></p>
-<p>For the first login, you will get the following disclaimer:</p>
-<p><img alt="PuTTY homepage" src="../_images/putty-first-time2.jpg" /></p>
-<p>The best thing to do is so choose the option <code class="docutils literal notranslate"><span class="pre">No</span></code> as selected above, so that you can do the entire configuration without
-it being cached.</p>
+<p>Once in the BIOS menu, navigate to the <code class="docutils literal notranslate"><span class="pre">Virtualization</span></code> option and select <code class="docutils literal notranslate"><span class="pre">Enable</span></code>.</p>
+<p>When opening Docker again, I got a new error:</p>
+<p><img alt="Docker error 2" src="../_images/docker-home-2.jpg" /></p>
+<p>When I went to <a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package">this link</a>, I ran the
+<code class="docutils literal notranslate"><span class="pre">wsl.exe</span> <span class="pre">--update</span></code> command in Powershell as an admin like so:</p>
+<p><img alt="Docker error 2" src="../_images/wsl-update.jpg" /></p>
+<p>Voila! The docker engine can now run.</p>
+<p><img alt="Docker success 2" src="../_images/docker-success-2.jpg" /></p>
+<p>To configure memory to 4 GB as per the ElasticSearch README file in the installation package,
+I followed <a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig">this resource</a>,
+<a class="reference external" href="https://superuser.com/questions/1765370/cannot-locate-wslconfig-in-user-profile-on-windows-11">this resource</a> and
+<a class="reference external" href="https://github.com/MicrosoftDocs/wsl/blob/main/WSL/wsl-config.md">this resource</a>
+to create a <code class="docutils literal notranslate"><span class="pre">.wslconfig</span></code> file.</p>
+<p>I then ran the following commands:</p>
+<p><img alt="WSL configuration 1" src="../_images/wsl-configuration-1.jpg" /></p>
+<p>This caused the following prompt to appear:</p>
+<p><img alt="WSL configuration 2" src="../_images/wsl-configuration-2.jpg" /></p>
+<p>Once I clicked <code class="docutils literal notranslate"><span class="pre">Restart</span></code>, the WSL debugger and Docker opened and ran the updates from the <code class="docutils literal notranslate"><span class="pre">.wslconfig</span></code> file like so:</p>
+<p><img alt="WSL configuration 3" src="../_images/wsl-configuration-3.jpg" /></p>
 </div>
-<div class="section" id="superuser-creation">
-<h2>Superuser creation<a class="headerlink" href="#superuser-creation" title="Permalink to this headline">¶</a></h2>
-<p>You will then be prompted for your username, which in this case is <code class="docutils literal notranslate"><span class="pre">root</span></code> and your password.
-For security purposes, you will not see it even as you type it out, but once you press the <code class="docutils literal notranslate"><span class="pre">enter</span></code>
-button, you will be successfully logged in as shown below:</p>
-<p><img alt="PuTTY successfull access" src="../_images/putty-first-time4.jpg" /></p>
-<p>Once logged in, add the new superuser like so:</p>
-<p><img alt="new superuser" src="../_images/putty-first-time5.jpg" /></p>
-<p>Then make them a superuser by changing their usergroup from the group they are currently
-in (same as the username itself) to <code class="docutils literal notranslate"><span class="pre">sudo</span></code> group like so:</p>
-<p><img alt="new superuser" src="../_images/putty-first-time6.jpg" /></p>
-<p>(For a deeper dive into configuring sudo users, you can read <a class="reference external" href="https://jumpcloud.com/blog/how-to-create-sudo-user-manage-sudo-access-ubuntu-22-04">this article</a>.)</p>
-<p>We then test if this new user actually does have administrative rights like so:</p>
-<p><img alt="superuser sudo 1" src="../_images/putty-first-time7.jpg" /></p>
-<p>As shown above, we can see that the user does have admin rights once sudo is put in front of the command and
-they key in their password; this user can control administrative privileges of subsequent users.</p>
-<p>The next step is to generate a pair of SSH keys for this user like so:</p>
-<p><img alt="superuser ssh 1" src="../_images/putty-first-time8.jpg" /></p>
-<p>Also authenticate your newly generated key, then test ssh login like so:</p>
-<p><img alt="superuser ssh 2" src="../_images/putty-first-time9.jpg" /></p>
+<div class="section" id="u-elasticsearch-setup-u">
+<h4><u>ElasticSearch Setup</u><a class="headerlink" href="#u-elasticsearch-setup-u" title="Permalink to this headline">¶</a></h4>
+<p>In the virtual environment of my project, as per the ElasticSearch README file in the installation package I ran
+the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">network</span> <span class="n">create</span> <span class="n">elastic</span>
+<span class="n">docker</span> <span class="n">pull</span> <span class="n">docker</span><span class="o">.</span><span class="n">elastic</span><span class="o">.</span><span class="n">co</span><span class="o">/</span><span class="n">elasticsearch</span><span class="o">/</span><span class="n">elasticsearch</span><span class="p">:</span><span class="mf">8.8.2</span>
+</pre></div>
 </div>
-<div class="section" id="restrict-root-access">
-<h2>Restrict root access<a class="headerlink" href="#restrict-root-access" title="Permalink to this headline">¶</a></h2>
-<p>To prevent any localized logins as root using a password, (as per <a class="reference external" href="https://www.howtogeek.com/828538/how-and-why-to-disable-root-login-over-ssh-on-linux/">this article</a>)
-you use both the <code class="docutils literal notranslate"><span class="pre">-l</span></code> (lock) and <code class="docutils literal notranslate"><span class="pre">-d</span></code> (delete password) options, combined as <code class="docutils literal notranslate"><span class="pre">-ld</span></code> like so:</p>
-<p><img alt="root disabled 1" src="../_images/putty-first-time12.jpg" /></p>
-<p>As you can now see below, users are no longer able to log into the server under <code class="docutils literal notranslate"><span class="pre">root</span></code>.</p>
-<p><img alt="root disabled 2" src="../_images/putty-first-time13.jpg" /></p>
-<p>To prevent root login via ssh, as the superuser, navigate to the <code class="docutils literal notranslate"><span class="pre">sshd_config</span></code> file and set</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">PasswordAuthentication</span></code> to <code class="docutils literal notranslate"><span class="pre">no</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">PermitRootLogin</span></code> to <code class="docutils literal notranslate"><span class="pre">no</span></code></p></li>
-</ul>
-<p><img alt="ssh config 1" src="../_images/putty-first-time10.jpg" /></p>
-<p><img alt="ssh config 2" src="../_images/putty-first-time11.jpg" /></p>
-<p><img alt="ssh config 3" src="../_images/putty-first-time14.jpg" /></p>
-<p>Save your changes, then restart the server for the changes to take effect. If we test login,
-after 3 attempts <code class="docutils literal notranslate"><span class="pre">root</span></code> will be locked out, as shown below:</p>
-<p><img alt="ssh reboot and test for root" src="../_images/putty-first-time15.jpg" /></p>
+<p>This enabled me to install ElasticSearch successfully, as per the status below:</p>
+<p><img alt="Elasticsearch success" src="../_images/elasticsearch-success.jpg" /></p>
+<p>To run the Elasticsearch database, the following command was run:</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">--name</span> <span class="pre">elasticsearch</span> <span class="pre">--net</span> <span class="pre">elastic</span> <span class="pre">-p</span> <span class="pre">9200:9200</span> <span class="pre">-p</span> <span class="pre">9300:9300</span> <span class="pre">-e</span> <span class="pre">&quot;discovery.type=single-node&quot;</span> <span class="pre">-t</span> <span class="pre">docker.elastic.co/elasticsearch/elasticsearch:8.8.2</span></code></p>
+</div>
+</div>
 </div>
 </div>
 
@@ -433,17 +472,17 @@ after 3 attempts <code class="docutils literal notranslate"><span class="pre">ro
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="cloud_explored.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="server_setup.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Cloud explored</p>
+            <p class="prev-next-title">Server Setup Notes</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="database_setup.html" title="next page">
+    <a class='right-next' id="next-link" href="api_setup.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Database Setup Notes</p>
+        <p class="prev-next-title">API</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
