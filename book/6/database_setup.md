@@ -78,7 +78,9 @@ Voila! The docker engine can now run.
 ![Docker success 2](../images/docker-success-2.jpg)
 
 To configure memory to 4 GB as per the ElasticSearch README file in the installation package,
-I followed [this resource](https://learn.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig)
+I followed [this resource](https://learn.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig),
+[this resource](https://superuser.com/questions/1765370/cannot-locate-wslconfig-in-user-profile-on-windows-11) and
+[this resource](https://github.com/MicrosoftDocs/wsl/blob/main/WSL/wsl-config.md)
 to create a `.wslconfig` file.
 
 #### <u>ElasticSearch Setup</u>
