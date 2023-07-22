@@ -83,6 +83,34 @@ I followed [this resource](https://learn.microsoft.com/en-us/windows/wsl/wsl-con
 [this resource](https://github.com/MicrosoftDocs/wsl/blob/main/WSL/wsl-config.md)
 to create a `.wslconfig` file.
 
+I then ran the following commands:
+
+![WSL configuration 1](../images/wsl-configuration-1.jpg)
+
+This caused the following prompt to appear:
+
+![WSL configuration 2](../images/wsl-configuration-2.jpg)
+
+Once I clicked `Restart`, the WSL debugger and Docker opened and ran the updates from the `.wslconfig` file like so: 
+
+![WSL configuration 3](../images/wsl-configuration-3.jpg)
+
 #### <u>ElasticSearch Setup</u>
 
-ElasticSearch 8.8.2
+In the virtual environment of my project, as per the ElasticSearch README file in the installation package I ran
+the following commands:
+
+```
+docker network create elastic
+docker pull docker.elastic.co/elasticsearch/elasticsearch:8.8.2
+```
+
+This enabled me to install ElasticSearch successfully, as per the status below:
+
+![Elasticsearch success](../images/elasticsearch-success.jpg)
+
+To run the Elasticsearch database, the following command was run:
+
+`docker run --name elasticsearch --net elastic -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -t docker.elastic.co/elasticsearch/elasticsearch:8.8.2`
+
+
