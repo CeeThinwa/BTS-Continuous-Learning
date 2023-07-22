@@ -12,6 +12,8 @@ I went to their [download page](https://www.elastic.co/downloads/elasticsearch).
 
 I decided to first set it up locally on my Windows.
 
+#### <u>Docker setup on Windows: my experience</u>
+
 Elasticsearch runs within a Docker container, so I went [here](https://www.docker.com/products/docker-desktop/)
 to download Docker Desktop.
 
@@ -66,3 +68,19 @@ When opening Docker again, I got a new error:
 
 ![Docker error 2](../images/docker-home%202.jpg)
 
+When I went to [this link](https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package), I ran the
+`wsl.exe --update` command in Powershell as an admin like so:
+
+![Docker error 2](../images/wsl-update.jpg)
+
+Voila! The docker engine can now run.
+
+![Docker success 2](../images/docker-success-2.jpg)
+
+To configure memory to 4 GB as per the ElasticSearch README file in the installation package,
+I followed [this resource](https://learn.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig)
+to create a `.wslconfig` file.
+
+#### <u>ElasticSearch Setup</u>
+
+ElasticSearch 8.8.2
