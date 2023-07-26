@@ -1,4 +1,5 @@
 (api-setup)=
+
 # API
 
 Tasks:
@@ -6,6 +7,11 @@ Tasks:
    1. References:
       1. https://realpython.com/api-integration-in-python/
       2. https://realpython.com/flask-connexion-rest-api/
+      3. https://www.thepythoncode.com/article/using-github-api-in-python#extracting-private-repos-of-logged-in-user
+      4. https://docs.python.org/3.7/library/stdtypes.html#bytes.lstrip
+      5. https://docs.python.org/3.7/library/codecs.html#standard-encodings
+      6. https://pillow.readthedocs.io/en/stable/reference/open_files.html#file-handling
+      7. https://pillow.readthedocs.io/en/stable/reference/Image.html
 
 
 
@@ -21,3 +27,7 @@ https://airflow.apache.org/docs/apache-airflow/stable/index.html
 https://kafka.apache.org/documentation/
 https://www.thepythoncode.com/article/webhooks-in-python-with-flask
 https://stackoverflow.com/questions/52127046/how-can-i-pull-private-repo-data-using-github-api
+
+flask api connect to Elasticsearch database (search query)
+
+https://girishsaraf03.medium.com/getting-started-with-elasticsearch-using-python-flask-part-1-8a45235b660
