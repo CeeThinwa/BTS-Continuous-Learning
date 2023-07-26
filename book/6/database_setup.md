@@ -95,6 +95,14 @@ Once I clicked `Restart`, the WSL debugger and Docker opened and ran the updates
 
 ![WSL configuration 3](../images/wsl-configuration-3.jpg)
 
+:::{admonition} Warning:
+:class: warning
+Update: When I attempted to open docker in a new session after restarting and effecting the
+configuration settings, I was unable to start Docker (both normally and as an admin). I was
+forced to do a Factory Reset to get Docker up and running once more.
+:::
+
+
 #### <u>ElasticSearch Setup</u>
 
 In the virtual environment of my project, as per the ElasticSearch README file in the installation package I ran
@@ -111,6 +119,9 @@ This enabled me to install ElasticSearch successfully, as per the status below:
 
 To run the Elasticsearch database, the following command was run:
 
-`docker run --name elasticsearch --net elastic -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -t docker.elastic.co/elasticsearch/elasticsearch:8.8.2`
+```
+docker run --name elasticsearch --net elastic -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -t docker.elastic.co/elasticsearch/elasticsearch:8.8.2
+```
+
 
 
