@@ -12,8 +12,9 @@ Tasks:
       5. https://docs.python.org/3.7/library/codecs.html#standard-encodings
       6. https://pillow.readthedocs.io/en/stable/reference/open_files.html#file-handling
       7. https://pillow.readthedocs.io/en/stable/reference/Image.html
+      8. https://stackoverflow.com/questions/9240961/github-jsonp-source-code-api
 
-
+https://stackoverflow.com/questions/16214190/how-to-convert-base64-string-to-image
 
 
 
@@ -31,3 +32,5 @@ https://stackoverflow.com/questions/52127046/how-can-i-pull-private-repo-data-us
 flask api connect to Elasticsearch database (search query)
 
 https://girishsaraf03.medium.com/getting-started-with-elasticsearch-using-python-flask-part-1-8a45235b660
+
+https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/index.html
