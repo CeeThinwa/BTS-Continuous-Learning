@@ -60,7 +60,7 @@ inclination was to go
 <a href='https://www.python.org/downloads/'>here</a>
 and zoom in to Python 3.7.12:
 
-![py1](../images/img1.png)
+![py1](../_static/images/img1.png)
 
 It came as a `.tgz` which I unzipped on Administrator
 Windows `cmd` with the following code:
@@ -80,7 +80,7 @@ that had a `.exe` file for Windows
 here</a>
 settling on Python 3.7.9:
 
-![py2](../images/img2.png)
+![py2](../_static/images/img2.png)
 
 I clicked the *Download Windows x86-64 executable
 installer* because my machine is 64-bit. I installed
@@ -126,32 +126,32 @@ environment in PyCharm. However, when I navidated to the
 `gh-pages` branch in GitHub Desktop, I started getting a
 weird error in the terminal like
 
-![pycharm1](../images/img3.png)
+![pycharm1](../_static/images/img3.png)
 
 When I upgraded my PyCharm community Edition program,
 the error changed to this:
 
-![pycharm2](../images/img4.png)
+![pycharm2](../_static/images/img4.png)
 
 Following the suggestion, this happened:
 
-![pycharm3](../images/img5.png)
+![pycharm3](../_static/images/img5.png)
 
 So what was the solution?
 
 I navigated first to the `File` menu, then clicked on
 `Settings` resulting in the following screen:
 
-![pycharm4](../images/img6.png)
+![pycharm4](../_static/images/img6.png)
 
 I then navigated to `Tools`, then `Terminal`, and changed the
 Shell path from `Powershell`'s path to `cmd`'s path like so:
 
-![pycharm5](../images/img7.png)
+![pycharm5](../_static/images/img7.png)
 
 Problem solved!
 
-![pycharm6](../images/img8.png)
+![pycharm6](../_static/images/img8.png)
 
 Work within the environment and clear the workspace with `cls`
 command.
