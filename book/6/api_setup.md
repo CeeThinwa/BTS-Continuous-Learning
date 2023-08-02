@@ -14,37 +14,88 @@ When building an API, I found it very helpful for me to:
    * Arrange the code under a REST API framework of choice
    * Deploy the code in a VPS after [server setup](./server_setup.md)
 
-----
+## Fleshing out the processes and tasks
 
-Tasks:
-1. Write script to fetch data from Github private repo leveraging Github API
-   1. References:
-      1. https://realpython.com/api-integration-in-python/
-      2. https://realpython.com/flask-connexion-rest-api/
-      3. https://www.thepythoncode.com/article/using-github-api-in-python#extracting-private-repos-of-logged-in-user
-      4. https://docs.python.org/3.7/library/stdtypes.html#bytes.lstrip
-      5. https://docs.python.org/3.7/library/codecs.html#standard-encodings
-      6. https://pillow.readthedocs.io/en/stable/reference/open_files.html#file-handling
-      7. https://pillow.readthedocs.io/en/stable/reference/Image.html
-      8. https://stackoverflow.com/questions/9240961/github-jsonp-source-code-api
+The first step having a high-level understanding of the process, which I visualized below:
 
-https://stackoverflow.com/questions/16214190/how-to-convert-base64-string-to-image
+![High level process](../_static/images/app-flowchart.png)
+
+### Fleshing out `Image Fetcher` API
+
+I then wrote a sample Python script, leveraging
+* The [PyGithub library](https://pygithub.readthedocs.io/en/stable/introduction.html) and
+* A token that I had created in Github with limited scope (I could only access the image repository)
+
+The code is below:
+```
+from PIL import Image
+from io import BytesIO
+import base64
+from github import Github
+import cv2
+import numpy as np
+
+def stringToRGB(base64_string):
+    imgdata = base64.b64decode(str(base64_string))
+    img = Image.open(BytesIO(imgdata))
+    opencv_img = cv2.cvtColor(np.array(img), cv2.COLOR_BGR2RGB)
+    return [img,opencv_img]
+
+username = 'username' # your Github username
+password = 'token'
+
+# authenticate to github
+g = Github(username, password)
+# get the authenticated user
+user = g.get_user()
+for repo in user.get_repos():
+    if repo.full_name == "username/Kenyans_in_Media_NLP_CV_data":
+        tree = {}
+        for content1 in repo.get_contents(""):
+            for content2 in repo.get_contents("/Dec_2021"):
+                for content3 in repo.get_contents("/" + content2.path):
+                    for content4 in repo.get_contents("/" + content3.path + "/cropped"):
+                        tree[content4.path] = stringToRGB(content4.raw_data['content'])[0]
+                        print(len(tree.keys()))
+                        if len(tree.keys()) == 60:
+                            tree[content4.path].show()
+
+```
+
+Having ran the sample script, I noticed a couple of things:
+1. I had a really hard time decoding the images because they were represented as `base64` objects in their raw state; luckily, [this solution](https://stackoverflow.com/questions/16214190/how-to-convert-base64-string-to-image) helped me get unstuck
+2. When I ran the script, It ran 60 times before it the error below:<br>
+![1st Image Fetcher error](../_static/images/image-fetcher-error-1.jpg)<br>
+When I dug deeper into the local version of the repo, I realized that the code could only keep going down the tree until it had no more images to dig up, making it throw the error above.
+
+The code above gave me the following ideas around the tasks that I would like `Image Fetcher` to do and the accompanying tests for each task:
+
+| fff | fff | fff |
+|-----|-----|-----|
+| fff | fff |     |
 
 
 
-https://pythonbasics.org/webserver/
-https://towardsdatascience.com/talking-to-python-from-javascript-flask-and-the-fetch-api-e0ef3573c451
-https://towardsdatascience.com/how-to-get-data-from-apis-with-python-dfb83fdc5b5b
-https://www.sitepoint.com/build-rest-api-scratch-introduction/
-https://www.geeksforgeeks.org/python-build-a-rest-api-using-flask/
-https://www.thepythoncode.com/article/using-github-api-in-python
-https://airflow.apache.org/docs/apache-airflow/stable/index.html
-https://kafka.apache.org/documentation/
-https://www.thepythoncode.com/article/webhooks-in-python-with-flask
-https://stackoverflow.com/questions/52127046/how-can-i-pull-private-repo-data-using-github-api
+## References:
+* https://realpython.com/api-integration-in-python/
+* https://realpython.com/flask-connexion-rest-api/
+* https://www.thepythoncode.com/article/using-github-api-in-python#extracting-private-repos-of-logged-in-user
+* https://docs.python.org/3.7/library/stdtypes.html#bytes.lstrip
+* https://docs.python.org/3.7/library/codecs.html#standard-encodings
+* https://pillow.readthedocs.io/en/stable/reference/open_files.html#file-handling
+* https://pillow.readthedocs.io/en/stable/reference/Image.html
+* https://stackoverflow.com/questions/9240961/github-jsonp-source-code-api
+* https://pythonbasics.org/webserver/
+* https://towardsdatascience.com/talking-to-python-from-javascript-flask-and-the-fetch-api-e0ef3573c451
+* https://towardsdatascience.com/how-to-get-data-from-apis-with-python-dfb83fdc5b5b
+* https://www.sitepoint.com/build-rest-api-scratch-introduction/
+* https://www.geeksforgeeks.org/python-build-a-rest-api-using-flask/
+* https://www.thepythoncode.com/article/using-github-api-in-python
+* https://airflow.apache.org/docs/apache-airflow/stable/index.html
+* https://kafka.apache.org/documentation/
+* https://www.thepythoncode.com/article/webhooks-in-python-with-flask
+* https://stackoverflow.com/questions/52127046/how-can-i-pull-private-repo-data-using-github-api
+* https://girishsaraf03.medium.com/getting-started-with-elasticsearch-using-python-flask-part-1-8a45235b660
+* https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/index.html
 
 flask api connect to Elasticsearch database (search query)
-
-https://girishsaraf03.medium.com/getting-started-with-elasticsearch-using-python-flask-part-1-8a45235b660
-
-https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/index.html
