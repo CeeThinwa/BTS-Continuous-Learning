@@ -429,6 +429,12 @@ to create a <code class="docutils literal notranslate"><span class="pre">.wslcon
 <p><img alt="WSL configuration 2" src="../_images/wsl-configuration-2.jpg" /></p>
 <p>Once I clicked <code class="docutils literal notranslate"><span class="pre">Restart</span></code>, the WSL debugger and Docker opened and ran the updates from the <code class="docutils literal notranslate"><span class="pre">.wslconfig</span></code> file like so:</p>
 <p><img alt="WSL configuration 3" src="../_images/wsl-configuration-3.jpg" /></p>
+<div class="warning admonition">
+<p class="admonition-title">Warning:</p>
+<p>Update: When I attempted to open docker in a new session after restarting and effecting the
+configuration settings, I was unable to start Docker (both normally and as an admin). I was
+forced to do a Factory Reset to get Docker up and running once more.</p>
+</div>
 </div>
 <div class="section" id="u-elasticsearch-setup-u">
 <h4><u>ElasticSearch Setup</u><a class="headerlink" href="#u-elasticsearch-setup-u" title="Permalink to this headline">¶</a></h4>
@@ -441,7 +447,9 @@ the following commands:</p>
 <p>This enabled me to install ElasticSearch successfully, as per the status below:</p>
 <p><img alt="Elasticsearch success" src="../_images/elasticsearch-success.jpg" /></p>
 <p>To run the Elasticsearch database, the following command was run:</p>
-<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">--name</span> <span class="pre">elasticsearch</span> <span class="pre">--net</span> <span class="pre">elastic</span> <span class="pre">-p</span> <span class="pre">9200:9200</span> <span class="pre">-p</span> <span class="pre">9300:9300</span> <span class="pre">-e</span> <span class="pre">&quot;discovery.type=single-node&quot;</span> <span class="pre">-t</span> <span class="pre">docker.elastic.co/elasticsearch/elasticsearch:8.8.2</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">name</span> <span class="n">elasticsearch</span> <span class="o">--</span><span class="n">net</span> <span class="n">elastic</span> <span class="o">-</span><span class="n">p</span> <span class="mi">9200</span><span class="p">:</span><span class="mi">9200</span> <span class="o">-</span><span class="n">p</span> <span class="mi">9300</span><span class="p">:</span><span class="mi">9300</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;discovery.type=single-node&quot;</span> <span class="o">-</span><span class="n">t</span> <span class="n">docker</span><span class="o">.</span><span class="n">elastic</span><span class="o">.</span><span class="n">co</span><span class="o">/</span><span class="n">elasticsearch</span><span class="o">/</span><span class="n">elasticsearch</span><span class="p">:</span><span class="mf">8.8.2</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>

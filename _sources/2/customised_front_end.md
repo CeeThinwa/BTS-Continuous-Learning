@@ -43,14 +43,14 @@ first access the *Web Developer* tools (I prefer Firefox)
 by navigating first to the right-hand menu, naviagting to `More
 Tools`, then navigating to `Web Developer Tools` resulting in:
 
-![web1](../images/img9.png)
+![web1](../_static/images/img9.png)
 
 To inspect the css code influencing the color of the navigation
 bar, I click the code inside the inspector; this highlights
 the html code a solid blue and colours the corresponding area of the web
 page a more transparent blue like so:
 
-![web2](../images/img10.png)
+![web2](../_static/images/img10.png)
 
 Based on the visual, the `div` representing it has a 
 `#site-navigation` id, with the current color. So to change it

@@ -25,7 +25,7 @@ The mistakes that I made at this point include:
 1. I repeated myself a lot and did not make use of functions
 and list comprehension. An example of such code is below:<br>
 <br>
-![Alexa1](../images/img11.png)
+![Alexa1](../_static/images/img11.png)
 <br>
 <br>
 2. While my code did get the job done, it was not reproducible.
@@ -34,14 +34,14 @@ that if I tried using this code on another text dataset, it would
 break. This would include use of specific words as filters as
 shown below:<br>
 <br>
-![Alexa2](../images/img12.png)
+![Alexa2](../_static/images/img12.png)
 <br>
 <br>
 3. I didn't do any model evaluation and interpretation - this
 was my version of explaining why I chose a model and a certain
 loss function:<br>
 <br>
-![Alexa3](../images/img13.png)
+![Alexa3](../_static/images/img13.png)
 
 ### Skills at work
 
@@ -69,12 +69,12 @@ frequency of the word alone.<br>
 
 To that end, I wrote a function systemizing the same:<br>
 <br>
-![JAd1](../images/img14.png)<br>
+![JAd1](../_static/images/img14.png)<br>
 <br>
 and wrote another function that could generate a mini-report of
 the top 5 phrases:<br>
 <br>
-![JAd2](../images/img15.png)
+![JAd2](../_static/images/img15.png)
 
 ### Skills at work
 
@@ -150,14 +150,14 @@ introduced to the concept of a transformer for the first time.
 friend.__<br>
 The Twitter data had a column in JSON, which was a pain to read 
 in R:<br><br>
-![KOT1](../images/img16.png)<br><br>
+![KOT1](../_static/images/img16.png)<br><br>
 because it was loaded as a string. After troubleshooting with
 my coach, she found
 <a href='https://stackoverflow.com/a/42631426'>this solution</a>
 and shared how to read JSON in Python:<br>
-<br>![KOT2](../images/img17.png)<br><br>
+<br>![KOT2](../_static/images/img17.png)<br><br>
 and R:<br>
-<br>![KOT3](../images/img18.png)<br><br>
+<br>![KOT3](../_static/images/img18.png)<br><br>
 5. __Rehearse, rehearse, rehearse.__<br>
 A common thing that an ad agency will do is to conduct a "*dry run*"
 24 hours to a pitch. This is where the presenter presents to the
