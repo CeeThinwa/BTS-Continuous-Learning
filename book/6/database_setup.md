@@ -117,11 +117,14 @@ This enabled me to install ElasticSearch successfully, as per the status below:
 
 ![Elasticsearch success](../_static/images/elasticsearch-success.jpg)
 
-To run the Elasticsearch database, the following command was run:
+To run the Elasticsearch database, the following commands were run:
 
 ```
 docker run --name elasticsearch --net elastic -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -t docker.elastic.co/elasticsearch/elasticsearch:8.8.2
+docker run --name kibana --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.8.2
 ```
 
+I then went to Docker desktop and clicked the port connected to Kibana in the format `http://localhost:{xxxx}/?code={yyyyyy}`
+where `{xxxx}` represents the port number and `{yyyyyy}` represents the code given after the second command was ran.
 
-
+As per [this article](https://kb.objectrocket.com/elasticsearch/how-to-configure-kibana-after-installation)
