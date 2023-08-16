@@ -55,12 +55,7 @@ machine:
 ![Turn Windows Features On 3](../_static/images/Hyper-V-4.jpg)
 
 To turn on Virtualization in the BIOS menu, as per [this article](https://www.thewindowsclub.com/disable-hardware-virtualization-in-windows-10),
-when restarting the computer, press `shift` and `F10` until you access the Windows blue screen where you:
-1. click the `Troubleshoot` tile, then
-2. select `Advanced Options`,
-3. and select `UEFI Firmware Settings`;
-4. click the `Restart` option afterward and
-5. once the black screen appears click `F10` to enter the BIOS menu.
+when restarting the computer, press `esc` and `F10` until you access the black screen appears click `F10` to enter the BIOS menu.
 
 Once in the BIOS menu, navigate to the `Virtualization` option and select `Enable`.
 
@@ -117,44 +112,32 @@ This enabled me to install ElasticSearch successfully, as per the status below:
 
 ![Elasticsearch success](../_static/images/elasticsearch-success.jpg)
 
+For my purposes, I only installed ElasticSearch and Kibana.
+
 :::{admonition} Warning:
 :class: warning
 As per [these instructions](https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html),
-it's VERY important to install components in the following order:
-1. ElasticSearch: `docker run --name elasticsearch --net elastic -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -t docker.elastic.co/elasticsearch/elasticsearch:8.8.2`
-2. Kibana: `docker run --name kibana --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.8.2`
-3. Logstash
-4. Beats
-5. APM
-6. Elasticsearch Hadoop
+I installed components in the following order:
+1. ElasticSearch:
+```
+docker pull docker.elastic.co/elasticsearch/elasticsearch:8.8.2
+docker network create elastic
+docker run --name elasticsearch --net elastic -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -t docker.elastic.co/elasticsearch/elasticsearch:8.8.2
+```
+2. Kibana:
+```
+docker pull docker.elastic.co/kibana/kibana:8.8.2
+docker run --name kibana --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.8.2
+```
+
+---
+
+**16.08.2023 Update:**
+
+However, it was very difficult to replicate results, and `wsl` (Linux in a Windows environment) is not debuging platform.
+This meant that for almost 2 weeks, my Windows machine was hanging, and security components for ElasticSearch did not automatically
+install, making it impossible for the enrollment code needed by Kibana to be generated.
+
+For this reason, I decided to install ElasticSearch and use it in a [Virtual Private Server](VM-setup).
+
 :::
-
-For my purposes, I only installed ElasticSearch and Kibana.
-
-I then went to Docker desktop and clicked the port connected to Kibana in the format `http://localhost:{xxxx}/?code={yyyyyy}`
-where `{xxxx}` represents the port number and `{yyyyyy}` represents the code given after the second command was ran.
-
-````
-✅ Elasticsearch security features have been automatically configured!
-✅ Authentication is enabled and cluster connections are encrypted.
-
-ℹ️  Password for the elastic user (reset with `bin/elasticsearch-reset-password -u elastic`):
-  T1LxKXhlAQVFZGmHylBa
-
-ℹ️  HTTP CA certificate SHA-256 fingerprint:
-  18c2aed49edcf64fe312f1f7eea2c8051d1e4ef1419d406d1b6c74b55a54bb71
-
-ℹ️  Configure Kibana to use this cluster:
-• Run Kibana and click the configuration link in the terminal when Kibana starts.
-• Copy the following enrollment token and paste it into Kibana in your browser (valid for the next 30 minutes):
-  eyJ2ZXIiOiI4LjguMiIsImFkciI6WyIxNzIuMTguMC4yOjkyMDAiXSwiZmdyIjoiMThjMmFlZDQ5ZWRjZjY0ZmUzMTJmMWY3ZWVhMmM4MDUxZDFlNGVmMTQxOWQ0MDZkMWI2Yzc0YjU1YTU0YmI3MSIsImtleSI6Imt0RngzSWtCeDRXcHo0SnVuUmhHOkliTFltMW44U3FDOXp3NXJ5U3NDY2cifQ==
-
-ℹ️ Configure other nodes to join this cluster:
-• Copy the following enrollment token and start new Elasticsearch nodes with `bin/elasticsearch --enrollment-token <token>` (valid for the next 30 minutes):
-  eyJ2ZXIiOiI4LjguMiIsImFkciI6WyIxNzIuMTguMC4yOjkyMDAiXSwiZmdyIjoiMThjMmFlZDQ5ZWRjZjY0ZmUzMTJmMWY3ZWVhMmM4MDUxZDFlNGVmMTQxOWQ0MDZkMWI2Yzc0YjU1YTU0YmI3MSIsImtleSI6Ims5RngzSWtCeDRXcHo0SnVuUmhIOmpJejFjV0tBVExtUU1DaTNqMWJmMlEifQ==
-
-  If you're running in Docker, copy the enrollment token and run:
-  `docker run -e "ENROLLMENT_TOKEN=<token>" docker.elastic.co/elasticsearch/elasticsearch:8.8.2`
-````
-
-http://localhost:5601/?code=496837
