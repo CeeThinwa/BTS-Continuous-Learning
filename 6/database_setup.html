@@ -402,14 +402,7 @@ and select the checkbox for the feature pointed at (as you can see, it was off):
 machine:</p>
 <p><img alt="Turn Windows Features On 3" src="../_images/Hyper-V-4.jpg" /></p>
 <p>To turn on Virtualization in the BIOS menu, as per <a class="reference external" href="https://www.thewindowsclub.com/disable-hardware-virtualization-in-windows-10">this article</a>,
-when restarting the computer, press <code class="docutils literal notranslate"><span class="pre">shift</span></code> and <code class="docutils literal notranslate"><span class="pre">F10</span></code> until you access the Windows blue screen where you:</p>
-<ol class="simple">
-<li><p>click the <code class="docutils literal notranslate"><span class="pre">Troubleshoot</span></code> tile, then</p></li>
-<li><p>select <code class="docutils literal notranslate"><span class="pre">Advanced</span> <span class="pre">Options</span></code>,</p></li>
-<li><p>and select <code class="docutils literal notranslate"><span class="pre">UEFI</span> <span class="pre">Firmware</span> <span class="pre">Settings</span></code>;</p></li>
-<li><p>click the <code class="docutils literal notranslate"><span class="pre">Restart</span></code> option afterward and</p></li>
-<li><p>once the black screen appears click <code class="docutils literal notranslate"><span class="pre">F10</span></code> to enter the BIOS menu.</p></li>
-</ol>
+when restarting the computer, press <code class="docutils literal notranslate"><span class="pre">esc</span></code> and <code class="docutils literal notranslate"><span class="pre">F10</span></code> until you access the black screen appears click <code class="docutils literal notranslate"><span class="pre">F10</span></code> to enter the BIOS menu.</p>
 <p>Once in the BIOS menu, navigate to the <code class="docutils literal notranslate"><span class="pre">Virtualization</span></code> option and select <code class="docutils literal notranslate"><span class="pre">Enable</span></code>.</p>
 <p>When opening Docker again, I got a new error:</p>
 <p><img alt="Docker error 2" src="../_images/docker-home-2.jpg" /></p>
@@ -446,9 +439,32 @@ the following commands:</p>
 </div>
 <p>This enabled me to install ElasticSearch successfully, as per the status below:</p>
 <p><img alt="Elasticsearch success" src="../_images/elasticsearch-success.jpg" /></p>
-<p>To run the Elasticsearch database, the following command was run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">name</span> <span class="n">elasticsearch</span> <span class="o">--</span><span class="n">net</span> <span class="n">elastic</span> <span class="o">-</span><span class="n">p</span> <span class="mi">9200</span><span class="p">:</span><span class="mi">9200</span> <span class="o">-</span><span class="n">p</span> <span class="mi">9300</span><span class="p">:</span><span class="mi">9300</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;discovery.type=single-node&quot;</span> <span class="o">-</span><span class="n">t</span> <span class="n">docker</span><span class="o">.</span><span class="n">elastic</span><span class="o">.</span><span class="n">co</span><span class="o">/</span><span class="n">elasticsearch</span><span class="o">/</span><span class="n">elasticsearch</span><span class="p">:</span><span class="mf">8.8.2</span>
+<p>For my purposes, I only installed ElasticSearch and Kibana.</p>
+<div class="warning admonition">
+<p class="admonition-title">Warning:</p>
+<p>As per <a class="reference external" href="https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html">these instructions</a>,
+I installed components in the following order:</p>
+<ul class="simple">
+<li><p>ElasticSearch:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">docker</span><span class="o">.</span><span class="n">elastic</span><span class="o">.</span><span class="n">co</span><span class="o">/</span><span class="n">elasticsearch</span><span class="o">/</span><span class="n">elasticsearch</span><span class="p">:</span><span class="mf">8.8.2</span>
+<span class="n">docker</span> <span class="n">network</span> <span class="n">create</span> <span class="n">elastic</span>
+<span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">name</span> <span class="n">elasticsearch</span> <span class="o">--</span><span class="n">net</span> <span class="n">elastic</span> <span class="o">-</span><span class="n">p</span> <span class="mi">9200</span><span class="p">:</span><span class="mi">9200</span> <span class="o">-</span><span class="n">p</span> <span class="mi">9300</span><span class="p">:</span><span class="mi">9300</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;discovery.type=single-node&quot;</span> <span class="o">-</span><span class="n">t</span> <span class="n">docker</span><span class="o">.</span><span class="n">elastic</span><span class="o">.</span><span class="n">co</span><span class="o">/</span><span class="n">elasticsearch</span><span class="o">/</span><span class="n">elasticsearch</span><span class="p">:</span><span class="mf">8.8.2</span>
 </pre></div>
+</div>
+<ul class="simple">
+<li><p>Kibana:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">docker</span><span class="o">.</span><span class="n">elastic</span><span class="o">.</span><span class="n">co</span><span class="o">/</span><span class="n">kibana</span><span class="o">/</span><span class="n">kibana</span><span class="p">:</span><span class="mf">8.8.2</span>
+<span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">name</span> <span class="n">kibana</span> <span class="o">--</span><span class="n">net</span> <span class="n">elastic</span> <span class="o">-</span><span class="n">p</span> <span class="mi">5601</span><span class="p">:</span><span class="mi">5601</span> <span class="n">docker</span><span class="o">.</span><span class="n">elastic</span><span class="o">.</span><span class="n">co</span><span class="o">/</span><span class="n">kibana</span><span class="o">/</span><span class="n">kibana</span><span class="p">:</span><span class="mf">8.8.2</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>16.08.2023 Update:</strong></p>
+<p>However, it was very difficult to replicate results, and <code class="docutils literal notranslate"><span class="pre">wsl</span></code> (Linux in a Windows environment) is not a debugging platform.
+This meant that for almost 2 weeks, my Windows machine was hanging, and security components for ElasticSearch did not automatically
+install, making it impossible for the enrollment code needed by Kibana to be generated.</p>
+<p>For this reason, I decided to install ElasticSearch and use it in a <a class="reference internal" href="server_setup.html#vm-setup"><span class="std std-ref">Virtual Private Server</span></a>.</p>
 </div>
 </div>
 </div>

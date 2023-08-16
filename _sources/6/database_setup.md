@@ -55,12 +55,7 @@ machine:
 ![Turn Windows Features On 3](../_static/images/Hyper-V-4.jpg)
 
 To turn on Virtualization in the BIOS menu, as per [this article](https://www.thewindowsclub.com/disable-hardware-virtualization-in-windows-10),
-when restarting the computer, press `shift` and `F10` until you access the Windows blue screen where you:
-1. click the `Troubleshoot` tile, then
-2. select `Advanced Options`,
-3. and select `UEFI Firmware Settings`;
-4. click the `Restart` option afterward and
-5. once the black screen appears click `F10` to enter the BIOS menu.
+when restarting the computer, press `esc` and `F10` until you access the black screen appears click `F10` to enter the BIOS menu.
 
 Once in the BIOS menu, navigate to the `Virtualization` option and select `Enable`.
 
@@ -117,11 +112,32 @@ This enabled me to install ElasticSearch successfully, as per the status below:
 
 ![Elasticsearch success](../_static/images/elasticsearch-success.jpg)
 
-To run the Elasticsearch database, the following command was run:
+For my purposes, I only installed ElasticSearch and Kibana.
 
+:::{admonition} Warning:
+:class: warning
+As per [these instructions](https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html),
+I installed components in the following order:
+* ElasticSearch:
 ```
+docker pull docker.elastic.co/elasticsearch/elasticsearch:8.8.2
+docker network create elastic
 docker run --name elasticsearch --net elastic -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -t docker.elastic.co/elasticsearch/elasticsearch:8.8.2
 ```
+* Kibana:
+```
+docker pull docker.elastic.co/kibana/kibana:8.8.2
+docker run --name kibana --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.8.2
+```
 
+----
 
+**16.08.2023 Update:**
 
+However, it was very difficult to replicate results, and `wsl` (Linux in a Windows environment) is not a debugging platform.
+This meant that for almost 2 weeks, my Windows machine was hanging, and security components for ElasticSearch did not automatically
+install, making it impossible for the enrollment code needed by Kibana to be generated.
+
+For this reason, I decided to install ElasticSearch and use it in a [Virtual Private Server](VM-setup).
+
+:::
