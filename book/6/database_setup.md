@@ -118,23 +118,23 @@ For my purposes, I only installed ElasticSearch and Kibana.
 :class: warning
 As per [these instructions](https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html),
 I installed components in the following order:
-1. ElasticSearch:
+* ElasticSearch:
 ```
 docker pull docker.elastic.co/elasticsearch/elasticsearch:8.8.2
 docker network create elastic
 docker run --name elasticsearch --net elastic -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -t docker.elastic.co/elasticsearch/elasticsearch:8.8.2
 ```
-2. Kibana:
+* Kibana:
 ```
 docker pull docker.elastic.co/kibana/kibana:8.8.2
 docker run --name kibana --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.8.2
 ```
 
----
+----
 
 **16.08.2023 Update:**
 
-However, it was very difficult to replicate results, and `wsl` (Linux in a Windows environment) is not debuging platform.
+However, it was very difficult to replicate results, and `wsl` (Linux in a Windows environment) is not a debugging platform.
 This meant that for almost 2 weeks, my Windows machine was hanging, and security components for ElasticSearch did not automatically
 install, making it impossible for the enrollment code needed by Kibana to be generated.
 
