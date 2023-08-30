@@ -148,3 +148,5 @@ Resources (for Creating ElasticSearch and Kibana in Linux using `tar.gz`):
 * https://www.elastic.co/guide/en/kibana/current/targz.html
 * https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04
 * https://discuss.elastic.co/t/http-request-curl-52-empty-reply-from-server/320750/2
+* https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup-https.html
+* https://www.freecodecamp.org/news/how-to-search-for-files-from-the-linux-command-line/
