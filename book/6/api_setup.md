@@ -165,7 +165,7 @@ for item in response["Blocks"]:
 print('n',result_string)
 ```
 
-To avoid the hassle of encrypting them decrypting the binary images, I decided to make this API
+To avoid the hassle of encrypting then decrypting the binary images, I decided to make this API
 1. Fetch directly from GitHub the image
 2. When all GitHub images are in memory, I then call the Textract service and get the result.
 
@@ -236,4 +236,4 @@ def image_to_text():
 ```
 
 However, when running the app, it ran into the same problem encountered initially - it could only analyse 60 images,
-which were taken from articles published on the earliest day as per data in the repository.
+which were taken from articles published on the earliest newspaper as per data in the repository.
