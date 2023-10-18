@@ -1,6 +1,6 @@
 (api-setup)=
 
-# API
+# API Building Notes
 
 When building an API, I found it very helpful for me to:
 1. Sketch out the key tasks that I wanted the API(s) to do for me
@@ -76,28 +76,164 @@ The code above gave me the following ideas around the tasks that I would like `I
 | Obtain the image and decrypt it                             | i) Is the `base64` encoded string decoded as a valid image file i.e. visualizable?                                                                                                                                                                                   |
 | Store the image in ElasticSearch database                   | i) Is the code output JSONified?                                                                                                                                                                                                                                     |
 
-## Updating a database of choice locally
+My framework of choice for building an app was Flask ([this article](https://realpython.com/api-integration-in-python/) 
+and [this one](https://realpython.com/flask-connexion-rest-api/) were really great in easing me into the world of APIs).
+This resulted in the following code within the Flask framework (which gave me all the cropped scanned images in the 
+repository):
+```
+from flask import Flask
+from dotenv import load_dotenv
+import os
+from github import Github
 
-## References:
-* https://realpython.com/api-integration-in-python/
-* https://realpython.com/flask-connexion-rest-api/
-* https://www.thepythoncode.com/article/using-github-api-in-python#extracting-private-repos-of-logged-in-user
-* https://docs.python.org/3.7/library/stdtypes.html#bytes.lstrip
-* https://docs.python.org/3.7/library/codecs.html#standard-encodings
-* https://pillow.readthedocs.io/en/stable/reference/open_files.html#file-handling
-* https://pillow.readthedocs.io/en/stable/reference/Image.html
-* https://stackoverflow.com/questions/9240961/github-jsonp-source-code-api
-* https://pythonbasics.org/webserver/
-* https://towardsdatascience.com/talking-to-python-from-javascript-flask-and-the-fetch-api-e0ef3573c451
-* https://towardsdatascience.com/how-to-get-data-from-apis-with-python-dfb83fdc5b5b
-* https://www.sitepoint.com/build-rest-api-scratch-introduction/
-* https://www.geeksforgeeks.org/python-build-a-rest-api-using-flask/
-* https://www.thepythoncode.com/article/using-github-api-in-python
-* https://airflow.apache.org/docs/apache-airflow/stable/index.html
-* https://kafka.apache.org/documentation/
-* https://www.thepythoncode.com/article/webhooks-in-python-with-flask
-* https://stackoverflow.com/questions/52127046/how-can-i-pull-private-repo-data-using-github-api
-* https://girishsaraf03.medium.com/getting-started-with-elasticsearch-using-python-flask-part-1-8a45235b660
-* https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/index.html
+app = Flask(__name__)
 
-flask api connect to Elasticsearch database (search query)
+load_dotenv(r"C:\Users\CT\Documents\GitHub\KIP\kenyans-in-print\.env")
+
+# get username and password
+username = os.getenv("g_user")
+password = os.getenv("g_pwd")
+# authenticate to github
+g = Github(username, password)
+# get the authenticated user
+user = g.get_user()
+
+@app.route("/images", methods=["GET"])
+def image_fetcher():
+    # get image paths
+    paths = []
+    for repo in user.get_repos():
+        if repo.full_name == "CeeThinwa/Kenyans_in_Media_NLP_CV_data":
+            for content1 in repo.get_contents(""):
+                months = ['Dec_2021']  # 'Jan_2022', 'Feb_2022'] will uncomment as I crop the images and build the MVP
+                for month in months:
+                    for content2 in repo.get_contents(f"/{month}"):
+                        for content3 in repo.get_contents("/" + content2.path):
+                            for content4 in repo.get_contents("/" + content3.path + "/cropped"):
+                                paths.append(content4.path)
+
+    # get images as raw byte strings
+    image_tree = {}
+    for i in range(100):
+        for repo in user.get_repos():
+            if repo.full_name == "CeeThinwa/Kenyans_in_Media_NLP_CV_data":
+                image_tree[i] = {
+                    "path": paths[i],
+                    "raw_image": repo.get_contents("/" + paths[i]).raw_data["content"]
+                }
+
+    return image_tree
+```
+One of the learnings that I got was that binary objects, OpenCV or Pillow objects can't be serialized in JSON, so the
+images have to maintained as byte strings.
+
+Due to the multiple challenges creating an ElasticSearch database locally (which I cover in more detail [here](./database_setup.md)),
+I decided to focus on testing the code locally by connecting to GitHub to get the data, but not saving any results locally.
+
+### Fleshing out `Text Reader` API
+
+This stage was trickier because AWS has a certain way it's resources can be used, making it more
+complex than GitHub. The pre-work I had to do from an AWS perspective was:
+1. Create a user account in AWS and map it to the root account
+2. Create a scope to allow the new user full access to Textract
+3. Create a key as the login method for the child user to use Textract
+
+Once this was in play, I ran the following sample script that easily analyzed a local test image with great results:
+```
+import boto3
+
+client = boto3.client('textract', region_name='us-east-1')
+
+
+# Read image
+with open('part.jpg', 'rb') as document
+    img = bytearray(document.read())
+
+# Call Amazon Textract
+response = client.detect_document_text(
+    Document={'Bytes': img}
+)
+
+# Print detected text
+result_string = ''
+for item in response["Blocks"]:
+    if item["BlockType"] == "LINE":
+        print ('033[94m' +  item["Text"] + '033[0m')
+# https://stackoverflow.com/questions64045020using-textract-for-ocr-locally
+        result_string += ' ' + '033[94m' +  item[Text] + '033[0m'
+
+print('n',result_string)
+```
+
+To avoid the hassle of encrypting them decrypting the binary images, I decided to make this API
+1. Fetch directly from GitHub the image
+2. When all GitHub images are in memory, I then call the Textract service and get the result.
+
+The code in the Flask framework thus became:
+```
+from flask import Flask
+from dotenv import load_dotenv
+import os
+from github import Github
+import boto3
+
+app = Flask(__name__)
+
+load_dotenv(r"C:\Users\CT\Documents\GitHub\KIP\kenyans-in-print\.env")
+
+# get username and password
+username = os.getenv("g_user")
+password = os.getenv("g_pwd")
+# authenticate to github
+g = Github(username, password)
+# get the authenticated user
+user = g.get_user()
+
+# connect to Amazon Textract
+client = boto3.client('textract', region_name='us-east-1')
+
+
+@app.route("/texts", methods=["GET"])
+def image_to_text():
+    # get image paths
+    paths = []
+    for repo in user.get_repos():
+        if repo.full_name == "CeeThinwa/Kenyans_in_Media_NLP_CV_data":
+            for content1 in repo.get_contents(""):
+                months = ['Dec_2021']  # 'Jan_2022', 'Feb_2022'] will uncomment as I crop the images and build the MVP
+                for month in months:
+                    for content2 in repo.get_contents(f"/{month}"):
+                        for content3 in repo.get_contents("/" + content2.path):
+                            for content4 in repo.get_contents("/" + content3.path + "/cropped"):
+                                paths.append(content4.path)
+
+    # get images as bytes
+    text_tree = {}
+    for i in range(0,60):
+        for repo in user.get_repos():
+            if repo.full_name == "CeeThinwa/Kenyans_in_Media_NLP_CV_data":
+                # to get bytes from github as per https://github.com/PyGithub/PyGithub/issues/576, repo.get_contents(
+                # "/" + paths[ i]).decoded_content
+                img = repo.get_contents("/" + paths[i]).decoded_content
+
+                # Call Amazon Textract
+                response = client.detect_document_text(
+                    Document={'Bytes': img})
+
+                # get detected text as per https://stackoverflow.com/questions64045020using-textract-for-ocr-locally
+                result_string = ''
+                for item in response["Blocks"]:
+                    if item["BlockType"] == "LINE":
+                        result_string += item["Text"] + '\n'
+
+                #get raw text
+                text_tree[i] = {
+                    "path": paths[i],
+                    "raw_text": result_string
+                }
+
+    return text_tree
+```
+
+However, when running the app, it ran into the same problem encountered initially - it could only analyse 60 images,
+which were taken from articles published on the earliest day as per data in the repository.
