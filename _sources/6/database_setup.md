@@ -141,3 +141,12 @@ install, making it impossible for the enrollment code needed by Kibana to be gen
 For this reason, I decided to install ElasticSearch and use it in a [Virtual Private Server](VM-setup).
 
 :::
+
+Resources (for Creating ElasticSearch and Kibana in Linux using `tar.gz`):
+* https://ceethinwa.github.io/BTS-Continuous-Learning/6/server_setup.html
+* https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html
+* https://www.elastic.co/guide/en/kibana/current/targz.html
+* https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04
+* https://discuss.elastic.co/t/http-request-curl-52-empty-reply-from-server/320750/2
+* https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup-https.html
+* https://www.freecodecamp.org/news/how-to-search-for-files-from-the-linux-command-line/

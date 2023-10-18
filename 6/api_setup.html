@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>API &#8212; BTS: Continuous Learning</title>
+    <title>API Building Notes &#8212; BTS: Continuous Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -174,7 +174,7 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     API
+     API Building Notes
     </a>
    </li>
   </ul>
@@ -292,17 +292,21 @@
      API
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fleshing-out-text-reader-api">
+     Fleshing out
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Text
+      </span>
+      <span class="pre">
+       Reader
+      </span>
+     </code>
+     API
+    </a>
+   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#updating-a-database-of-choice-locally">
-   Updating a database of choice locally
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References:
-  </a>
  </li>
 </ul>
 
@@ -314,7 +318,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>API</h1>
+                <h1>API Building Notes</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -343,17 +347,21 @@
      API
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fleshing-out-text-reader-api">
+     Fleshing out
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Text
+      </span>
+      <span class="pre">
+       Reader
+      </span>
+     </code>
+     API
+    </a>
+   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#updating-a-database-of-choice-locally">
-   Updating a database of choice locally
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References:
-  </a>
  </li>
 </ul>
 
@@ -364,8 +372,8 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="api">
-<span id="api-setup"></span><h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="api-building-notes">
+<span id="api-setup"></span><h1>API Building Notes<a class="headerlink" href="#api-building-notes" title="Permalink to this headline">¶</a></h1>
 <p>When building an API, I found it very helpful for me to:</p>
 <ol class="simple">
 <li><p>Sketch out the key tasks that I wanted the API(s) to do for me</p></li>
@@ -456,36 +464,167 @@ When I dug deeper into the local version of the repo, I realized that the code c
 </tr>
 </tbody>
 </table>
+<p>My framework of choice for building an app was Flask (<a class="reference external" href="https://realpython.com/api-integration-in-python/">this article</a>
+and <a class="reference external" href="https://realpython.com/flask-connexion-rest-api/">this one</a> were really great in easing me into the world of APIs).
+This resulted in the following code within the Flask framework (which gave me all the cropped scanned images in the
+repository):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">github</span> <span class="kn">import</span> <span class="n">Github</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">load_dotenv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\CT\Documents\GitHub\KIP\kenyans-in-print\.env&quot;</span><span class="p">)</span>
+
+<span class="c1"># get username and password</span>
+<span class="n">username</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;g_user&quot;</span><span class="p">)</span>
+<span class="n">password</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;g_pwd&quot;</span><span class="p">)</span>
+<span class="c1"># authenticate to github</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">Github</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+<span class="c1"># get the authenticated user</span>
+<span class="n">user</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">get_user</span><span class="p">()</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/images&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">image_fetcher</span><span class="p">():</span>
+    <span class="c1"># get image paths</span>
+    <span class="n">paths</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">repo</span> <span class="ow">in</span> <span class="n">user</span><span class="o">.</span><span class="n">get_repos</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">repo</span><span class="o">.</span><span class="n">full_name</span> <span class="o">==</span> <span class="s2">&quot;CeeThinwa/Kenyans_in_Media_NLP_CV_data&quot;</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">content1</span> <span class="ow">in</span> <span class="n">repo</span><span class="o">.</span><span class="n">get_contents</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+                <span class="n">months</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Dec_2021&#39;</span><span class="p">]</span>  <span class="c1"># &#39;Jan_2022&#39;, &#39;Feb_2022&#39;] will uncomment as I crop the images and build the MVP</span>
+                <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">months</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">content2</span> <span class="ow">in</span> <span class="n">repo</span><span class="o">.</span><span class="n">get_contents</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;/</span><span class="si">{</span><span class="n">month</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">):</span>
+                        <span class="k">for</span> <span class="n">content3</span> <span class="ow">in</span> <span class="n">repo</span><span class="o">.</span><span class="n">get_contents</span><span class="p">(</span><span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">content2</span><span class="o">.</span><span class="n">path</span><span class="p">):</span>
+                            <span class="k">for</span> <span class="n">content4</span> <span class="ow">in</span> <span class="n">repo</span><span class="o">.</span><span class="n">get_contents</span><span class="p">(</span><span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">content3</span><span class="o">.</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;/cropped&quot;</span><span class="p">):</span>
+                                <span class="n">paths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">content4</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+
+    <span class="c1"># get images as raw byte strings</span>
+    <span class="n">image_tree</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">repo</span> <span class="ow">in</span> <span class="n">user</span><span class="o">.</span><span class="n">get_repos</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">repo</span><span class="o">.</span><span class="n">full_name</span> <span class="o">==</span> <span class="s2">&quot;CeeThinwa/Kenyans_in_Media_NLP_CV_data&quot;</span><span class="p">:</span>
+                <span class="n">image_tree</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="n">paths</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                    <span class="s2">&quot;raw_image&quot;</span><span class="p">:</span> <span class="n">repo</span><span class="o">.</span><span class="n">get_contents</span><span class="p">(</span><span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">paths</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">raw_data</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">]</span>
+                <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">image_tree</span>
+</pre></div>
 </div>
+<p>One of the learnings that I got was that binary objects, OpenCV or Pillow objects can’t be serialized in JSON, so the
+images have to maintained as byte strings.</p>
+<p>Due to the multiple challenges creating an ElasticSearch database locally (which I cover in more detail <a class="reference internal" href="database_setup.html"><span class="doc std std-doc">here</span></a>),
+I decided to focus on testing the code locally by connecting to GitHub to get the data, but not saving any results locally.</p>
 </div>
-<div class="section" id="updating-a-database-of-choice-locally">
-<h2>Updating a database of choice locally<a class="headerlink" href="#updating-a-database-of-choice-locally" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fleshing-out-text-reader-api">
+<h3>Fleshing out <code class="docutils literal notranslate"><span class="pre">Text</span> <span class="pre">Reader</span></code> API<a class="headerlink" href="#fleshing-out-text-reader-api" title="Permalink to this headline">¶</a></h3>
+<p>This stage was trickier because AWS has a certain way it’s resources can be used, making it more
+complex than GitHub. The pre-work I had to do from an AWS perspective was:</p>
+<ol class="simple">
+<li><p>Create a user account in AWS and map it to the root account</p></li>
+<li><p>Create a scope to allow the new user full access to Textract</p></li>
+<li><p>Create a key as the login method for the child user to use Textract</p></li>
+</ol>
+<p>Once this was in play, I ran the following sample script that easily analyzed a local test image with great results:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">boto3</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">&#39;textract&#39;</span><span class="p">,</span> <span class="n">region_name</span><span class="o">=</span><span class="s1">&#39;us-east-1&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># Read image</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;part.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">document</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="n">document</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+<span class="c1"># Call Amazon Textract</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">detect_document_text</span><span class="p">(</span>
+    <span class="n">Document</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Bytes&#39;</span><span class="p">:</span> <span class="n">img</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="c1"># Print detected text</span>
+<span class="n">result_string</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;Blocks&quot;</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;BlockType&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;LINE&quot;</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;033[94m&#39;</span> <span class="o">+</span>  <span class="n">item</span><span class="p">[</span><span class="s2">&quot;Text&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;033[0m&#39;</span><span class="p">)</span>
+<span class="c1"># https://stackoverflow.com/questions64045020using-textract-for-ocr-locally</span>
+        <span class="n">result_string</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="s1">&#39;033[94m&#39;</span> <span class="o">+</span>  <span class="n">item</span><span class="p">[</span><span class="n">Text</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;033[0m&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span><span class="n">result_string</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="references">
-<h2>References:<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://realpython.com/api-integration-in-python/">https://realpython.com/api-integration-in-python/</a></p></li>
-<li><p><a class="reference external" href="https://realpython.com/flask-connexion-rest-api/">https://realpython.com/flask-connexion-rest-api/</a></p></li>
-<li><p><a class="reference external" href="https://www.thepythoncode.com/article/using-github-api-in-python#extracting-private-repos-of-logged-in-user">https://www.thepythoncode.com/article/using-github-api-in-python#extracting-private-repos-of-logged-in-user</a></p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3.7/library/stdtypes.html#bytes.lstrip">https://docs.python.org/3.7/library/stdtypes.html#bytes.lstrip</a></p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3.7/library/codecs.html#standard-encodings">https://docs.python.org/3.7/library/codecs.html#standard-encodings</a></p></li>
-<li><p><a class="reference external" href="https://pillow.readthedocs.io/en/stable/reference/open_files.html#file-handling">https://pillow.readthedocs.io/en/stable/reference/open_files.html#file-handling</a></p></li>
-<li><p><a class="reference external" href="https://pillow.readthedocs.io/en/stable/reference/Image.html">https://pillow.readthedocs.io/en/stable/reference/Image.html</a></p></li>
-<li><p><a class="reference external" href="https://stackoverflow.com/questions/9240961/github-jsonp-source-code-api">https://stackoverflow.com/questions/9240961/github-jsonp-source-code-api</a></p></li>
-<li><p><a class="reference external" href="https://pythonbasics.org/webserver/">https://pythonbasics.org/webserver/</a></p></li>
-<li><p><a class="reference external" href="https://towardsdatascience.com/talking-to-python-from-javascript-flask-and-the-fetch-api-e0ef3573c451">https://towardsdatascience.com/talking-to-python-from-javascript-flask-and-the-fetch-api-e0ef3573c451</a></p></li>
-<li><p><a class="reference external" href="https://towardsdatascience.com/how-to-get-data-from-apis-with-python-dfb83fdc5b5b">https://towardsdatascience.com/how-to-get-data-from-apis-with-python-dfb83fdc5b5b</a></p></li>
-<li><p><a class="reference external" href="https://www.sitepoint.com/build-rest-api-scratch-introduction/">https://www.sitepoint.com/build-rest-api-scratch-introduction/</a></p></li>
-<li><p><a class="reference external" href="https://www.geeksforgeeks.org/python-build-a-rest-api-using-flask/">https://www.geeksforgeeks.org/python-build-a-rest-api-using-flask/</a></p></li>
-<li><p><a class="reference external" href="https://www.thepythoncode.com/article/using-github-api-in-python">https://www.thepythoncode.com/article/using-github-api-in-python</a></p></li>
-<li><p><a class="reference external" href="https://airflow.apache.org/docs/apache-airflow/stable/index.html">https://airflow.apache.org/docs/apache-airflow/stable/index.html</a></p></li>
-<li><p><a class="reference external" href="https://kafka.apache.org/documentation/">https://kafka.apache.org/documentation/</a></p></li>
-<li><p><a class="reference external" href="https://www.thepythoncode.com/article/webhooks-in-python-with-flask">https://www.thepythoncode.com/article/webhooks-in-python-with-flask</a></p></li>
-<li><p><a class="reference external" href="https://stackoverflow.com/questions/52127046/how-can-i-pull-private-repo-data-using-github-api">https://stackoverflow.com/questions/52127046/how-can-i-pull-private-repo-data-using-github-api</a></p></li>
-<li><p><a class="reference external" href="https://girishsaraf03.medium.com/getting-started-with-elasticsearch-using-python-flask-part-1-8a45235b660">https://girishsaraf03.medium.com/getting-started-with-elasticsearch-using-python-flask-part-1-8a45235b660</a></p></li>
-<li><p><a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/index.html">https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/index.html</a></p></li>
-</ul>
-<p>flask api connect to Elasticsearch database (search query)</p>
+<p>To avoid the hassle of encrypting then decrypting the binary images, I decided to make this API</p>
+<ol class="simple">
+<li><p>Fetch directly from GitHub the image</p></li>
+<li><p>When all GitHub images are in memory, I then call the Textract service and get the result.</p></li>
+</ol>
+<p>The code in the Flask framework thus became:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">github</span> <span class="kn">import</span> <span class="n">Github</span>
+<span class="kn">import</span> <span class="nn">boto3</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">load_dotenv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\CT\Documents\GitHub\KIP\kenyans-in-print\.env&quot;</span><span class="p">)</span>
+
+<span class="c1"># get username and password</span>
+<span class="n">username</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;g_user&quot;</span><span class="p">)</span>
+<span class="n">password</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;g_pwd&quot;</span><span class="p">)</span>
+<span class="c1"># authenticate to github</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">Github</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+<span class="c1"># get the authenticated user</span>
+<span class="n">user</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">get_user</span><span class="p">()</span>
+
+<span class="c1"># connect to Amazon Textract</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">&#39;textract&#39;</span><span class="p">,</span> <span class="n">region_name</span><span class="o">=</span><span class="s1">&#39;us-east-1&#39;</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/texts&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">image_to_text</span><span class="p">():</span>
+    <span class="c1"># get image paths</span>
+    <span class="n">paths</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">repo</span> <span class="ow">in</span> <span class="n">user</span><span class="o">.</span><span class="n">get_repos</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">repo</span><span class="o">.</span><span class="n">full_name</span> <span class="o">==</span> <span class="s2">&quot;CeeThinwa/Kenyans_in_Media_NLP_CV_data&quot;</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">content1</span> <span class="ow">in</span> <span class="n">repo</span><span class="o">.</span><span class="n">get_contents</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+                <span class="n">months</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Dec_2021&#39;</span><span class="p">]</span>  <span class="c1"># &#39;Jan_2022&#39;, &#39;Feb_2022&#39;] will uncomment as I crop the images and build the MVP</span>
+                <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">months</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">content2</span> <span class="ow">in</span> <span class="n">repo</span><span class="o">.</span><span class="n">get_contents</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;/</span><span class="si">{</span><span class="n">month</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">):</span>
+                        <span class="k">for</span> <span class="n">content3</span> <span class="ow">in</span> <span class="n">repo</span><span class="o">.</span><span class="n">get_contents</span><span class="p">(</span><span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">content2</span><span class="o">.</span><span class="n">path</span><span class="p">):</span>
+                            <span class="k">for</span> <span class="n">content4</span> <span class="ow">in</span> <span class="n">repo</span><span class="o">.</span><span class="n">get_contents</span><span class="p">(</span><span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">content3</span><span class="o">.</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;/cropped&quot;</span><span class="p">):</span>
+                                <span class="n">paths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">content4</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+
+    <span class="c1"># get images as bytes</span>
+    <span class="n">text_tree</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">60</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">repo</span> <span class="ow">in</span> <span class="n">user</span><span class="o">.</span><span class="n">get_repos</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">repo</span><span class="o">.</span><span class="n">full_name</span> <span class="o">==</span> <span class="s2">&quot;CeeThinwa/Kenyans_in_Media_NLP_CV_data&quot;</span><span class="p">:</span>
+                <span class="c1"># to get bytes from github as per https://github.com/PyGithub/PyGithub/issues/576, repo.get_contents(</span>
+                <span class="c1"># &quot;/&quot; + paths[ i]).decoded_content</span>
+                <span class="n">img</span> <span class="o">=</span> <span class="n">repo</span><span class="o">.</span><span class="n">get_contents</span><span class="p">(</span><span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">paths</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">decoded_content</span>
+
+                <span class="c1"># Call Amazon Textract</span>
+                <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">detect_document_text</span><span class="p">(</span>
+                    <span class="n">Document</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Bytes&#39;</span><span class="p">:</span> <span class="n">img</span><span class="p">})</span>
+
+                <span class="c1"># get detected text as per https://stackoverflow.com/questions64045020using-textract-for-ocr-locally</span>
+                <span class="n">result_string</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+                <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;Blocks&quot;</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;BlockType&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;LINE&quot;</span><span class="p">:</span>
+                        <span class="n">result_string</span> <span class="o">+=</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;Text&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+
+                <span class="c1">#get raw text</span>
+                <span class="n">text_tree</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="n">paths</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                    <span class="s2">&quot;raw_text&quot;</span><span class="p">:</span> <span class="n">result_string</span>
+                <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">text_tree</span>
+</pre></div>
+</div>
+<p>However, when running the app, it ran into the same problem encountered initially - it could only analyse 60 images,
+which were taken from articles published on the earliest newspaper as per data in the repository.</p>
+</div>
 </div>
 </div>
 
