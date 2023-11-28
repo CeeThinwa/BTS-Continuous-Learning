@@ -248,4 +248,5 @@ Once I tested the API locally and saw that it gave good enough results:
 I then had to deploy it to production.
 
 References:
-https://marketsplash.com/tutorials/flask/how-to-deploy-flask-applications/
+* https://marketsplash.com/tutorials/flask/how-to-deploy-flask-applications/
+* https://flask.palletsprojects.com/en/2.3.x/tutorial/deploy/
