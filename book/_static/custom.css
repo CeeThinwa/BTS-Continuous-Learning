@@ -28,3 +28,6 @@ body, .row, .dropdown-buttons {background-color: #fffbf2;}
 
 /* Making admonitions stand out */
 .admonition {background-color: #fff;}
+
+/* Adjusting width for a specific image */
+img[alt="Image API"] { width: 45%; }
