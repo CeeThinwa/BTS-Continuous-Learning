@@ -237,3 +237,15 @@ def image_to_text():
 
 However, when running the app, it ran into the same problem encountered initially - it could only analyse 60 images,
 which were taken from articles published on the earliest newspaper as per data in the repository.
+
+## Deploying the initial MVP
+Once I tested the API locally and saw that it gave good enough results:
+
+![Image API](../_static/images/api-results-1.png)
+
+![Text API](../_static/images/api-results-2.png)
+
+I then had to deploy it to production.
+
+References:
+https://marketsplash.com/tutorials/flask/how-to-deploy-flask-applications/
