@@ -262,8 +262,17 @@ load_dotenv(path)
 The next change I made to the script was to change the Flask environment variable to be in production:
 
 ```
+# set environment to production
+os.environ['FLASK_ENV'] = 'production'
+```
+
+Finally, I generated the `requirements.txt` file by running the following command in console:
 
 ```
+pip freeze > requirements.txt
+```
+
+I backed up the repo in the cloud and on an external hard disk.
 
 References:
 * https://marketsplash.com/tutorials/flask/how-to-deploy-flask-applications/
