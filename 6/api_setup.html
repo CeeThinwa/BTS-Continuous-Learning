@@ -308,6 +308,18 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deploying-the-initial-mvp">
+   Deploying the initial MVP
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preparing-the-script-locally-for-production">
+     Preparing the script locally for production
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
             </nav>
@@ -359,6 +371,18 @@
       </span>
      </code>
      API
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deploying-the-initial-mvp">
+   Deploying the initial MVP
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preparing-the-script-locally-for-production">
+     Preparing the script locally for production
     </a>
    </li>
   </ul>
@@ -624,6 +648,39 @@ complex than GitHub. The pre-work I had to do from an AWS perspective was:</p>
 </div>
 <p>However, when running the app, it ran into the same problem encountered initially - it could only analyse 60 images,
 which were taken from articles published on the earliest newspaper as per data in the repository.</p>
+</div>
+</div>
+<div class="section" id="deploying-the-initial-mvp">
+<h2>Deploying the initial MVP<a class="headerlink" href="#deploying-the-initial-mvp" title="Permalink to this headline">¶</a></h2>
+<p>Once I tested the API locally and saw that it gave good enough results:</p>
+<p><img alt="Image API" src="../_images/api-results-1.png" /></p>
+<p><img alt="Text API" src="../_images/api-results-2.png" /></p>
+<p>I then had to deploy it to production.</p>
+<div class="section" id="preparing-the-script-locally-for-production">
+<h3>Preparing the script locally for production<a class="headerlink" href="#preparing-the-script-locally-for-production" title="Permalink to this headline">¶</a></h3>
+<p>The first change I made was to ensure the path matched whatever local environment it was in, so I modified the code to
+be the following in the <code class="docutils literal notranslate"><span class="pre">app.py</span></code> script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># get contents in the .env file</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">kenyans-in-print</span><span class="se">\\</span><span class="s2">.env&quot;</span>
+
+<span class="n">load_dotenv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The next change I made to the script was to change the Flask environment variable to be in production:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># set environment to production</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;FLASK_ENV&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;production&#39;</span>
+</pre></div>
+</div>
+<p>Finally, I generated the <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file by running the following command in console:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">freeze</span> <span class="o">&gt;</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>I backed up the repo in the cloud and on an external hard disk.</p>
+<p>References:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://marketsplash.com/tutorials/flask/how-to-deploy-flask-applications/">https://marketsplash.com/tutorials/flask/how-to-deploy-flask-applications/</a></p></li>
+<li><p><a class="reference external" href="https://flask.palletsprojects.com/en/2.3.x/tutorial/deploy/">https://flask.palletsprojects.com/en/2.3.x/tutorial/deploy/</a></p></li>
+</ul>
 </div>
 </div>
 </div>

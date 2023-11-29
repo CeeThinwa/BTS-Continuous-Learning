@@ -237,3 +237,43 @@ def image_to_text():
 
 However, when running the app, it ran into the same problem encountered initially - it could only analyse 60 images,
 which were taken from articles published on the earliest newspaper as per data in the repository.
+
+## Deploying the initial MVP
+Once I tested the API locally and saw that it gave good enough results:
+
+![Image API](../_static/images/api-results-1.png)
+
+![Text API](../_static/images/api-results-2.png)
+
+I then had to deploy it to production.
+
+### Preparing the script locally for production
+
+The first change I made was to ensure the path matched whatever local environment it was in, so I modified the code to
+be the following in the `app.py` script:
+
+```
+# get contents in the .env file
+path = os.getcwd()+"\\kenyans-in-print\\.env"
+
+load_dotenv(path)
+```
+
+The next change I made to the script was to change the Flask environment variable to be in production:
+
+```
+# set environment to production
+os.environ['FLASK_ENV'] = 'production'
+```
+
+Finally, I generated the `requirements.txt` file by running the following command in console:
+
+```
+pip freeze > requirements.txt
+```
+
+I backed up the repo in the cloud and on an external hard disk.
+
+References:
+* https://marketsplash.com/tutorials/flask/how-to-deploy-flask-applications/
+* https://flask.palletsprojects.com/en/2.3.x/tutorial/deploy/
