@@ -143,6 +143,15 @@ For this reason, I decided to install ElasticSearch and use it in a [Virtual Pri
 
 https://medium.com/devops-dudes/how-to-deploy-elasticsearch-5b1105e3063a
 
+https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-20-04
+
+1. add the Elasticsearch public key (digital ocean has more recent instructions, but the medium article clearly outlines the principles)
+2. update all packages
+
+https://stackoverflow.com/questions/68992799/warning-apt-key-is-deprecated-manage-keyring-files-in-trusted-gpg-d-instead
+
+https://stackoverflow.com/questions/71553340/sudo-apt-get-update-does-not-work-after-trying-to-install-elasticsearch-throug
+
 
 :::
 
