@@ -140,6 +140,10 @@ install, making it impossible for the enrollment code needed by Kibana to be gen
 
 For this reason, I decided to install ElasticSearch and use it in a [Virtual Private Server](VM-setup).
 
+
+https://medium.com/devops-dudes/how-to-deploy-elasticsearch-5b1105e3063a
+
+
 :::
 
 Resources (for Creating ElasticSearch and Kibana in Linux using `tar.gz`):
