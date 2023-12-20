@@ -170,3 +170,13 @@ Resources (for Creating ElasticSearch and Kibana in Linux using `tar.gz`):
 * https://discuss.elastic.co/t/http-request-curl-52-empty-reply-from-server/320750/2
 * https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup-https.html
 * https://www.freecodecamp.org/news/how-to-search-for-files-from-the-linux-command-line/
+
+
+
+ATTEMPT 3
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
+
+https://www.coguard.io/post/elasticsearchs-most-common-reason-for-exited-unexpectedly
