@@ -9,7 +9,7 @@ The database of choice that I decided to adopt in this category was *ElasticSear
 :class: note
 A lot of trial and error took place to get to my installation solution over a period of almost 3 months.
 
-If you wish to fast-forward to how I installed ElasticSearch successfully, read **Attempt 3**.
+If you wish to fast-forward to how I installed ElasticSearch successfully, read [**Attempt 3**](https://ceethinwa.github.io/BTS-Continuous-Learning/6/database_setup.html#u-attempt-3-u).
 
 If you wish to learn more about my journey, keep reading the next section.
 :::
