@@ -303,6 +303,38 @@
      </li>
     </ul>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#virtual-elasticsearch-setup">
+     Virtual
+     <em>
+      ElasticSearch
+     </em>
+     setup
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#u-attempt-1-u">
+       <u>
+        Attempt 1
+       </u>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#u-attempt-2-u">
+       <u>
+        Attempt 2
+       </u>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#u-attempt-3-u">
+       <u>
+        Attempt 3
+       </u>
+      </a>
+     </li>
+    </ul>
+   </li>
   </ul>
  </li>
 </ul>
@@ -355,6 +387,38 @@
      </li>
     </ul>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#virtual-elasticsearch-setup">
+     Virtual
+     <em>
+      ElasticSearch
+     </em>
+     setup
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#u-attempt-1-u">
+       <u>
+        Attempt 1
+       </u>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#u-attempt-2-u">
+       <u>
+        Attempt 2
+       </u>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#u-attempt-3-u">
+       <u>
+        Attempt 3
+       </u>
+      </a>
+     </li>
+    </ul>
+   </li>
   </ul>
  </li>
 </ul>
@@ -371,10 +435,16 @@
 <div class="section" id="nosql-database">
 <h2>NoSQL Database<a class="headerlink" href="#nosql-database" title="Permalink to this headline">¶</a></h2>
 <p>The database of choice that I decided to adopt in this category was <em>ElasticSearch</em>.</p>
-<p>Based on <a class="reference external" href="https://www.elastic.co/webinars/getting-started-elasticsearch">the page where one could get started</a>,
-I went to their <a class="reference external" href="https://www.elastic.co/downloads/elasticsearch">download page</a>.</p>
+<div class="note admonition">
+<p class="admonition-title">Options for reading this article</p>
+<p>A lot of trial and error took place to get to my installation solution over a period of almost 3 months.</p>
+<p>If you wish to fast-forward to how I installed ElasticSearch successfully, read <strong>Attempt 3</strong>.</p>
+<p>If you wish to learn more about my journey, keep reading the next section.</p>
+</div>
 <div class="section" id="local-elasticsearch-setup">
 <h3>Local <em>ElasticSearch</em> setup<a class="headerlink" href="#local-elasticsearch-setup" title="Permalink to this headline">¶</a></h3>
+<p>Based on <a class="reference external" href="https://www.elastic.co/webinars/getting-started-elasticsearch">the page where one could get started</a>,
+I went to their <a class="reference external" href="https://www.elastic.co/downloads/elasticsearch">download page</a>.</p>
 <p>I decided to first set it up locally on my Windows.</p>
 <div class="section" id="u-docker-setup-on-windows-my-experience-u">
 <h4><u>Docker setup on Windows: my experience</u><a class="headerlink" href="#u-docker-setup-on-windows-my-experience-u" title="Permalink to this headline">¶</a></h4>
@@ -466,16 +536,71 @@ This meant that for almost 2 weeks, my Windows machine was hanging, and security
 install, making it impossible for the enrollment code needed by Kibana to be generated.</p>
 <p>For this reason, I decided to install ElasticSearch and use it in a <a class="reference internal" href="server_setup.html#vm-setup"><span class="std std-ref">Virtual Private Server</span></a>.</p>
 </div>
-<p>Resources (for Creating ElasticSearch and Kibana in Linux using <code class="docutils literal notranslate"><span class="pre">tar.gz</span></code>):</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://ceethinwa.github.io/BTS-Continuous-Learning/6/server_setup.html">https://ceethinwa.github.io/BTS-Continuous-Learning/6/server_setup.html</a></p></li>
-<li><p><a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html</a></p></li>
-<li><p><a class="reference external" href="https://www.elastic.co/guide/en/kibana/current/targz.html">https://www.elastic.co/guide/en/kibana/current/targz.html</a></p></li>
-<li><p><a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04">https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04</a></p></li>
-<li><p><a class="reference external" href="https://discuss.elastic.co/t/http-request-curl-52-empty-reply-from-server/320750/2">https://discuss.elastic.co/t/http-request-curl-52-empty-reply-from-server/320750/2</a></p></li>
-<li><p><a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup-https.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup-https.html</a></p></li>
-<li><p><a class="reference external" href="https://www.freecodecamp.org/news/how-to-search-for-files-from-the-linux-command-line/">https://www.freecodecamp.org/news/how-to-search-for-files-from-the-linux-command-line/</a></p></li>
-</ul>
+</div>
+</div>
+<div class="section" id="virtual-elasticsearch-setup">
+<h3>Virtual <em>ElasticSearch</em> setup<a class="headerlink" href="#virtual-elasticsearch-setup" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="u-attempt-1-u">
+<h4><u>Attempt 1</u><a class="headerlink" href="#u-attempt-1-u" title="Permalink to this headline">¶</a></h4>
+<p>My first attempt was guided by <a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html">this article</a>.</p>
+<p>The first error I came across was (even after successfully running ElasticSearch and Kibana on the server)<br>
+having empty responses from the server and not being able to connect to the server internally
+as shown by the screenshots below:</p>
+<p><img alt="error in elasticsearch 1" src="../_images/elasticsearch-setup-in-linux-6.jpg" /></p>
+<p><img alt="error in elasticsearch 2" src="../_images/elasticsearch-setup-in-linux-9.jpg" /></p>
+<p><img alt="error in elasticsearch 3" src="../_images/elasticsearch-setup-in-linux-11.jpg" /></p>
+<p><img alt="error in elasticsearch 4" src="../_images/elasticsearch-setup-in-linux-12.jpg" /></p>
+<div class="note admonition">
+<p class="admonition-title">Lessons Learnt after the 1st attempt</p>
+<ol class="simple">
+<li><p>The default setup of elasticsearch creates self-signing certificates making it difficult to user <code class="docutils literal notranslate"><span class="pre">curl</span></code> to connect.</p></li>
+<li><p>If you attempt to access the database from the command line, it may require addition configurations to your VPS.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="u-attempt-2-u">
+<h4><u>Attempt 2</u><a class="headerlink" href="#u-attempt-2-u" title="Permalink to this headline">¶</a></h4>
+<p>I then attempted to set up ElasticSearch as a package within the server itself instead of installing from the archive as per
+<a class="reference external" href="https://medium.com/devops-dudes/how-to-deploy-elasticsearch-5b1105e3063a">this article</a> and
+<a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04">this article</a>.</p>
+<p>The first error I came across was this one:</p>
+<p><img alt="error in elasticsearch 5" src="../_images/elasticsearch-setup-in-linux-1.png" /></p>
+<p>I used <a class="reference external" href="https://stackoverflow.com/questions/68992799/warning-apt-key-is-deprecated-manage-keyring-files-in-trusted-gpg-d-instead">this article</a>,
+<a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/starting-elasticsearch.html">this article</a> and
+<a class="reference external" href="https://stackoverflow.com/questions/71553340/sudo-apt-get-update-does-not-work-after-trying-to-install-elasticsearch-throug">this article</a>
+to resolve the problem, as shown below:</p>
+<p><img alt="solution for elasticsearch 1" src="../_images/elasticsearch-setup-in-linux-2.png" /></p>
+<p><img alt="solution for elasticsearch 2" src="../_images/elasticsearch-setup-in-linux-3.png" /></p>
+<p><img alt="solution for elasticsearch 3" src="../_images/elasticsearch-setup-in-linux-4.png" /></p>
+<p><img alt="solution for elasticsearch 4" src="../_images/elasticsearch-setup-in-linux-5.png" /></p>
+<p><img alt="solution for elasticsearch 5" src="../_images/elasticsearch-setup-in-linux-7.png" /></p>
+<p>Run once more:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">droplet</span><span class="o">-</span><span class="n">agent</span><span class="o">.</span><span class="n">list</span>
+</pre></div>
+</div>
+<p><img alt="solution for elasticsearch 6" src="../_images/elasticsearch-setup-in-linux-8.png" /></p>
+<p><img alt="solution for elasticsearch 7" src="../_images/elasticsearch-setup-in-linux-10.png" /></p>
+<p>The service install for both <code class="docutils literal notranslate"><span class="pre">elasticsearch</span></code> and <code class="docutils literal notranslate"><span class="pre">kibana</span></code> went smoothly from that point as shown below:</p>
+<p><img alt="solution for elasticsearch 8" src="../_images/elasticsearch-setup-in-linux-13.png" /></p>
+<p><img alt="solution for elasticsearch 9" src="../_images/elasticsearch-setup-in-linux-14.png" /></p>
+<p><img alt="solution for elasticsearch 10" src="../_images/elasticsearch-setup-in-linux-15.png" /></p>
+<p><img alt="solution in elasticsearch 11" src="../_images/elasticsearch-setup-in-linux-18.png" /></p>
+<p>However, I ran into the same problem faced in attempt 1:</p>
+<p><img alt="error in elasticsearch 6" src="../_images/elasticsearch-setup-in-linux-16.png" /></p>
+<p><img alt="error in elasticsearch 7" src="../_images/elasticsearch-setup-in-linux-17.png" /></p>
+<div class="note admonition">
+<p class="admonition-title">Lessons Learnt after the 2nd attempt</p>
+<ol class="simple">
+<li><p>Just because Elasticsearch is running in the system does not ensure that you can actually connect to the database.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="u-attempt-3-u">
+<h4><u>Attempt 3</u><a class="headerlink" href="#u-attempt-3-u" title="Permalink to this headline">¶</a></h4>
+<p>In my final (and successful attempt) I set up ElasticSearch within Docker on the server itself as per
+<a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04">this article</a>,
+<a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html">this article</a> and
+<a class="reference external" href="https://www.coguard.io/post/elasticsearchs-most-common-reason-for-exited-unexpectedly">this article</a> as shown below:</p>
 </div>
 </div>
 </div>
