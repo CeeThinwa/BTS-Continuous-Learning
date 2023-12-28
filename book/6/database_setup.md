@@ -5,10 +5,20 @@
 
 The database of choice that I decided to adopt in this category was *ElasticSearch*.
 
-Based on [the page where one could get started](https://www.elastic.co/webinars/getting-started-elasticsearch),
-I went to their [download page](https://www.elastic.co/downloads/elasticsearch).
+:::{admonition} Options for reading this article
+:class: note
+A lot of trial and error took place to get to my installation solution over a period of almost 3 months.
+
+If you wish to fast-forward to how I installed ElasticSearch successfully, read **Attempt 3**.
+
+If you wish to learn more about my journey, keep reading the next section.
+:::
+
 
 ### Local *ElasticSearch* setup
+
+Based on [the page where one could get started](https://www.elastic.co/webinars/getting-started-elasticsearch),
+I went to their [download page](https://www.elastic.co/downloads/elasticsearch).
 
 I decided to first set it up locally on my Windows.
 
@@ -141,42 +151,95 @@ install, making it impossible for the enrollment code needed by Kibana to be gen
 For this reason, I decided to install ElasticSearch and use it in a [Virtual Private Server](VM-setup).
 
 
-https://medium.com/devops-dudes/how-to-deploy-elasticsearch-5b1105e3063a
+### Virtual *ElasticSearch* setup
 
-https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04
+#### <u>Attempt 1</u>
 
-https://stackoverflow.com/questions/68992799/warning-apt-key-is-deprecated-manage-keyring-files-in-trusted-gpg-d-instead
+My first attempt was guided by [this article](https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html).
 
-https://stackoverflow.com/questions/71553340/sudo-apt-get-update-does-not-work-after-trying-to-install-elasticsearch-throug
+The first error I came across was (even after successfully running ElasticSearch and Kibana on the server)<br>
+having empty responses from the server and not being able to connect to the server internally
+as shown by the screenshots below:
 
-https://stackoverflow.com/questions/38674711/can-not-start-elasticsearch-as-a-service-in-ubuntu-16-04
+![error in elasticsearch 1](../_static/images/elasticsearch-setup-in-linux-6.jpg)
 
-https://www.elastic.co/guide/en/elasticsearch/reference/current/starting-elasticsearch.html
+![error in elasticsearch 2](../_static/images/elasticsearch-setup-in-linux-9.jpg)
 
-https://askubuntu.com/questions/1433350/error-failed-to-determine-the-health-of-the-cluster-unexpected-http-status-50
+![error in elasticsearch 3](../_static/images/elasticsearch-setup-in-linux-11.jpg)
 
-https://magento.stackexchange.com/questions/354928/elasticsearch-issue-after-run-curl-http-localhost9200-curl-52-empty-re
+![error in elasticsearch 4](../_static/images/elasticsearch-setup-in-linux-12.jpg)
 
-1. add the Elasticsearch public key (digital ocean has more recent instructions, but the medium article clearly outlines the principles)
-2. update all packages
-
+:::{admonition} Lessons Learnt after the 1st attempt
+:class: note
+1. The default setup of elasticsearch creates self-signing certificates making it difficult to user `curl` to connect.
+2. If you attempt to access the database from the command line, it may require addition configurations to your VPS.
 :::
 
-Resources (for Creating ElasticSearch and Kibana in Linux using `tar.gz`):
-* https://ceethinwa.github.io/BTS-Continuous-Learning/6/server_setup.html
-* https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html
-* https://www.elastic.co/guide/en/kibana/current/targz.html
-* https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04
-* https://discuss.elastic.co/t/http-request-curl-52-empty-reply-from-server/320750/2
-* https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup-https.html
-* https://www.freecodecamp.org/news/how-to-search-for-files-from-the-linux-command-line/
+
+#### <u>Attempt 2</u>
+
+I then attempted to set up ElasticSearch as a package within the server itself instead of installing from the archive as per
+[this article](https://medium.com/devops-dudes/how-to-deploy-elasticsearch-5b1105e3063a) and
+[this article](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04).
+
+The first error I came across was this one:
+
+![error in elasticsearch 5](../_static/images/elasticsearch-setup-in-linux-1.png)
+
+I used [this article](https://stackoverflow.com/questions/68992799/warning-apt-key-is-deprecated-manage-keyring-files-in-trusted-gpg-d-instead),
+[this article](https://www.elastic.co/guide/en/elasticsearch/reference/current/starting-elasticsearch.html) and
+[this article](https://stackoverflow.com/questions/71553340/sudo-apt-get-update-does-not-work-after-trying-to-install-elasticsearch-throug)
+to resolve the problem, as shown below:
+
+![solution for elasticsearch 1](../_static/images/elasticsearch-setup-in-linux-2.png)
+
+![solution for elasticsearch 2](../_static/images/elasticsearch-setup-in-linux-3.png)
+
+![solution for elasticsearch 3](../_static/images/elasticsearch-setup-in-linux-4.png)
+
+![solution for elasticsearch 4](../_static/images/elasticsearch-setup-in-linux-5.png)
+
+![solution for elasticsearch 5](../_static/images/elasticsearch-setup-in-linux-7.png)
+
+Run once more:
+```
+sudo nano /etc/apt/sources.list.d/droplet-agent.list
+```
+
+![solution for elasticsearch 6](../_static/images/elasticsearch-setup-in-linux-8.png)
+
+![solution for elasticsearch 7](../_static/images/elasticsearch-setup-in-linux-10.png)
+
+The service install for both `elasticsearch` and `kibana` went smoothly from that point as shown below:
+
+![solution for elasticsearch 8](../_static/images/elasticsearch-setup-in-linux-13.png)
+
+![solution for elasticsearch 9](../_static/images/elasticsearch-setup-in-linux-14.png)
+
+![solution for elasticsearch 10](../_static/images/elasticsearch-setup-in-linux-15.png)
+
+![solution in elasticsearch 11](../_static/images/elasticsearch-setup-in-linux-18.png)
+
+However, I ran into the same problem faced in attempt 1:
+
+![error in elasticsearch 6](../_static/images/elasticsearch-setup-in-linux-16.png)
+
+![error in elasticsearch 7](../_static/images/elasticsearch-setup-in-linux-17.png)
+
+:::{admonition} Lessons Learnt after the 2nd attempt
+:class: note
+1. Just because Elasticsearch is running in the system does not ensure that you can actually connect to the database. 
+:::
+
+
+#### <u>Attempt 3</u>
+
+In my final (and successful attempt) I set up ElasticSearch within Docker on the server itself as per
+[this article](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04),
+[this article](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html) and
+[this article](https://www.coguard.io/post/elasticsearchs-most-common-reason-for-exited-unexpectedly) as shown below:
 
 
 
-ATTEMPT 3
 
-https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04
 
-https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
-
-https://www.coguard.io/post/elasticsearchs-most-common-reason-for-exited-unexpectedly
