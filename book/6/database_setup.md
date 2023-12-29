@@ -404,21 +404,15 @@ And one can add a point of ingestion of data, as shown below:
 :::{admonition} Step 5 Notes
 :class: note
 * Once the credentials in each of the terminals are displayed, take note of them. I recommend taking a snip of the 2 terminal outputs.
+* The reason you don't run `http://0.0.0.0:5601/?code=461789` or `http://localhost:5601/?code=461789` is because your browser is installed locally and you need to access remote server IP address `143.244.182.146` to access Kibana.<br>Previous attempts to configure the browser on the server and using `curl` did not work, so it's easier to access Kibana from your local device instead of from the server.
+* If done with setup and with no other task to complete, you can close ElasticSearch as follows:
+  1. Log out of Kibana from the local browser and close the tab
+  2. Return to the terminal where Kibana is running and `Ctrl+C` to shut it down, then close the terminal with the `exit` command
+  3. Return to the terminal where ElasticSearch is running and `Ctrl+C` to shut it down, then close the terminal with the `exit`
+  command entered twice.
 
 :::{admonition} Warning!
 :class: warning
 Do NOT attempt to copy output from the terminal via `Ctrl+C`! Right-click, then select `Copy` or type manually in a text editor on your local machine to avoid interfering with the background processes.
 :::
-
-* The reason you don't run `http://0.0.0.0:5601/?code=461789` or `http://localhost:5601/?code=461789` is because your browser is installed locally and you need to access remote server IP address `143.244.182.146` to access Kibana.<br>Previous attempts to configure the browser on the server and using `curl` did not work, so it's easier to access Kibana from your local device instead of from the server.
-:::
-
-##### **Step 6: Closing ElasticSearch and Kibana** 
-
-Once done with setup and with no other task to complete, you can close ElasticSearch as follows:
-
-1. Log out of Kibana from the local browser and close the tab
-2. Return to the terminal where Kibana is running and `Ctrl+C` to shut it down, then close the terminal with the `exit` command
-3. Return to the terminal where ElasticSearch is running and `Ctrl+C` to shut it down, then close the terminal with the `exit`
-command entered twice.
 
