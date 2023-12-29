@@ -332,6 +332,43 @@
         Attempt 3
        </u>
       </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#step-1-prep-the-server-to-install-docker">
+         <strong>
+          Step 1: Prep the server to install Docker
+         </strong>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#step-2-install-docker-and-set-up-the-user-to-be-recognized-by-docker">
+         <strong>
+          Step 2: Install Docker and set up the user to be recognized by Docker
+         </strong>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#step-3-prep-system-for-elasticsearch-and-pull-the-elasticsearch-image-from-docker">
+         <strong>
+          Step 3: Prep system for Elasticsearch and pull the Elasticsearch image from Docker
+         </strong>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#step-4-pull-the-kibana-image-from-elasticsearch">
+         <strong>
+          Step 4: Pull the Kibana image from ElasticSearch
+         </strong>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#step-5-configure-elasticsearch-for-the-first-time">
+         <strong>
+          Step 5: Configure ElasticSearch for the first time
+         </strong>
+        </a>
+       </li>
+      </ul>
      </li>
     </ul>
    </li>
@@ -416,6 +453,43 @@
         Attempt 3
        </u>
       </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#step-1-prep-the-server-to-install-docker">
+         <strong>
+          Step 1: Prep the server to install Docker
+         </strong>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#step-2-install-docker-and-set-up-the-user-to-be-recognized-by-docker">
+         <strong>
+          Step 2: Install Docker and set up the user to be recognized by Docker
+         </strong>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#step-3-prep-system-for-elasticsearch-and-pull-the-elasticsearch-image-from-docker">
+         <strong>
+          Step 3: Prep system for Elasticsearch and pull the Elasticsearch image from Docker
+         </strong>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#step-4-pull-the-kibana-image-from-elasticsearch">
+         <strong>
+          Step 4: Pull the Kibana image from ElasticSearch
+         </strong>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#step-5-configure-elasticsearch-for-the-first-time">
+         <strong>
+          Step 5: Configure ElasticSearch for the first time
+         </strong>
+        </a>
+       </li>
+      </ul>
      </li>
     </ul>
    </li>
@@ -601,6 +675,173 @@ to resolve the problem, as shown below:</p>
 <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04">this article</a>,
 <a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html">this article</a> and
 <a class="reference external" href="https://www.coguard.io/post/elasticsearchs-most-common-reason-for-exited-unexpectedly">this article</a> as shown below:</p>
+<p>This will only work if logged in as a user with <code class="docutils literal notranslate"><span class="pre">sudo</span></code> rights.</p>
+<div class="section" id="step-1-prep-the-server-to-install-docker">
+<h5><strong>Step 1: Prep the server to install Docker</strong><a class="headerlink" href="#step-1-prep-the-server-to-install-docker" title="Permalink to this headline">¶</a></h5>
+<p><img alt="solution in elasticsearch 12" src="../_images/elasticsearch-setup-in-linux-19.png" /></p>
+<p><img alt="solution in elasticsearch 13" src="../_images/elasticsearch-setup-in-linux-20.png" /></p>
+<div class="note admonition">
+<p class="admonition-title">Step 1 Commands</p>
+<p>Commands ran were:</p>
+<ol class="simple">
+<li><p>Update all packages in the server</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Install <code class="docutils literal notranslate"><span class="pre">apt-transport-https</span></code>, <code class="docutils literal notranslate"><span class="pre">ca-certificates</span></code>, <code class="docutils literal notranslate"><span class="pre">curl</span></code> and <code class="docutils literal notranslate"><span class="pre">software-properties-common</span></code> packages, just in case they are not installed.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">apt</span><span class="o">-</span><span class="n">transport</span><span class="o">-</span><span class="n">https</span> <span class="n">ca</span><span class="o">-</span><span class="n">certificates</span> <span class="n">curl</span> <span class="n">software</span><span class="o">-</span><span class="n">properties</span><span class="o">-</span><span class="n">common</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Download and save the GPG key for the official Docker repository and have the downloaded repo recognized by APT.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">fsSL</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">gpg</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">gpg</span> <span class="o">--</span><span class="n">dearmor</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">keyrings</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">archive</span><span class="o">-</span><span class="n">keyring</span><span class="o">.</span><span class="n">gpg</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable&quot;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">docker</span><span class="o">.</span><span class="n">list</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Update the system for the changes to be recognized and ensure that you are downloading from the official Docker website.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">cache</span> <span class="n">policy</span> <span class="n">docker</span><span class="o">-</span><span class="n">ce</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="step-2-install-docker-and-set-up-the-user-to-be-recognized-by-docker">
+<h5><strong>Step 2: Install Docker and set up the user to be recognized by Docker</strong><a class="headerlink" href="#step-2-install-docker-and-set-up-the-user-to-be-recognized-by-docker" title="Permalink to this headline">¶</a></h5>
+<p><img alt="solution in elasticsearch 14" src="../_images/elasticsearch-setup-in-linux-21.png" /></p>
+<p><img alt="solution in elasticsearch 15" src="../_images/elasticsearch-setup-in-linux-22.png" /></p>
+<div class="note admonition">
+<p class="admonition-title">Step 2 Commands</p>
+<p>Commands ran were:</p>
+<ol class="simple">
+<li><p>Install Docker.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">docker</span><span class="o">-</span><span class="n">ce</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Check that Docker is running.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">status</span> <span class="n">docker</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Avoid typing <code class="docutils literal notranslate"><span class="pre">sudo</span></code> in front of <code class="docutils literal notranslate"><span class="pre">docker</span></code> commands by adding <code class="docutils literal notranslate"><span class="pre">superuser</span></code> to the docker user group.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">usermod</span> <span class="o">-</span><span class="n">aG</span> <span class="n">docker</span> <span class="n">superuser</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">su</span> <span class="o">-</span> <span class="n">superuser</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Confirm that <code class="docutils literal notranslate"><span class="pre">superuser</span></code> now belongs to the <code class="docutils literal notranslate"><span class="pre">docker</span></code> group.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">groups</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="step-3-prep-system-for-elasticsearch-and-pull-the-elasticsearch-image-from-docker">
+<h5><strong>Step 3: Prep system for Elasticsearch and pull the Elasticsearch image from Docker</strong><a class="headerlink" href="#step-3-prep-system-for-elasticsearch-and-pull-the-elasticsearch-image-from-docker" title="Permalink to this headline">¶</a></h5>
+<p><img alt="solution in elasticsearch 16" src="../_images/elasticsearch-setup-in-linux-23.png" /></p>
+<div class="note admonition">
+<p class="admonition-title">Step 3 Commands</p>
+<p>Commands ran were:</p>
+<ol class="simple">
+<li><p>Determine current maximum RAM memory allocation.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">sysctl</span> <span class="o">-</span><span class="n">a</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">vm</span><span class="o">.</span><span class="n">max_map_count</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Set the required maximum RAM memory allocation required by ElasticSearch.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">sysctl</span> <span class="o">-</span><span class="n">w</span> <span class="n">vm</span><span class="o">.</span><span class="n">max_map_count</span><span class="o">=</span><span class="mi">262144</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Create a new Docker network for ElasticSearch called <code class="docutils literal notranslate"><span class="pre">elastic</span></code>.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">network</span> <span class="n">create</span> <span class="n">elastic</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Download/Pull from Docker the ElasticSearch image.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">docker</span><span class="o">.</span><span class="n">elastic</span><span class="o">.</span><span class="n">co</span><span class="o">/</span><span class="n">elasticsearch</span><span class="o">/</span><span class="n">elasticsearch</span><span class="p">:</span><span class="mf">8.11.3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="step-4-pull-the-kibana-image-from-elasticsearch">
+<h5><strong>Step 4: Pull the Kibana image from ElasticSearch</strong><a class="headerlink" href="#step-4-pull-the-kibana-image-from-elasticsearch" title="Permalink to this headline">¶</a></h5>
+<p><img alt="solution in elasticsearch 16" src="../_images/elasticsearch-setup-in-linux-25.png" /></p>
+<div class="note admonition">
+<p class="admonition-title">Step 4 Commands</p>
+<p>Commands ran were:</p>
+<ol class="simple">
+<li><p>Download/Pull from Docker the Kibana image.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">docker</span><span class="o">.</span><span class="n">elastic</span><span class="o">.</span><span class="n">co</span><span class="o">/</span><span class="n">kibana</span><span class="o">/</span><span class="n">kibana</span><span class="p">:</span><span class="mf">8.11.3</span>
+</pre></div>
+</div>
+<p><strong>N/B:</strong> <em>Ensure that the version number of Kibana matches the version number of ElasticSearch.</em></p>
+</div>
+</div>
+<div class="section" id="step-5-configure-elasticsearch-for-the-first-time">
+<h5><strong>Step 5: Configure ElasticSearch for the first time</strong><a class="headerlink" href="#step-5-configure-elasticsearch-for-the-first-time" title="Permalink to this headline">¶</a></h5>
+<p>In a new terminal, run a new Docker container for ElasticSearch named <code class="docutils literal notranslate"><span class="pre">kip-db</span></code> (or any other name of your choice) that is 1GB in size within the <code class="docutils literal notranslate"><span class="pre">elastic</span></code> network by typing the command below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">name</span> <span class="n">kip</span><span class="o">-</span><span class="n">db</span> <span class="o">--</span><span class="n">net</span> <span class="n">elastic</span> <span class="o">-</span><span class="n">p</span> <span class="mi">9200</span><span class="p">:</span><span class="mi">9200</span> <span class="o">-</span><span class="n">it</span> <span class="o">-</span><span class="n">m</span> <span class="mi">1</span><span class="n">GB</span> <span class="n">docker</span><span class="o">.</span><span class="n">elastic</span><span class="o">.</span><span class="n">co</span><span class="o">/</span><span class="n">elasticsearch</span><span class="o">/</span><span class="n">elasticsearch</span><span class="p">:</span><span class="mf">8.11.3</span>
+</pre></div>
+</div>
+<p>When starting up for the first time, it will output the below:</p>
+<p><img alt="solution in elasticsearch 16" src="../_images/elasticsearch-setup-in-linux-24.png" /></p>
+<p>In another new terminal, run a new container for kibana named <code class="docutils literal notranslate"><span class="pre">kib01</span></code> within the <code class="docutils literal notranslate"><span class="pre">elastic</span></code> network by typing the command below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">name</span> <span class="n">kib01</span> <span class="o">--</span><span class="n">net</span> <span class="n">elastic</span> <span class="o">-</span><span class="n">p</span> <span class="mi">5601</span><span class="p">:</span><span class="mi">5601</span> <span class="n">docker</span><span class="o">.</span><span class="n">elastic</span><span class="o">.</span><span class="n">co</span><span class="o">/</span><span class="n">kibana</span><span class="o">/</span><span class="n">kibana</span><span class="p">:</span><span class="mf">8.11.3</span>
+</pre></div>
+</div>
+<p>When starting up for the first time, it will output the below:</p>
+<p><img alt="solution in elasticsearch 17" src="../_images/elasticsearch-setup-in-linux-26.png" /></p>
+<p>As per the instruction from the terminal running Kibana, I input <code class="docutils literal notranslate"><span class="pre">http://143.244.182.146:5601/?code=461789</span></code> and pasted the enrollment code (copied from the terminal running ElasticSearch) as shown below:</p>
+<p><img alt="solution in elasticsearch 18" src="../_images/elasticsearch-setup-in-linux-27.png" /></p>
+<p>I clicked the <code class="docutils literal notranslate"><span class="pre">Configure</span> <span class="pre">ElasticSearch</span></code> button with the following results:</p>
+<p><img alt="solution in elasticsearch 19" src="../_images/elasticsearch-setup-in-linux-28.png" /></p>
+<p>Once configuration was complete, I was able to log in using the username and password as per the instruction from the terminal running ElasticSearch:</p>
+<p><img alt="solution in elasticsearch 20" src="../_images/elasticsearch-setup-in-linux-29.png" /></p>
+<p>Resulting in the following homepage:</p>
+<p><img alt="solution in elasticsearch 21" src="../_images/elasticsearch-setup-in-linux-30.png" /></p>
+<p>And one can add a point of ingestion of data, as shown below:</p>
+<p><img alt="solution in elasticsearch 21" src="../_images/elasticsearch-setup-in-linux-31.png" /></p>
+<div class="note admonition">
+<p class="admonition-title">Step 5 Notes</p>
+<ul class="simple">
+<li><p>Once the credentials in each of the terminals are displayed, take note of them. I recommend taking a snip of the 2 terminal outputs.</p></li>
+<li><p>The reason you don’t run <code class="docutils literal notranslate"><span class="pre">http://0.0.0.0:5601/?code=461789</span></code> or <code class="docutils literal notranslate"><span class="pre">http://localhost:5601/?code=461789</span></code> is because your browser is installed locally and you need to access remote server IP address <code class="docutils literal notranslate"><span class="pre">143.244.182.146</span></code> to access Kibana.<br>Previous attempts to configure the browser on the server and using <code class="docutils literal notranslate"><span class="pre">curl</span></code> did not work, so it’s easier to access Kibana from your local device instead of from the server.</p></li>
+<li><p>If done with setup and with no other task to complete, you can close ElasticSearch as follows:</p>
+<ol class="simple">
+<li><p>Log out of Kibana from the local browser and close the tab</p></li>
+<li><p>Return to the terminal where Kibana is running and <code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code> to shut it down, then close the terminal with the <code class="docutils literal notranslate"><span class="pre">exit</span></code> command</p></li>
+<li><p>Return to the terminal where ElasticSearch is running and <code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code> to shut it down, then close the terminal with the <code class="docutils literal notranslate"><span class="pre">exit</span></code>
+command entered twice.</p></li>
+</ol>
+</li>
+</ul>
+<div class="warning admonition">
+<p class="admonition-title">Warning!</p>
+<p>Do NOT attempt to copy output from the terminal via <code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code>! Right-click, then select <code class="docutils literal notranslate"><span class="pre">Copy</span></code> or type manually in a text editor on your local machine to avoid interfering with the background processes.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
