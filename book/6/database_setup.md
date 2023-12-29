@@ -239,7 +239,186 @@ In my final (and successful attempt) I set up ElasticSearch within Docker on the
 [this article](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html) and
 [this article](https://www.coguard.io/post/elasticsearchs-most-common-reason-for-exited-unexpectedly) as shown below:
 
+This will only work if logged in as a superuser with `sudo` rights.
+
+##### **Step 1: Prep the server to install Docker**
+
+![solution in elasticsearch 12](../_static/images/elasticsearch-setup-in-linux-19.png)
+
+![solution in elasticsearch 13](../_static/images/elasticsearch-setup-in-linux-20.png)
+
+:::{admonition} Step 1 Commands
+:class: note
+Commands ran were:
+
+1. Update all packages in the server
+```
+sudo apt update
+```
+
+2. Install `apt-transport-https`, `ca-certificates`, `curl` and `software-properties-common` packages, just in case they are not installed.
+```
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+```
+
+3. Download and save the GPG key for the official Docker repository and have the downloaded repo recognized by APT. 
+```
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+```
+```
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+
+4. Update the system for the changes to be recognized and ensure that you are downloading from the official Docker website.
+```
+sudo apt update
+```
+```
+apt-cache policy docker-ce
+```
+:::
+
+##### **Step 2: Install Docker and set up the user to be recognized by Docker**
+
+![solution in elasticsearch 14](../_static/images/elasticsearch-setup-in-linux-21.png)
+
+![solution in elasticsearch 15](../_static/images/elasticsearch-setup-in-linux-22.png)
+
+:::{admonition} Step 2 Commands
+:class: note
+Commands ran were:
+
+1. Install Docker.
+```
+sudo apt install docker-ce
+```
+
+2. Check that Docker is running.
+```
+sudo systemctl status docker
+```
+
+3. Avoid typing `sudo` in front of `docker` commands by adding `superuser` to the docker user group. 
+```
+sudo usermod -aG docker superuser
+```
+```
+su - superuser
+```
+
+4. Confirm that `superuser` now belongs to the `docker` group.
+```
+groups
+```
+:::
 
 
+##### **Step 3: Prep system for Elasticsearch and pull the Elasticsearch image from Docker**
 
+![solution in elasticsearch 16](../_static/images/elasticsearch-setup-in-linux-23.png)
+
+:::{admonition} Step 3 Commands
+:class: note
+Commands ran were:
+
+1. Determine current maximum RAM memory allocation.
+```
+sudo sysctl -a | grep vm.max_map_count
+```
+
+2. Set the required maximum RAM memory allocation required by ElasticSearch.
+```
+sudo sysctl -w vm.max_map_count=262144
+```
+
+3. Create a new Docker network for ElasticSearch called `elastic`. 
+```
+docker network create elastic
+```
+
+4. Download/Pull from Docker the ElasticSearch image.
+```
+docker pull docker.elastic.co/elasticsearch/elasticsearch:8.11.3
+```
+:::
+
+##### **Step 4: Pull the Kibana image from ElasticSearch**
+
+![solution in elasticsearch 16](../_static/images/elasticsearch-setup-in-linux-25.png)
+
+:::{admonition} Step 4 Commands
+:class: note
+Commands ran were:
+
+1. Download/Pull from Docker the Kibana image.
+```
+docker pull docker.elastic.co/kibana/kibana:8.11.3
+```
+
+**N/B:** *Ensure that the version number of Kibana matches the version number of ElasticSearch.*
+:::
+
+
+##### **Step 5: Configure ElasticSearch for the first time**
+
+In a new terminal, run a new Docker container for ElasticSearch named `kip-db` (or any other name of your choice) that is 1GB in size within the `elastic` network by typing the command below:
+
+```
+docker run --name kip-db --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:8.11.3
+```
+
+When starting up for the first time, it will output the below:
+
+![solution in elasticsearch 16](../_static/images/elasticsearch-setup-in-linux-24.png)
+
+In another new terminal, run a new container for kibana named `kib01` within the `elastic` network by typing the command below:
+
+```
+docker run --name kib01 --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:8.11.3
+```
+
+When starting up for the first time, it will output the below:
+
+![solution in elasticsearch 17](../_static/images/elasticsearch-setup-in-linux-26.png)
+
+As per the instruction from the terminal running Kibana, I input `http://143.244.182.146:5601/?code=461789` and pasted the enrollment code (copied from the terminal running ElasticSearch) as shown below:
+
+![solution in elasticsearch 18](../_static/images/elasticsearch-setup-in-linux-27.png)
+
+I clicked the `Configure ElasticSearch` button with the following results:
+
+![solution in elasticsearch 19](../_static/images/elasticsearch-setup-in-linux-28.png)
+
+Once configuration was complete, I was able to log in using the username and password as per the instruction from the terminal running ElasticSearch:
+
+![solution in elasticsearch 20](../_static/images/elasticsearch-setup-in-linux-29.png)
+
+Resulting in the following homepage:
+
+![solution in elasticsearch 21](../_static/images/elasticsearch-setup-in-linux-30.png)
+
+And one can add a point of ingestion of data, as shown below:
+
+![solution in elasticsearch 21](../_static/images/elasticsearch-setup-in-linux-31.png)
+
+:::{admonition} Step 5 Notes
+:class: note
+* Once the credentials in each of the terminals are displayed, take note of them. I recommend taking a snip of the 2 terminal outputs.
+
+:::{admonition} Warning!
+:class: warning
+Do NOT attempt to copy output from the terminal via `Ctrl+C`! Right-click, then select `Copy` or type manually in a text editor on your local machine to avoid interfering with the background processes.
+:::
+
+* The reason you don't run `http://0.0.0.0:5601/?code=461789` or `http://localhost:5601/?code=461789` is because your browser is installed locally and you need to access remote server IP address `143.244.182.146` to access Kibana.<br>Previous attempts to configure the browser on the server and using `curl` did not work, so it's easier to access Kibana from your local device instead of from the server.
+:::
+
+##### **Step 6: Closing ElasticSearch and Kibana** 
+
+Once done with setup and with no other task to complete, you can close ElasticSearch as follows:
+
+1. Log out of Kibana from the local browser and close the tab
+2. Return to the terminal where Kibana is running and `Ctrl+C` to shut it down, then close the terminal with the `exit` command
+3. Return to the terminal where ElasticSearch is running and `Ctrl+C` to shut it down, then close the terminal with the `exit`
+command entered twice.
 
