@@ -239,7 +239,7 @@ In my final (and successful attempt) I set up ElasticSearch within Docker on the
 [this article](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html) and
 [this article](https://www.coguard.io/post/elasticsearchs-most-common-reason-for-exited-unexpectedly) as shown below:
 
-This will only work if logged in as a superuser with `sudo` rights.
+This will only work if logged in as a user with `sudo` rights.
 
 ##### **Step 1: Prep the server to install Docker**
 
