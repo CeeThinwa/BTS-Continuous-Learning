@@ -15,7 +15,7 @@ If you wish to learn more about my journey, keep reading the next section.
 :::
 
 
-### Local *ElasticSearch* setup
+### *ElasticSearch* setup
 
 Based on [the page where one could get started](https://www.elastic.co/webinars/getting-started-elasticsearch),
 I went to their [download page](https://www.elastic.co/downloads/elasticsearch).
@@ -231,6 +231,23 @@ However, I ran into the same problem faced in attempt 1:
 1. Just because Elasticsearch is running in the system does not ensure that you can actually connect to the database. 
 :::
 
+Articles that made Attempt 2 change from a failure to a success:
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html
+
+```
+curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elastic.gpg
+```
+
+What made the above code work is:
+* `-fsSL` silences all progress and possible errors (except for a server failure)
+* `https://artifacts.elastic.co/GPG-KEY-elasticsearch` is where the Elasticsearch public signing key is located
+* `|` means collect of the output from the `curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch` command and pipe into the `gpg --dearmor -o /usr/share/keyrings/elastic.gpg` command
+* `sudo` is the command that allows a user with admin rights act like the `root` user
+* `gpg --dearmor` command converts the key into a format that the `apt` package can recognize and use to verify downloaded packages
+
 
 #### <u>Attempt 3</u>
 
@@ -416,3 +433,19 @@ And one can add a point of ingestion of data, as shown below:
 Do NOT attempt to copy output from the terminal via `Ctrl+C`! Right-click, then select `Copy` or type manually in a text editor on your local machine to avoid interfering with the background processes.
 :::
 
+### Securing *ElasticSearch*
+
+#### Entering an already existing database
+
+
+```
+export ELASTIC_PASSWORD="password"
+```
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-stack-security.html
+
+https://discuss.elastic.co/t/curl-77-error-setting-certificate-verify-locations/308945
+
+https://geshan.com.np/blog/2023/06/elasticsearch-docker/
+
+https://www.elastic.co/blog/getting-started-with-the-elastic-stack-and-docker-compose
