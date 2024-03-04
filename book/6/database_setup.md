@@ -233,6 +233,8 @@ However, I ran into the same problem faced in attempt 1:
 
 Articles that made Attempt 2 change from a failure to a success:
 
+https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-22-04
+
 https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04
 
 https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html
@@ -247,6 +249,18 @@ What made the above code work is:
 * `|` means collect of the output from the `curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch` command and pipe into the `gpg --dearmor -o /usr/share/keyrings/elastic.gpg` command
 * `sudo` is the command that allows a user with admin rights act like the `root` user
 * `gpg --dearmor` command converts the key into a format that the `apt` package can recognize and use to verify downloaded packages
+
+```
+echo "deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+```
+What made the above code work is:
+* `echo` gets the output from `"deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"` where:
+  * The `deb` package is signed by the key readable by `apt` - `signed-by=/usr/share/keyrings/elastic.gpg`
+  * The location of the `deb` package is `https://artifacts.elastic.co/packages/7.x/apt` if downloading the latest version of ElasticSearch 7.x (versions are from 7.0 up to 7.17) 
+* dd
+* dd
+* dd
+* dd
 
 
 #### <u>Attempt 3</u>
