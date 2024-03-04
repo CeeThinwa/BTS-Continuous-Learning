@@ -9,7 +9,7 @@ The database of choice that I decided to adopt in this category was *ElasticSear
 :class: note
 A lot of trial and error took place to get to my installation solution over a period of almost 3 months.
 
-If you wish to fast-forward to how I installed ElasticSearch successfully, read [**Attempt 3**](https://ceethinwa.github.io/BTS-Continuous-Learning/6/database_setup.html#u-attempt-3-u).
+If you wish to fast-forward to how I installed ElasticSearch successfully, read [**Attempt 2**](https://ceethinwa.github.io/BTS-Continuous-Learning/6/database_setup.html#u-attempt-2-u).
 
 If you wish to learn more about my journey, keep reading the next section.
 :::
@@ -226,18 +226,13 @@ However, I ran into the same problem faced in attempt 1:
 
 ![error in elasticsearch 7](../_static/images/elasticsearch-setup-in-linux-17.png)
 
-:::{admonition} Lessons Learnt after the 2nd attempt
+:::{admonition} Lessons Learnt after the 2nd attempt that changed it from failure to success
 :class: note
-1. Just because Elasticsearch is running in the system does not ensure that you can actually connect to the database. 
-:::
-
 Articles that made Attempt 2 change from a failure to a success:
 
-https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-22-04
-
-https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04
-
-https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html
+* https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-22-04
+* https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04
+* https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html
 
 ```
 curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elastic.gpg
@@ -262,12 +257,26 @@ What made the above code work is:
 * Output from `echo "deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"` is a list file (`elastic-7.x.list`) piped to the `sources.list.d` directory where it will be recognized by `apt` through the `tee` command, which will writes `stdout` (output) to file
 * `-a` tells `tee` that while writing to <u>not</u> overwrite the files but instead **append** to the list file as per [this article](https://linuxize.com/post/linux-tee-command/).
 
+```
+sudo apt update
+```
+The above code updates all package lists on the machine so that APT can recognize the new Elastic source.
 
+With the above pre-work complete, we can now install ElasticSearch:
 
+```
+sudo apt install elasticsearch
+```
 
+##### <u>ElasticSearch Configuration</u>
+
+xxxx
+:::
+
+   
 #### <u>Attempt 3</u>
 
-In my final (and successful attempt) I set up ElasticSearch within Docker on the server itself as per
+In my final (and partially successful attempt) I set up ElasticSearch within Docker on the server itself as per
 [this article](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04),
 [this article](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html) and
 [this article](https://www.coguard.io/post/elasticsearchs-most-common-reason-for-exited-unexpectedly) as shown below:
@@ -448,6 +457,13 @@ And one can add a point of ingestion of data, as shown below:
 :class: warning
 Do NOT attempt to copy output from the terminal via `Ctrl+C`! Right-click, then select `Copy` or type manually in a text editor on your local machine to avoid interfering with the background processes.
 :::
+
+:::{admonition} Lessons Learnt after the 3rd attempt that ended in failure
+:class: note
+1. Installing the db as a Docker container allows you to set up successfully, but it becomes very difficult to access it the 2nd time entering the server - in this way, it becomes largely unusable.
+2. Following this approach makes it difficult to automate in the future and keep ElasticSearch continuously running.
+:::
+
 
 ### Securing *ElasticSearch*
 
