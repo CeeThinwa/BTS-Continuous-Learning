@@ -253,11 +253,13 @@ What made the above code work is:
 ```
 echo "deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
 ```
+
 What made the above code work is:
-* `echo` gets the output from `"deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"` where:
-  * The `deb` package is signed by the key readable by `apt` - `signed-by=/usr/share/keyrings/elastic.gpg`
-  * The location of the `deb` package is `https://artifacts.elastic.co/packages/7.x/apt` if downloading the latest version of ElasticSearch 7.x (versions are from 7.0 up to 7.17) 
-* dd
+* `echo` displays the output from `"deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"` where:
+  * The `deb` package is signed by (`signed-by=`) the key readable by `apt` - `/usr/share/keyrings/elastic.gpg`
+  * The location of the `deb` package is `https://artifacts.elastic.co/packages/7.x/apt` if downloading the latest version of ElasticSearch 7.x (versions in this series are from 7.0 up to 7.17)
+  * The suite of the package being downloaded is a stable release (`stable`) and does not have any dependencies that need to be installed alongside it (`main`) as per [this article](https://askubuntu.com/questions/1032415/what-is-deb-deb-src-stable-xenial-main-in-etc-apt-sources-list#1032736)
+* Output from `echo "deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"` is a list file (`elastic-7.x.list`) piped to the `sources.list.d` directory where it will be recognized by `apt`
 * dd
 * dd
 * dd
