@@ -15,7 +15,7 @@ If you wish to learn more about my journey, keep reading the next section.
 :::
 
 
-### *ElasticSearch* setup
+### Local *ElasticSearch* setup
 
 Based on [the page where one could get started](https://www.elastic.co/webinars/getting-started-elasticsearch),
 I went to their [download page](https://www.elastic.co/downloads/elasticsearch).
