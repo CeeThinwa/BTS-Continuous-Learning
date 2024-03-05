@@ -7,9 +7,13 @@ The database of choice that I decided to adopt in this category was *ElasticSear
 
 :::{admonition} Options for reading this article
 :class: note
-A lot of trial and error took place to get to my installation solution over a period of almost 3 months.
+A lot of trial and error took place to get to my installation solution over a period of almost 6 months.
 
-If you wish to fast-forward to how I installed ElasticSearch successfully, read [**Attempt 3**](https://ceethinwa.github.io/BTS-Continuous-Learning/6/database_setup.html#u-attempt-3-u).
+If you wish to fast-forward to how I installed ElasticSearch successfully, read [**Attempt 2**](https://ceethinwa.github.io/BTS-Continuous-Learning/6/database_setup.html#u-attempt-2-u).
+
+The errors I realized (and then fixed) simplified were:
+
+![Docker error](../_static/images/error-tree.png)
 
 If you wish to learn more about my journey, keep reading the next section.
 :::
@@ -226,15 +230,67 @@ However, I ran into the same problem faced in attempt 1:
 
 ![error in elasticsearch 7](../_static/images/elasticsearch-setup-in-linux-17.png)
 
-:::{admonition} Lessons Learnt after the 2nd attempt
-:class: note
-1. Just because Elasticsearch is running in the system does not ensure that you can actually connect to the database. 
+:::{admonition} Lessons learnt after the 4th attempt that changed <u>Attempt 2</u> from failure to success
+:class: tip
+Key Articles:
+
+* https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-22-04
+* https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04
+* https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html
+
+```
+curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elastic.gpg
+```
+
+What made the above code work is:
+* `-fsSL` silences all progress and possible errors (except for a server failure)
+* `https://artifacts.elastic.co/GPG-KEY-elasticsearch` is where the Elasticsearch public signing key is located
+* `|` means collect of the output from the `curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch` command and pipe into the `gpg --dearmor -o /usr/share/keyrings/elastic.gpg` command
+* `sudo` is the command that allows a user with admin rights act like the `root` user
+* `gpg --dearmor` command converts the key into a format that the `apt` package can recognize and use to verify downloaded packages
+
+```
+echo "deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+```
+
+What made the above code work is:
+* `echo` displays the output from `"deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"` where:
+  * The `deb` package is signed by (`signed-by=`) the key readable by `apt` - `/usr/share/keyrings/elastic.gpg`
+  * The location of the `deb` package is `https://artifacts.elastic.co/packages/7.x/apt` if downloading the latest version of ElasticSearch 7.x (versions in this series are from 7.0 up to 7.17)
+  * The suite of the package being downloaded is a stable release (`stable`) and does not have any dependencies that need to be installed alongside it (`main`) as per [this article](https://askubuntu.com/questions/1032415/what-is-deb-deb-src-stable-xenial-main-in-etc-apt-sources-list#1032736)
+* Output from `echo "deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"` is a list file (`elastic-7.x.list`) piped to the `sources.list.d` directory where it will be recognized by `apt` through the `tee` command, which writes `stdout` (output) to file
+* `-a` tells `tee` that while writing to <u>not</u> overwrite the files but instead **append** to the list file as per [this article](https://linuxize.com/post/linux-tee-command/).
+
+```
+sudo apt update
+```
+The above code updates all package lists on the machine so that APT can recognize the new Elastic source.
+
+With the above pre-work complete, we can now install ElasticSearch:
+
+```
+sudo apt install elasticsearch
+```
+
+The next step is to configure network settings in the `elasticsearch.yml` file to recognize `localhost`; at this point, you can name your node and cluster.
+
+Finally, the firewall is configured for the particular server to listen on the server where we installed ElasticSearch e.g.
+
+```
+sudo ufw allow from 198.51.100.0 to any port 9200
+```
+
+```
+sudo ufw enable
+```
+
+When you test your db with `curl -X GET 'http://localhost:9200'`, it should now work.
 :::
 
-
+   
 #### <u>Attempt 3</u>
 
-In my final (and successful attempt) I set up ElasticSearch within Docker on the server itself as per
+In my final (and partially successful attempt) I set up ElasticSearch within Docker on the server itself as per
 [this article](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04),
 [this article](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html) and
 [this article](https://www.coguard.io/post/elasticsearchs-most-common-reason-for-exited-unexpectedly) as shown below:
@@ -415,4 +471,17 @@ And one can add a point of ingestion of data, as shown below:
 :class: warning
 Do NOT attempt to copy output from the terminal via `Ctrl+C`! Right-click, then select `Copy` or type manually in a text editor on your local machine to avoid interfering with the background processes.
 :::
+
+:::{admonition} Lessons learnt after <u>Attempt 3</u> changed from success to failure 
+:class: warning
+1. Installing the db as a Docker container allows you to set up successfully, but it becomes very difficult to access it the 2nd time entering the server - in this way, it becomes largely unusable.
+2. Following this approach makes it difficult to automate in the future and keep ElasticSearch continuously running.
+:::
+
+
+
+
+### Securing *ElasticSearch*
+
+#### Entering an already existing database
 

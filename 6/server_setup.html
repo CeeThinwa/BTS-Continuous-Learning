@@ -288,6 +288,11 @@
    Restrict root access
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#firewall-setup">
+   Firewall setup
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -321,6 +326,11 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#restrict-root-access">
    Restrict root access
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#firewall-setup">
+   Firewall setup
   </a>
  </li>
 </ul>
@@ -405,6 +415,28 @@ you use both the <code class="docutils literal notranslate"><span class="pre">-l
 <p>Save your changes, then restart the server for the changes to take effect. If we test login,
 after 3 attempts <code class="docutils literal notranslate"><span class="pre">root</span></code> will be locked out, as shown below:</p>
 <p><img alt="ssh reboot and test for root" src="../_images/putty-first-time15.jpg" /></p>
+</div>
+<div class="section" id="firewall-setup">
+<h2>Firewall setup<a class="headerlink" href="#firewall-setup" title="Permalink to this headline">¶</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Set up your firewall to recognize SSH</p>
+<p>As a learning from <a class="reference internal" href="database_setup.html#db-setup"><span class="std std-ref">my noSQL database setup experience</span></a>, it is important to ensure OpenSSH has access to your
+firewall before updating your firewall rules. You can check the status of your rules by running</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ufw</span> <span class="n">status</span>
+</pre></div>
+</div>
+<p>If you do not see something like the screenshot below:
+<img alt="ssh reboot and test for root" src="../_images/default-ufw-status.png" /></p>
+<p>Run the following code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ufw</span> <span class="n">allow</span> <span class="n">OpenSSH</span>
+</pre></div>
+</div>
+<p>Then run the following code to cause the changes to the firewall (<code class="docutils literal notranslate"><span class="pre">ufw</span></code>) to take effect:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ufw</span> <span class="n">enable</span>
+</pre></div>
+</div>
+<p>Your server should now accept SSH access.</p>
+</div>
 </div>
 </div>
 
