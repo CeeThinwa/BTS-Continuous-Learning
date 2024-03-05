@@ -7,7 +7,7 @@ The database of choice that I decided to adopt in this category was *ElasticSear
 
 :::{admonition} Options for reading this article
 :class: note
-A lot of trial and error took place to get to my installation solution over a period of almost 3 months.
+A lot of trial and error took place to get to my installation solution over a period of almost 6 months.
 
 If you wish to fast-forward to how I installed ElasticSearch successfully, read [**Attempt 2**](https://ceethinwa.github.io/BTS-Continuous-Learning/6/database_setup.html#u-attempt-2-u).
 
@@ -226,9 +226,9 @@ However, I ran into the same problem faced in attempt 1:
 
 ![error in elasticsearch 7](../_static/images/elasticsearch-setup-in-linux-17.png)
 
-:::{admonition} Lessons Learnt after the 2nd attempt that changed it from failure to success
-:class: note
-Articles that made Attempt 2 change from a failure to a success:
+:::{admonition} Lessons Learnt after the 3rd attempt that changed **Attempt 2** from failure to success
+:class: tip
+Key Articles:
 
 * https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-22-04
 * https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04
@@ -268,9 +268,7 @@ With the above pre-work complete, we can now install ElasticSearch:
 sudo apt install elasticsearch
 ```
 
-##### <u>ElasticSearch Configuration</u>
 
-xxxx
 :::
 
    
@@ -458,7 +456,7 @@ And one can add a point of ingestion of data, as shown below:
 Do NOT attempt to copy output from the terminal via `Ctrl+C`! Right-click, then select `Copy` or type manually in a text editor on your local machine to avoid interfering with the background processes.
 :::
 
-:::{admonition} Lessons Learnt after the 3rd attempt that ended in failure
+:::{admonition} Lessons Learnt after the 3rd attempt that changed Attempt 3 from success to failure 
 :class: note
 1. Installing the db as a Docker container allows you to set up successfully, but it becomes very difficult to access it the 2nd time entering the server - in this way, it becomes largely unusable.
 2. Following this approach makes it difficult to automate in the future and keep ElasticSearch continuously running.
