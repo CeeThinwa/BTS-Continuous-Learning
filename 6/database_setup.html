@@ -379,13 +379,6 @@
       ElasticSearch
      </em>
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#entering-an-already-existing-database">
-       Entering an already existing database
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -515,13 +508,6 @@
       ElasticSearch
      </em>
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#entering-an-already-existing-database">
-       Entering an already existing database
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -722,7 +708,7 @@ to resolve the problem, as shown below:</p>
 <ul>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">deb</span></code> package is signed by (<code class="docutils literal notranslate"><span class="pre">signed-by=</span></code>) the key readable by <code class="docutils literal notranslate"><span class="pre">apt</span></code> - <code class="docutils literal notranslate"><span class="pre">/usr/share/keyrings/elastic.gpg</span></code></p></li>
 <li><p>The location of the <code class="docutils literal notranslate"><span class="pre">deb</span></code> package is <code class="docutils literal notranslate"><span class="pre">https://artifacts.elastic.co/packages/7.x/apt</span></code> if downloading the latest version of ElasticSearch 7.x (versions in this series are from 7.0 up to 7.17)</p></li>
-<li><p>The suite of the package being downloaded is a stable release (<code class="docutils literal notranslate"><span class="pre">stable</span></code>) and does not have any dependencies that need to be installed alongside it (<code class="docutils literal notranslate"><span class="pre">main</span></code>) as per <a class="reference external" href="https://askubuntu.com/questions/1032415/what-is-deb-deb-src-stable-xenial-main-in-etc-apt-sources-list#1032736">this article</a></p></li>
+<li><p>The suite of the package being downloaded is a stable release (<code class="docutils literal notranslate"><span class="pre">stable</span></code>) and does not have any dependencies that need to be installed alongside it (<code class="docutils literal notranslate"><span class="pre">main</span></code>) as per <a class="reference external" href="https://askubuntu.com/questions/1032415/what-is-deb-deb-src-stable-xenial-main-in-etc-apt-sources-list#1032736">this article</a>.</p></li>
 </ul>
 </li>
 <li><p>Output from <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;deb</span> <span class="pre">[signed-by=/usr/share/keyrings/elastic.gpg]</span> <span class="pre">https://artifacts.elastic.co/packages/7.x/apt</span> <span class="pre">stable</span> <span class="pre">main&quot;</span></code> is a list file (<code class="docutils literal notranslate"><span class="pre">elastic-7.x.list</span></code>) piped to the <code class="docutils literal notranslate"><span class="pre">sources.list.d</span></code> directory where it will be recognized by <code class="docutils literal notranslate"><span class="pre">apt</span></code> through the <code class="docutils literal notranslate"><span class="pre">tee</span></code> command, which writes <code class="docutils literal notranslate"><span class="pre">stdout</span></code> (output) to file</p></li>
@@ -744,7 +730,8 @@ to resolve the problem, as shown below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ufw</span> <span class="n">enable</span>
 </pre></div>
 </div>
-<p>When you test your db with <code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">-X</span> <span class="pre">GET</span> <span class="pre">'http://localhost:9200'</span></code>, it should now work.</p>
+<p>When you test your db with <code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">-X</span> <span class="pre">GET</span> <span class="pre">'http://localhost:9200'</span></code>, it should now work!</p>
+<p><img alt="Docker error" src="../_images/success-cropped.jpg" /></p>
 </div>
 </div>
 <div class="section" id="u-attempt-3-u">
@@ -931,9 +918,6 @@ command entered twice.</p></li>
 </div>
 <div class="section" id="securing-elasticsearch">
 <h3>Securing <em>ElasticSearch</em><a class="headerlink" href="#securing-elasticsearch" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="entering-an-already-existing-database">
-<h4>Entering an already existing database<a class="headerlink" href="#entering-an-already-existing-database" title="Permalink to this headline">¶</a></h4>
-</div>
 </div>
 </div>
 </div>

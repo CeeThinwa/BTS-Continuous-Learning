@@ -257,7 +257,7 @@ What made the above code work is:
 * `echo` displays the output from `"deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"` where:
   * The `deb` package is signed by (`signed-by=`) the key readable by `apt` - `/usr/share/keyrings/elastic.gpg`
   * The location of the `deb` package is `https://artifacts.elastic.co/packages/7.x/apt` if downloading the latest version of ElasticSearch 7.x (versions in this series are from 7.0 up to 7.17)
-  * The suite of the package being downloaded is a stable release (`stable`) and does not have any dependencies that need to be installed alongside it (`main`) as per [this article](https://askubuntu.com/questions/1032415/what-is-deb-deb-src-stable-xenial-main-in-etc-apt-sources-list#1032736)
+  * The suite of the package being downloaded is a stable release (`stable`) and does not have any dependencies that need to be installed alongside it (`main`) as per [this article](https://askubuntu.com/questions/1032415/what-is-deb-deb-src-stable-xenial-main-in-etc-apt-sources-list#1032736).
 * Output from `echo "deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"` is a list file (`elastic-7.x.list`) piped to the `sources.list.d` directory where it will be recognized by `apt` through the `tee` command, which writes `stdout` (output) to file
 * `-a` tells `tee` that while writing to <u>not</u> overwrite the files but instead **append** to the list file as per [this article](https://linuxize.com/post/linux-tee-command/).
 
@@ -284,7 +284,10 @@ sudo ufw allow from 198.51.100.0 to any port 9200
 sudo ufw enable
 ```
 
-When you test your db with `curl -X GET 'http://localhost:9200'`, it should now work.
+When you test your db with `curl -X GET 'http://localhost:9200'`, it should now work!
+
+![Docker error](../_static/images/success-cropped.jpg)
+
 :::
 
    
@@ -479,9 +482,5 @@ Do NOT attempt to copy output from the terminal via `Ctrl+C`! Right-click, then 
 :::
 
 
-
-
 ### Securing *ElasticSearch*
-
-#### Entering an already existing database
 
