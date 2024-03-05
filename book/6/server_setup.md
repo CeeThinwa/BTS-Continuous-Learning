@@ -97,3 +97,30 @@ Save your changes, then restart the server for the changes to take effect. If we
 after 3 attempts `root` will be locked out, as shown below:
 
 ![ssh reboot and test for root](../_static/images/putty-first-time15.jpg)
+
+:::{admonition} Set up your firewall to recognize SSH
+:class: tip
+As a learning from [my noSQL database setup experience](db-setup), it is important to ensure OpenSSH has access to your
+firewall before updating your firewall rules. You can check the status of your rules by running
+
+```
+ufw status
+```
+If you do not see something like the screenshot below:
+![ssh reboot and test for root](../_static/images/default-ufw-status.png)
+
+Run the following code:
+
+```
+ufw allow OpenSSH
+```
+
+Then run the following code to cause the changes to the firewall (`ufw`) to take effect:
+
+```
+ufw enable
+```
+
+Your server should now accept SSH access.
+
+:::
