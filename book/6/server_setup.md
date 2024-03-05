@@ -98,6 +98,8 @@ after 3 attempts `root` will be locked out, as shown below:
 
 ![ssh reboot and test for root](../_static/images/putty-first-time15.jpg)
 
+## Firewall setup
+
 :::{admonition} Set up your firewall to recognize SSH
 :class: tip
 As a learning from [my noSQL database setup experience](db-setup), it is important to ensure OpenSSH has access to your
