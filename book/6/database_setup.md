@@ -479,9 +479,5 @@ Do NOT attempt to copy output from the terminal via `Ctrl+C`! Right-click, then 
 :::
 
 
-
-
 ### Securing *ElasticSearch*
-
-#### Entering an already existing database
 
