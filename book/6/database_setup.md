@@ -456,8 +456,8 @@ And one can add a point of ingestion of data, as shown below:
 Do NOT attempt to copy output from the terminal via `Ctrl+C`! Right-click, then select `Copy` or type manually in a text editor on your local machine to avoid interfering with the background processes.
 :::
 
-:::{admonition} Lessons Learnt after the 3rd attempt that changed Attempt 3 from success to failure 
-:class: note
+:::{admonition} Lessons Learnt after the 3rd attempt that changed **Attempt 3** from success to failure 
+:class: warning
 1. Installing the db as a Docker container allows you to set up successfully, but it becomes very difficult to access it the 2nd time entering the server - in this way, it becomes largely unusable.
 2. Following this approach makes it difficult to automate in the future and keep ElasticSearch continuously running.
 :::
@@ -467,15 +467,3 @@ Do NOT attempt to copy output from the terminal via `Ctrl+C`! Right-click, then 
 
 #### Entering an already existing database
 
-
-```
-export ELASTIC_PASSWORD="password"
-```
-
-https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-stack-security.html
-
-https://discuss.elastic.co/t/curl-77-error-setting-certificate-verify-locations/308945
-
-https://geshan.com.np/blog/2023/06/elasticsearch-docker/
-
-https://www.elastic.co/blog/getting-started-with-the-elastic-stack-and-docker-compose
