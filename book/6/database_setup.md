@@ -268,7 +268,19 @@ With the above pre-work complete, we can now install ElasticSearch:
 sudo apt install elasticsearch
 ```
 
+The next step is to configure network settings in the `elasticsearch.yml` file to recognize `localhost`; at this point, you can name your node and cluster.
 
+Finally, the firewall is configured for the particular server to listen on the server where we installed ElasticSearch e.g.
+
+```
+sudo ufw allow from 198.51.100.0 to any port 9200
+```
+
+```
+sudo ufw enable
+```
+
+When you test your db with `curl -X GET 'http://localhost:9200'`, it should now work.
 :::
 
    
