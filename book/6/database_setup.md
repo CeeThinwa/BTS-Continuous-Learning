@@ -11,6 +11,10 @@ A lot of trial and error took place to get to my installation solution over a pe
 
 If you wish to fast-forward to how I installed ElasticSearch successfully, read [**Attempt 2**](https://ceethinwa.github.io/BTS-Continuous-Learning/6/database_setup.html#u-attempt-2-u).
 
+The errors I realized (and then fixed) simplified were:
+
+![Docker error](../_static/images/error-tree.png)
+
 If you wish to learn more about my journey, keep reading the next section.
 :::
 
@@ -226,7 +230,7 @@ However, I ran into the same problem faced in attempt 1:
 
 ![error in elasticsearch 7](../_static/images/elasticsearch-setup-in-linux-17.png)
 
-:::{admonition} Lessons learnt after the 4th attempt that changed **Attempt 2** from failure to success
+:::{admonition} Lessons learnt after the 4th attempt that changed <u>Attempt 2</u> from failure to success
 :class: tip
 Key Articles:
 
@@ -468,11 +472,13 @@ And one can add a point of ingestion of data, as shown below:
 Do NOT attempt to copy output from the terminal via `Ctrl+C`! Right-click, then select `Copy` or type manually in a text editor on your local machine to avoid interfering with the background processes.
 :::
 
-:::{admonition} Lessons learnt after **Attempt 3** changed from success to failure 
+:::{admonition} Lessons learnt after <u>Attempt 3</u> changed from success to failure 
 :class: warning
 1. Installing the db as a Docker container allows you to set up successfully, but it becomes very difficult to access it the 2nd time entering the server - in this way, it becomes largely unusable.
 2. Following this approach makes it difficult to automate in the future and keep ElasticSearch continuously running.
 :::
+
+
 
 
 ### Securing *ElasticSearch*
