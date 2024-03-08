@@ -274,6 +274,16 @@ sudo apt install elasticsearch
 
 The next step is to configure network settings in the `elasticsearch.yml` file to recognize `localhost`; at this point, you can name your node and cluster.
 
+After configuration, you can start, then enable ElasticSearch (to run upon system startup every time) using `systemctl` by running the following commands:
+
+```
+sudo systemctl start elasticsearch
+```
+
+```
+sudo systemctl enable elasticsearch
+```
+
 Finally, the firewall is configured for the particular server to listen on the server where we installed ElasticSearch e.g.
 
 ```

@@ -723,6 +723,13 @@ to resolve the problem, as shown below:</p>
 </pre></div>
 </div>
 <p>The next step is to configure network settings in the <code class="docutils literal notranslate"><span class="pre">elasticsearch.yml</span></code> file to recognize <code class="docutils literal notranslate"><span class="pre">localhost</span></code>; at this point, you can name your node and cluster.</p>
+<p>After configuration, you can start, then enable ElasticSearch (to run upon system startup every time) using <code class="docutils literal notranslate"><span class="pre">systemctl</span></code> by running the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">elasticsearch</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">elasticsearch</span>
+</pre></div>
+</div>
 <p>Finally, the firewall is configured for the particular server to listen on the server where we installed ElasticSearch e.g.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ufw</span> <span class="n">allow</span> <span class="kn">from</span> <span class="mf">198.51.100.0</span> <span class="n">to</span> <span class="nb">any</span> <span class="n">port</span> <span class="mi">9200</span>
 </pre></div>
