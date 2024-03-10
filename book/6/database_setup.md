@@ -296,8 +296,31 @@ sudo ufw enable
 
 When you test your db with `curl -X GET 'http://localhost:9200'`, it should now work!
 
-![Docker error](../_static/images/success-cropped.jpg)
+![Success-db](../_static/images/success-cropped.jpg)
 
+**<u>Please Note</u>**:
+
+```
+echo "deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+```
+
+After running the command above, you should get the following status after running `sudo systemctl enable elasticsearch`:
+
+![Elasticsearch enabled](../_static/images/elasticsearch-enable-success.png)
+
+You may be tempted to change the code to:
+
+```
+echo "deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-8.x.list
+```
+
+However, what may happen is when you `sudo systemctl enable elasticsearch` the output highlighted in red will be missing:
+
+![Elasticsearch enabled](../_static/images/elasticsearch-enable-missing.jpg)
+
+An explanation for this can be found in [ElasticSearch documentation](https://www.elastic.co/guide/en/elastic-stack/current/upgrading-elasticsearch.html):
+
+![Elasticsearch enabled](../_static/images/elasticsearch-enable-explanation.jpg)
 :::
 
    
