@@ -738,7 +738,21 @@ to resolve the problem, as shown below:</p>
 </pre></div>
 </div>
 <p>When you test your db with <code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">-X</span> <span class="pre">GET</span> <span class="pre">'http://localhost:9200'</span></code>, it should now work!</p>
-<p><img alt="Docker error" src="../_images/success-cropped.jpg" /></p>
+<p><img alt="Success-db" src="../_images/success-cropped.jpg" /></p>
+<p><strong><u>Please Note</u></strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main&quot;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">-</span><span class="n">a</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">elastic</span><span class="o">-</span><span class="mf">7.</span><span class="n">x</span><span class="o">.</span><span class="n">list</span>
+</pre></div>
+</div>
+<p>After running the command above, you should get the following status after running <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">systemctl</span> <span class="pre">enable</span> <span class="pre">elasticsearch</span></code>:</p>
+<p><img alt="Elasticsearch enabled" src="../_images/elasticsearch-enable-success.png" /></p>
+<p>You may be tempted to change the code to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main&quot;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">-</span><span class="n">a</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">elastic</span><span class="o">-</span><span class="mf">8.</span><span class="n">x</span><span class="o">.</span><span class="n">list</span>
+</pre></div>
+</div>
+<p>However, what may happen is when you <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">systemctl</span> <span class="pre">enable</span> <span class="pre">elasticsearch</span></code> the output highlighted in red will be missing:</p>
+<p><img alt="Elasticsearch enabled" src="../_images/elasticsearch-enable-missing.jpg" /></p>
+<p>An explanation for this can be found in <a class="reference external" href="https://www.elastic.co/guide/en/elastic-stack/current/upgrading-elasticsearch.html">ElasticSearch documentation</a>:</p>
+<p><img alt="Elasticsearch enabled" src="../_images/elasticsearch-enable-explanation.jpg" /></p>
 </div>
 </div>
 <div class="section" id="u-attempt-3-u">
