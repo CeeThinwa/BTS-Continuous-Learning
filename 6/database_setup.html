@@ -946,7 +946,7 @@ command entered twice.</p></li>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">kibana</span>
 </pre></div>
 </div>
-<p>Remember once installed to first start kibana then enable it:</p>
+<p>Remember once installed to first start Kibana then enable it:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">kibana</span>
 <span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">kibana</span>
 </pre></div>
@@ -955,7 +955,7 @@ command entered twice.</p></li>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;kibanaadmin:`openssl passwd -apr1`&quot;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">-</span><span class="n">a</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">htpasswd</span><span class="o">.</span><span class="n">users</span>
 </pre></div>
 </div>
-<p>Create a <code class="docutils literal notranslate"><span class="pre">nginx</span></code> file for your public domain (<code class="docutils literal notranslate"><span class="pre">198.51.100.0</span></code>) using <code class="docutils literal notranslate"><span class="pre">nano</span></code> e.g. <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">nano</span> <span class="pre">/etc/nginx/sites-available/198.51.100.0</span></code></p>
+<p>Create a Nginx file  in the <code class="docutils literal notranslate"><span class="pre">sites-avaialble</span></code> folder for your public domain (<code class="docutils literal notranslate"><span class="pre">198.51.100.0</span></code>) using <code class="docutils literal notranslate"><span class="pre">nano</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">sites</span><span class="o">-</span><span class="n">available</span><span class="o">/</span><span class="mf">198.51.100.0</span>
 </pre></div>
 </div>
@@ -988,7 +988,7 @@ command entered twice.</p></li>
 </pre></div>
 </div>
 <p>If no errors are thrown (sometimes the error can be due to you misspelling your domain at a particular step in your
-<code class="docutils literal notranslate"><span class="pre">nginx</span></code> configuration process) then you can reload without having to stop then start the <code class="docutils literal notranslate"><span class="pre">nginx</span></code> service:</p>
+Nginx configuration process) then you can reload without having to stop then start the Nginx service:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">reload</span> <span class="n">nginx</span>
 </pre></div>
 </div>
