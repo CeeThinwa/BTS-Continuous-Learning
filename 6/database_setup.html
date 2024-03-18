@@ -370,6 +370,13 @@
        </li>
       </ul>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#u-successful-installation-u">
+       <u>
+        Successful installation
+       </u>
+      </a>
+     </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -499,6 +506,13 @@
        </li>
       </ul>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#u-successful-installation-u">
+       <u>
+        Successful installation
+       </u>
+      </a>
+     </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -528,7 +542,7 @@
 <div class="note admonition">
 <p class="admonition-title">Options for reading this article</p>
 <p>A lot of trial and error took place to get to my installation solution over a period of almost 6 months.</p>
-<p>If you wish to fast-forward to how I installed ElasticSearch successfully, read <a class="reference external" href="https://ceethinwa.github.io/BTS-Continuous-Learning/6/database_setup.html#u-attempt-2-u"><strong>Attempt 2</strong></a>.</p>
+<p>If you wish to fast-forward to how I installed ElasticSearch successfully, read <a class="reference external" href="https://ceethinwa.github.io/BTS-Continuous-Learning/6/database_setup.html#u-successful-installation-u"><strong>Successful installation</strong></a>.</p>
 <p>The errors I realized (and then fixed) simplified were:</p>
 <p><img alt="Docker error" src="../_images/error-tree.png" /></p>
 <p>If you wish to learn more about my journey, keep reading the next section.</p>
@@ -680,84 +694,10 @@ to resolve the problem, as shown below:</p>
 <p>However, I ran into the same problem faced in attempt 1:</p>
 <p><img alt="error in elasticsearch 6" src="../_images/elasticsearch-setup-in-linux-16.png" /></p>
 <p><img alt="error in elasticsearch 7" src="../_images/elasticsearch-setup-in-linux-17.png" /></p>
-<div class="tip admonition">
-<p class="admonition-title">Lessons learnt after the 4th attempt that changed <u>Attempt 2</u> from failure to success</p>
-<p>Key Articles:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-22-04">https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-22-04</a></p></li>
-<li><p><a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04">https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04</a></p></li>
-<li><p><a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html</a></p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">fsSL</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">artifacts</span><span class="o">.</span><span class="n">elastic</span><span class="o">.</span><span class="n">co</span><span class="o">/</span><span class="n">GPG</span><span class="o">-</span><span class="n">KEY</span><span class="o">-</span><span class="n">elasticsearch</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">gpg</span> <span class="o">--</span><span class="n">dearmor</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">keyrings</span><span class="o">/</span><span class="n">elastic</span><span class="o">.</span><span class="n">gpg</span>
-</pre></div>
-</div>
-<p>What made the above code work is:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-fsSL</span></code> silences all progress and possible errors (except for a server failure)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">https://artifacts.elastic.co/GPG-KEY-elasticsearch</span></code> is where the Elasticsearch public signing key is located</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">|</span></code> means collect of the output from the <code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">-fsSL</span> <span class="pre">https://artifacts.elastic.co/GPG-KEY-elasticsearch</span></code> command and pipe into the <code class="docutils literal notranslate"><span class="pre">gpg</span> <span class="pre">--dearmor</span> <span class="pre">-o</span> <span class="pre">/usr/share/keyrings/elastic.gpg</span></code> command</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span></code> is the command that allows a user with admin rights act like the <code class="docutils literal notranslate"><span class="pre">root</span></code> user</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">gpg</span> <span class="pre">--dearmor</span></code> command converts the key into a format that the <code class="docutils literal notranslate"><span class="pre">apt</span></code> package can recognize and use to verify downloaded packages</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main&quot;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">-</span><span class="n">a</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">elastic</span><span class="o">-</span><span class="mf">7.</span><span class="n">x</span><span class="o">.</span><span class="n">list</span>
-</pre></div>
-</div>
-<p>What made the above code work is:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">echo</span></code> displays the output from <code class="docutils literal notranslate"><span class="pre">&quot;deb</span> <span class="pre">[signed-by=/usr/share/keyrings/elastic.gpg]</span> <span class="pre">https://artifacts.elastic.co/packages/7.x/apt</span> <span class="pre">stable</span> <span class="pre">main&quot;</span></code> where:</p>
-<ul>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">deb</span></code> package is signed by (<code class="docutils literal notranslate"><span class="pre">signed-by=</span></code>) the key readable by <code class="docutils literal notranslate"><span class="pre">apt</span></code> - <code class="docutils literal notranslate"><span class="pre">/usr/share/keyrings/elastic.gpg</span></code></p></li>
-<li><p>The location of the <code class="docutils literal notranslate"><span class="pre">deb</span></code> package is <code class="docutils literal notranslate"><span class="pre">https://artifacts.elastic.co/packages/7.x/apt</span></code> if downloading the latest version of ElasticSearch 7.x (versions in this series are from 7.0 up to 7.17)</p></li>
-<li><p>The suite of the package being downloaded is a stable release (<code class="docutils literal notranslate"><span class="pre">stable</span></code>) and does not have any dependencies that need to be installed alongside it (<code class="docutils literal notranslate"><span class="pre">main</span></code>) as per <a class="reference external" href="https://askubuntu.com/questions/1032415/what-is-deb-deb-src-stable-xenial-main-in-etc-apt-sources-list#1032736">this article</a>.</p></li>
-</ul>
-</li>
-<li><p>Output from <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;deb</span> <span class="pre">[signed-by=/usr/share/keyrings/elastic.gpg]</span> <span class="pre">https://artifacts.elastic.co/packages/7.x/apt</span> <span class="pre">stable</span> <span class="pre">main&quot;</span></code> is a list file (<code class="docutils literal notranslate"><span class="pre">elastic-7.x.list</span></code>) piped to the <code class="docutils literal notranslate"><span class="pre">sources.list.d</span></code> directory where it will be recognized by <code class="docutils literal notranslate"><span class="pre">apt</span></code> through the <code class="docutils literal notranslate"><span class="pre">tee</span></code> command, which writes <code class="docutils literal notranslate"><span class="pre">stdout</span></code> (output) to file</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-a</span></code> tells <code class="docutils literal notranslate"><span class="pre">tee</span></code> that while writing to <u>not</u> overwrite the files but instead <strong>append</strong> to the list file as per <a class="reference external" href="https://linuxize.com/post/linux-tee-command/">this article</a>.</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
-</pre></div>
-</div>
-<p>The above code updates all package lists on the machine so that APT can recognize the new Elastic source.</p>
-<p>With the above pre-work complete, we can now install ElasticSearch:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">elasticsearch</span>
-</pre></div>
-</div>
-<p>The next step is to configure network settings in the <code class="docutils literal notranslate"><span class="pre">elasticsearch.yml</span></code> file to recognize <code class="docutils literal notranslate"><span class="pre">localhost</span></code>; at this point, you can name your node and cluster.</p>
-<p>After configuration, you can start, then enable ElasticSearch (to run upon system startup every time) using <code class="docutils literal notranslate"><span class="pre">systemctl</span></code> by running the following commands:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">elasticsearch</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">elasticsearch</span>
-</pre></div>
-</div>
-<p>Finally, the firewall is configured for the particular server to listen on the server where we installed ElasticSearch e.g.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ufw</span> <span class="n">allow</span> <span class="kn">from</span> <span class="mf">198.51.100.0</span> <span class="n">to</span> <span class="nb">any</span> <span class="n">port</span> <span class="mi">9200</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ufw</span> <span class="n">enable</span>
-</pre></div>
-</div>
-<p>When you test your db with <code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">-X</span> <span class="pre">GET</span> <span class="pre">'http://localhost:9200'</span></code>, it should now work!</p>
-<p><img alt="Success-db" src="../_images/success-cropped.jpg" /></p>
-<p><strong><u>Please Note</u></strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main&quot;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">-</span><span class="n">a</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">elastic</span><span class="o">-</span><span class="mf">7.</span><span class="n">x</span><span class="o">.</span><span class="n">list</span>
-</pre></div>
-</div>
-<p>After running the command above, you should get the following status after running <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">systemctl</span> <span class="pre">enable</span> <span class="pre">elasticsearch</span></code>:</p>
-<p><img alt="Elasticsearch enabled" src="../_images/elasticsearch-enable-success.png" /></p>
-<p>You may be tempted to change the code to:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main&quot;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">-</span><span class="n">a</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">elastic</span><span class="o">-</span><span class="mf">8.</span><span class="n">x</span><span class="o">.</span><span class="n">list</span>
-</pre></div>
-</div>
-<p>However, what may happen is when you <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">systemctl</span> <span class="pre">enable</span> <span class="pre">elasticsearch</span></code> the output highlighted in red will be missing:</p>
-<p><img alt="Elasticsearch enabled" src="../_images/elasticsearch-enable-missing.jpg" /></p>
-<p>An explanation for this can be found in <a class="reference external" href="https://www.elastic.co/guide/en/elastic-stack/current/upgrading-elasticsearch.html">ElasticSearch documentation</a>:</p>
-<p><img alt="Elasticsearch enabled" src="../_images/elasticsearch-enable-explanation.jpg" /></p>
-</div>
 </div>
 <div class="section" id="u-attempt-3-u">
 <h4><u>Attempt 3</u><a class="headerlink" href="#u-attempt-3-u" title="Permalink to this headline">¶</a></h4>
-<p>In my final (and partially successful attempt) I set up ElasticSearch within Docker on the server itself as per
+<p>In this partially successful attempt, I set up ElasticSearch within Docker on the server itself as per
 <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04">this article</a>,
 <a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html">this article</a> and
 <a class="reference external" href="https://www.coguard.io/post/elasticsearchs-most-common-reason-for-exited-unexpectedly">this article</a> as shown below:</p>
@@ -936,9 +876,158 @@ command entered twice.</p></li>
 </div>
 </div>
 </div>
+<div class="section" id="u-successful-installation-u">
+<h4><u>Successful installation</u><a class="headerlink" href="#u-successful-installation-u" title="Permalink to this headline">¶</a></h4>
+<div class="tip admonition">
+<p class="admonition-title">Lessons learnt after the 4th attempt that changed <u>Attempt 2</u> from failure to success</p>
+<p>Key Articles:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-22-04">https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-22-04</a></p></li>
+<li><p><a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04">https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04</a></p></li>
+<li><p><a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html</a></p></li>
+<li><p><a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elastic-stack-on-ubuntu-22-04">https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elastic-stack-on-ubuntu-22-04</a></p></li>
+<li><p><a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-22-04#step-2-adjusting-the-firewall">https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-22-04#step-2-adjusting-the-firewall</a></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">fsSL</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">artifacts</span><span class="o">.</span><span class="n">elastic</span><span class="o">.</span><span class="n">co</span><span class="o">/</span><span class="n">GPG</span><span class="o">-</span><span class="n">KEY</span><span class="o">-</span><span class="n">elasticsearch</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">gpg</span> <span class="o">--</span><span class="n">dearmor</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">keyrings</span><span class="o">/</span><span class="n">elastic</span><span class="o">.</span><span class="n">gpg</span>
+</pre></div>
+</div>
+<p>What made the above code work is:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-fsSL</span></code> silences all progress and possible errors (except for a server failure)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">https://artifacts.elastic.co/GPG-KEY-elasticsearch</span></code> is where the Elasticsearch public signing key is located</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">|</span></code> means collect of the output from the <code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">-fsSL</span> <span class="pre">https://artifacts.elastic.co/GPG-KEY-elasticsearch</span></code> command and pipe into the <code class="docutils literal notranslate"><span class="pre">gpg</span> <span class="pre">--dearmor</span> <span class="pre">-o</span> <span class="pre">/usr/share/keyrings/elastic.gpg</span></code> command</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span></code> is the command that allows a user with admin rights act like the <code class="docutils literal notranslate"><span class="pre">root</span></code> user</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gpg</span> <span class="pre">--dearmor</span></code> command converts the key into a format that the <code class="docutils literal notranslate"><span class="pre">apt</span></code> package can recognize and use to verify downloaded packages</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main&quot;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">-</span><span class="n">a</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">elastic</span><span class="o">-</span><span class="mf">7.</span><span class="n">x</span><span class="o">.</span><span class="n">list</span>
+</pre></div>
+</div>
+<p>What made the above code work is:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">echo</span></code> displays the output from <code class="docutils literal notranslate"><span class="pre">&quot;deb</span> <span class="pre">[signed-by=/usr/share/keyrings/elastic.gpg]</span> <span class="pre">https://artifacts.elastic.co/packages/7.x/apt</span> <span class="pre">stable</span> <span class="pre">main&quot;</span></code> where:</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">deb</span></code> package is signed by (<code class="docutils literal notranslate"><span class="pre">signed-by=</span></code>) the key readable by <code class="docutils literal notranslate"><span class="pre">apt</span></code> - <code class="docutils literal notranslate"><span class="pre">/usr/share/keyrings/elastic.gpg</span></code></p></li>
+<li><p>The location of the <code class="docutils literal notranslate"><span class="pre">deb</span></code> package is <code class="docutils literal notranslate"><span class="pre">https://artifacts.elastic.co/packages/7.x/apt</span></code> if downloading the latest version of ElasticSearch 7.x (versions in this series are from 7.0 up to 7.17)</p></li>
+<li><p>The suite of the package being downloaded is a stable release (<code class="docutils literal notranslate"><span class="pre">stable</span></code>) and does not have any dependencies that need to be installed alongside it (<code class="docutils literal notranslate"><span class="pre">main</span></code>) as per <a class="reference external" href="https://askubuntu.com/questions/1032415/what-is-deb-deb-src-stable-xenial-main-in-etc-apt-sources-list#1032736">this article</a>.</p></li>
+</ul>
+</li>
+<li><p>Output from <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;deb</span> <span class="pre">[signed-by=/usr/share/keyrings/elastic.gpg]</span> <span class="pre">https://artifacts.elastic.co/packages/7.x/apt</span> <span class="pre">stable</span> <span class="pre">main&quot;</span></code> is a list file (<code class="docutils literal notranslate"><span class="pre">elastic-7.x.list</span></code>) piped to the <code class="docutils literal notranslate"><span class="pre">sources.list.d</span></code> directory where it will be recognized by <code class="docutils literal notranslate"><span class="pre">apt</span></code> through the <code class="docutils literal notranslate"><span class="pre">tee</span></code> command, which writes <code class="docutils literal notranslate"><span class="pre">stdout</span></code> (output) to file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-a</span></code> tells <code class="docutils literal notranslate"><span class="pre">tee</span></code> that while writing to <u>not</u> overwrite the files but instead <strong>append</strong> to the list file as per <a class="reference external" href="https://linuxize.com/post/linux-tee-command/">this article</a>.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
+</pre></div>
+</div>
+<p>The above code updates all package lists on the machine so that APT can recognize the new Elastic source.</p>
+<p>With the above pre-work complete, we can now install ElasticSearch:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">elasticsearch</span>
+</pre></div>
+</div>
+<p>The next step is to configure network settings in the <code class="docutils literal notranslate"><span class="pre">elasticsearch.yml</span></code> file to recognize <code class="docutils literal notranslate"><span class="pre">localhost</span></code>; at this point, you can name your node and cluster.</p>
+<p>After configuration, you can start, then enable ElasticSearch (to run upon system startup every time) using <code class="docutils literal notranslate"><span class="pre">systemctl</span></code> by running the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">elasticsearch</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">elasticsearch</span>
+</pre></div>
+</div>
+<p>Finally, the firewall is configured for the particular server to listen on the server where we installed ElasticSearch e.g.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ufw</span> <span class="n">allow</span> <span class="kn">from</span> <span class="mf">198.51.100.0</span> <span class="n">to</span> <span class="nb">any</span> <span class="n">port</span> <span class="mi">9200</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ufw</span> <span class="n">enable</span>
+</pre></div>
+</div>
+<p>When you test your db with <code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">-X</span> <span class="pre">GET</span> <span class="pre">'http://localhost:9200'</span></code>, it should now work!</p>
+<p><img alt="Success-db" src="../_images/success-cropped.jpg" /></p>
+<p>To install Kibana as a Debian package, you need Nginx; run the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">nginx</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">kibana</span>
+</pre></div>
+</div>
+<p>Remember once installed to first start kibana then enable it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">kibana</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">kibana</span>
+</pre></div>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">OpenSSL</span></code>, create a kibana administrator username (<code class="docutils literal notranslate"><span class="pre">kibanaadmin</span></code>) and generate a password, which you will save in <code class="docutils literal notranslate"><span class="pre">/etc/nginx/htpasswd.users</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;kibanaadmin:`openssl passwd -apr1`&quot;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">-</span><span class="n">a</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">htpasswd</span><span class="o">.</span><span class="n">users</span>
+</pre></div>
+</div>
+<p>Create a <code class="docutils literal notranslate"><span class="pre">nginx</span></code> file for your public domain (<code class="docutils literal notranslate"><span class="pre">198.51.100.0</span></code>) using <code class="docutils literal notranslate"><span class="pre">nano</span></code> e.g. <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">nano</span> <span class="pre">/etc/nginx/sites-available/198.51.100.0</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">sites</span><span class="o">-</span><span class="n">available</span><span class="o">/</span><span class="mf">198.51.100.0</span>
+</pre></div>
+</div>
+<p>In the file, you can paste the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>server {
+    listen 80;
+
+    server_name 198.51.100.0;
+
+    auth_basic &quot;Restricted Access&quot;;
+    auth_basic_user_file /etc/nginx/htpasswd.users;
+
+    location / {
+        proxy_pass http://localhost:5601;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection &#39;upgrade&#39;;
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+</pre></div>
+</div>
+<p>Create a symbolic link to the <code class="docutils literal notranslate"><span class="pre">sites-enabled</span></code> directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">sites</span><span class="o">-</span><span class="n">available</span><span class="o">/</span><span class="mf">198.51.100.0</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">sites</span><span class="o">-</span><span class="n">enabled</span><span class="o">/</span><span class="mf">198.51.100.0</span>
+</pre></div>
+</div>
+<p>Test your new Nginx configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nginx</span> <span class="o">-</span><span class="n">t</span>
+</pre></div>
+</div>
+<p>If no errors are thrown (sometimes the error can be due to you misspelling your domain at a particular step in your
+<code class="docutils literal notranslate"><span class="pre">nginx</span></code> configuration process) then you can reload without having to stop then start the <code class="docutils literal notranslate"><span class="pre">nginx</span></code> service:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">reload</span> <span class="n">nginx</span>
+</pre></div>
+</div>
+<p>Amend the firewall to give full access to Nginx:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ufw</span> <span class="n">allow</span> <span class="s1">&#39;Nginx Full&#39;</span>
+</pre></div>
+</div>
+<p>Enable the firewall to recognize the new rules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ufw</span> <span class="n">enable</span>
+</pre></div>
+</div>
+<p>You should now see the Kibana status page in your browser by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">198.51.100.0</span><span class="o">/</span><span class="n">status</span>
+</pre></div>
+</div>
+<p>To view the Kibana homepage, just go directly to the domain itself - it should redirect you to <code class="docutils literal notranslate"><span class="pre">http://198.51.100.0/app/home#/</span></code></p>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Warning!</p>
+<p><strong><u>Please Note</u></strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main&quot;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">-</span><span class="n">a</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">elastic</span><span class="o">-</span><span class="mf">7.</span><span class="n">x</span><span class="o">.</span><span class="n">list</span>
+</pre></div>
+</div>
+<p>After running the command above, you should get the following status after running <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">systemctl</span> <span class="pre">enable</span> <span class="pre">elasticsearch</span></code>:</p>
+<p><img alt="Elasticsearch enabled" src="../_images/elasticsearch-enable-success.png" /></p>
+<p>You may be tempted to change the code to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main&quot;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">-</span><span class="n">a</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">elastic</span><span class="o">-</span><span class="mf">8.</span><span class="n">x</span><span class="o">.</span><span class="n">list</span>
+</pre></div>
+</div>
+<p>However, what may happen is when you <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">systemctl</span> <span class="pre">enable</span> <span class="pre">elasticsearch</span></code> the output highlighted in red will be missing:</p>
+<p><img alt="Elasticsearch enabled" src="../_images/elasticsearch-enable-missing.jpg" /></p>
+<p>An explanation for this can be found in <a class="reference external" href="https://www.elastic.co/guide/en/elastic-stack/current/upgrading-elasticsearch.html">ElasticSearch documentation</a>:</p>
+<p><img alt="Elasticsearch enabled" src="../_images/elasticsearch-enable-explanation.jpg" /></p>
+</div>
+</div>
 </div>
 <div class="section" id="securing-elasticsearch">
 <h3>Securing <em>ElasticSearch</em><a class="headerlink" href="#securing-elasticsearch" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-22-04">https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-22-04</a></p>
 </div>
 </div>
 </div>

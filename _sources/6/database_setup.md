@@ -9,7 +9,7 @@ The database of choice that I decided to adopt in this category was *ElasticSear
 :class: note
 A lot of trial and error took place to get to my installation solution over a period of almost 6 months.
 
-If you wish to fast-forward to how I installed ElasticSearch successfully, read [**Attempt 2**](https://ceethinwa.github.io/BTS-Continuous-Learning/6/database_setup.html#u-attempt-2-u).
+If you wish to fast-forward to how I installed ElasticSearch successfully, read [**Successful installation**](https://ceethinwa.github.io/BTS-Continuous-Learning/6/database_setup.html#u-successful-installation-u).
 
 The errors I realized (and then fixed) simplified were:
 
@@ -229,104 +229,10 @@ However, I ran into the same problem faced in attempt 1:
 ![error in elasticsearch 6](../_static/images/elasticsearch-setup-in-linux-16.png)
 
 ![error in elasticsearch 7](../_static/images/elasticsearch-setup-in-linux-17.png)
-
-:::{admonition} Lessons learnt after the 4th attempt that changed <u>Attempt 2</u> from failure to success
-:class: tip
-Key Articles:
-
-* https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-22-04
-* https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04
-* https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html
-
-```
-curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elastic.gpg
-```
-
-What made the above code work is:
-* `-fsSL` silences all progress and possible errors (except for a server failure)
-* `https://artifacts.elastic.co/GPG-KEY-elasticsearch` is where the Elasticsearch public signing key is located
-* `|` means collect of the output from the `curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch` command and pipe into the `gpg --dearmor -o /usr/share/keyrings/elastic.gpg` command
-* `sudo` is the command that allows a user with admin rights act like the `root` user
-* `gpg --dearmor` command converts the key into a format that the `apt` package can recognize and use to verify downloaded packages
-
-```
-echo "deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
-```
-
-What made the above code work is:
-* `echo` displays the output from `"deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"` where:
-  * The `deb` package is signed by (`signed-by=`) the key readable by `apt` - `/usr/share/keyrings/elastic.gpg`
-  * The location of the `deb` package is `https://artifacts.elastic.co/packages/7.x/apt` if downloading the latest version of ElasticSearch 7.x (versions in this series are from 7.0 up to 7.17)
-  * The suite of the package being downloaded is a stable release (`stable`) and does not have any dependencies that need to be installed alongside it (`main`) as per [this article](https://askubuntu.com/questions/1032415/what-is-deb-deb-src-stable-xenial-main-in-etc-apt-sources-list#1032736).
-* Output from `echo "deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"` is a list file (`elastic-7.x.list`) piped to the `sources.list.d` directory where it will be recognized by `apt` through the `tee` command, which writes `stdout` (output) to file
-* `-a` tells `tee` that while writing to <u>not</u> overwrite the files but instead **append** to the list file as per [this article](https://linuxize.com/post/linux-tee-command/).
-
-```
-sudo apt update
-```
-The above code updates all package lists on the machine so that APT can recognize the new Elastic source.
-
-With the above pre-work complete, we can now install ElasticSearch:
-
-```
-sudo apt install elasticsearch
-```
-
-The next step is to configure network settings in the `elasticsearch.yml` file to recognize `localhost`; at this point, you can name your node and cluster.
-
-After configuration, you can start, then enable ElasticSearch (to run upon system startup every time) using `systemctl` by running the following commands:
-
-```
-sudo systemctl start elasticsearch
-```
-
-```
-sudo systemctl enable elasticsearch
-```
-
-Finally, the firewall is configured for the particular server to listen on the server where we installed ElasticSearch e.g.
-
-```
-sudo ufw allow from 198.51.100.0 to any port 9200
-```
-
-```
-sudo ufw enable
-```
-
-When you test your db with `curl -X GET 'http://localhost:9200'`, it should now work!
-
-![Success-db](../_static/images/success-cropped.jpg)
-
-**<u>Please Note</u>**:
-
-```
-echo "deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
-```
-
-After running the command above, you should get the following status after running `sudo systemctl enable elasticsearch`:
-
-![Elasticsearch enabled](../_static/images/elasticsearch-enable-success.png)
-
-You may be tempted to change the code to:
-
-```
-echo "deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-8.x.list
-```
-
-However, what may happen is when you `sudo systemctl enable elasticsearch` the output highlighted in red will be missing:
-
-![Elasticsearch enabled](../_static/images/elasticsearch-enable-missing.jpg)
-
-An explanation for this can be found in [ElasticSearch documentation](https://www.elastic.co/guide/en/elastic-stack/current/upgrading-elasticsearch.html):
-
-![Elasticsearch enabled](../_static/images/elasticsearch-enable-explanation.jpg)
-:::
-
    
 #### <u>Attempt 3</u>
 
-In my final (and partially successful attempt) I set up ElasticSearch within Docker on the server itself as per
+In this partially successful attempt, I set up ElasticSearch within Docker on the server itself as per
 [this article](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04),
 [this article](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html) and
 [this article](https://www.coguard.io/post/elasticsearchs-most-common-reason-for-exited-unexpectedly) as shown below:
@@ -514,6 +420,188 @@ Do NOT attempt to copy output from the terminal via `Ctrl+C`! Right-click, then 
 2. Following this approach makes it difficult to automate in the future and keep ElasticSearch continuously running.
 :::
 
+#### <u>Successful installation</u>
+
+:::{admonition} Lessons learnt after the 4th attempt that changed <u>Attempt 2</u> from failure to success
+:class: tip
+Key Articles:
+
+* https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-22-04
+* https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04
+* https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html
+* https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elastic-stack-on-ubuntu-22-04
+* https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-22-04#step-2-adjusting-the-firewall
+
+```
+curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elastic.gpg
+```
+
+What made the above code work is:
+* `-fsSL` silences all progress and possible errors (except for a server failure)
+* `https://artifacts.elastic.co/GPG-KEY-elasticsearch` is where the Elasticsearch public signing key is located
+* `|` means collect of the output from the `curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch` command and pipe into the `gpg --dearmor -o /usr/share/keyrings/elastic.gpg` command
+* `sudo` is the command that allows a user with admin rights act like the `root` user
+* `gpg --dearmor` command converts the key into a format that the `apt` package can recognize and use to verify downloaded packages
+
+```
+echo "deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+```
+
+What made the above code work is:
+* `echo` displays the output from `"deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"` where:
+  * The `deb` package is signed by (`signed-by=`) the key readable by `apt` - `/usr/share/keyrings/elastic.gpg`
+  * The location of the `deb` package is `https://artifacts.elastic.co/packages/7.x/apt` if downloading the latest version of ElasticSearch 7.x (versions in this series are from 7.0 up to 7.17)
+  * The suite of the package being downloaded is a stable release (`stable`) and does not have any dependencies that need to be installed alongside it (`main`) as per [this article](https://askubuntu.com/questions/1032415/what-is-deb-deb-src-stable-xenial-main-in-etc-apt-sources-list#1032736).
+* Output from `echo "deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main"` is a list file (`elastic-7.x.list`) piped to the `sources.list.d` directory where it will be recognized by `apt` through the `tee` command, which writes `stdout` (output) to file
+* `-a` tells `tee` that while writing to <u>not</u> overwrite the files but instead **append** to the list file as per [this article](https://linuxize.com/post/linux-tee-command/).
+
+```
+sudo apt update
+```
+The above code updates all package lists on the machine so that APT can recognize the new Elastic source.
+
+With the above pre-work complete, we can now install ElasticSearch:
+
+```
+sudo apt install elasticsearch
+```
+
+The next step is to configure network settings in the `elasticsearch.yml` file to recognize `localhost`; at this point, you can name your node and cluster.
+
+After configuration, you can start, then enable ElasticSearch (to run upon system startup every time) using `systemctl` by running the following commands:
+
+```
+sudo systemctl start elasticsearch
+```
+
+```
+sudo systemctl enable elasticsearch
+```
+
+Finally, the firewall is configured for the particular server to listen on the server where we installed ElasticSearch e.g.
+
+```
+sudo ufw allow from 198.51.100.0 to any port 9200
+```
+
+```
+sudo ufw enable
+```
+
+When you test your db with `curl -X GET 'http://localhost:9200'`, it should now work!
+
+![Success-db](../_static/images/success-cropped.jpg)
+
+To install Kibana as a Debian package, you need Nginx; run the following commands:
+
+```
+sudo apt install nginx
+```
+
+```
+sudo apt install kibana
+```
+
+Remember once installed to first start kibana then enable it:
+```
+sudo systemctl start kibana
+sudo systemctl enable kibana
+```
+
+Using `OpenSSL`, create a kibana administrator username (`kibanaadmin`) and generate a password, which you will save in `/etc/nginx/htpasswd.users`
+```
+echo "kibanaadmin:`openssl passwd -apr1`" | sudo tee -a /etc/nginx/htpasswd.users
+```
+
+Create a `nginx` file for your public domain (`198.51.100.0`) using `nano` e.g. `sudo nano /etc/nginx/sites-available/198.51.100.0`
+```
+sudo nano /etc/nginx/sites-available/198.51.100.0
+```
+
+In the file, you can paste the following:
+```
+server {
+    listen 80;
+
+    server_name 198.51.100.0;
+
+    auth_basic "Restricted Access";
+    auth_basic_user_file /etc/nginx/htpasswd.users;
+
+    location / {
+        proxy_pass http://localhost:5601;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+```
+
+Create a symbolic link to the `sites-enabled` directory:
+```
+sudo ln -s /etc/nginx/sites-available/198.51.100.0 /etc/nginx/sites-enabled/198.51.100.0
+```
+
+Test your new Nginx configuration:
+```
+sudo nginx -t
+```
+
+If no errors are thrown (sometimes the error can be due to you misspelling your domain at a particular step in your
+`nginx` configuration process) then you can reload without having to stop then start the `nginx` service:
+```
+sudo systemctl reload nginx
+```
+
+Amend the firewall to give full access to Nginx:
+```
+sudo ufw allow 'Nginx Full'
+```
+
+Enable the firewall to recognize the new rules:
+```
+sudo ufw enable
+```
+
+You should now see the Kibana status page in your browser by typing:
+```
+http://198.51.100.0/status
+```
+
+To view the Kibana homepage, just go directly to the domain itself - it should redirect you to `http://198.51.100.0/app/home#/`
+:::
+
+
+:::{admonition} Warning!
+:class: warning
+**<u>Please Note</u>**:
+
+```
+echo "deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+```
+
+After running the command above, you should get the following status after running `sudo systemctl enable elasticsearch`:
+
+![Elasticsearch enabled](../_static/images/elasticsearch-enable-success.png)
+
+You may be tempted to change the code to:
+
+```
+echo "deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-8.x.list
+```
+
+However, what may happen is when you `sudo systemctl enable elasticsearch` the output highlighted in red will be missing:
+
+![Elasticsearch enabled](../_static/images/elasticsearch-enable-missing.jpg)
+
+An explanation for this can be found in [ElasticSearch documentation](https://www.elastic.co/guide/en/elastic-stack/current/upgrading-elasticsearch.html):
+
+![Elasticsearch enabled](../_static/images/elasticsearch-enable-explanation.jpg)
+
+:::
 
 ### Securing *ElasticSearch*
 
+https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-22-04
