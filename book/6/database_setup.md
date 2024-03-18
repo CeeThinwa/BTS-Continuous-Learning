@@ -502,7 +502,7 @@ sudo apt install nginx
 sudo apt install kibana
 ```
 
-Remember once installed to first start kibana then enable it:
+Remember once installed to first start Kibana then enable it:
 ```
 sudo systemctl start kibana
 sudo systemctl enable kibana
@@ -513,7 +513,7 @@ Using `OpenSSL`, create a kibana administrator username (`kibanaadmin`) and gene
 echo "kibanaadmin:`openssl passwd -apr1`" | sudo tee -a /etc/nginx/htpasswd.users
 ```
 
-Create a `nginx` file for your public domain (`198.51.100.0`) using `nano` e.g. `sudo nano /etc/nginx/sites-available/198.51.100.0`
+Create a Nginx file  in the `sites-avaialble` folder for your public domain (`198.51.100.0`) using `nano`
 ```
 sudo nano /etc/nginx/sites-available/198.51.100.0
 ```
@@ -550,7 +550,7 @@ sudo nginx -t
 ```
 
 If no errors are thrown (sometimes the error can be due to you misspelling your domain at a particular step in your
-`nginx` configuration process) then you can reload without having to stop then start the `nginx` service:
+Nginx configuration process) then you can reload without having to stop then start the Nginx service:
 ```
 sudo systemctl reload nginx
 ```
